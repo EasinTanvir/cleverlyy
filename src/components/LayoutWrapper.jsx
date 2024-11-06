@@ -2,6 +2,7 @@
 import React from "react";
 import SideBar from "./SideBar";
 import { useContextProvider } from "../../hooks/useContextProvider";
+import Header from "./Header";
 
 const LayoutWrapper = ({ children }) => {
   const { sideBarOpen } = useContextProvider();
@@ -10,12 +11,12 @@ const LayoutWrapper = ({ children }) => {
     <div className="flex">
       <SideBar />
       <div
-        className={`flex-1  overflow-hidden ${
-          sideBarOpen ? "ml-60" : "ml-[75px]"
+        className={`flex-1  overflow-hidden px-4 ${
+          sideBarOpen ? "ml-60" : "ml-[75px] relative"
         }`}
       >
-        <header className="bg-black text-white py-4 px-4 mb-4">Header</header>
-        <React.Fragment>{children}</React.Fragment>
+        <Header sideBarOpen={sideBarOpen} />
+        <div className="mt-20">{children}</div>
       </div>
     </div>
   );
