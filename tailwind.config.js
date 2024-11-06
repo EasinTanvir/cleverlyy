@@ -8,8 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        sideBarColor: "#5449be",
+      },
+      backgroundImage: {
+        "custom-gradient": "linear-gradient(180deg, #ffffff, #c7d9ff)",
       },
     },
   },
