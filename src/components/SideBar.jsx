@@ -228,11 +228,11 @@ const SideBar = () => {
         </div>
 
         <div
-          className={` bg-custom-gradient  p-3 rounded-2xl  absolute bottom-4 left-4 ${
+          className={` bg-custom-gradient  p-3 z-50 rounded-2xl  absolute bottom-4 left-4 ${
             sideBarOpen ? "w-52" : "w-[44px]"
           }  `}
         >
-          <div className={`${isHidden}`}>
+          <div className={`${isHidden} `}>
             <h1 className="text-md  font-semibold">Go Premium</h1>
             <span className="text-sm">Unlock all features:</span>
             <ul className={`list-disc text-xs ps-8 pt-1 `}>
@@ -243,6 +243,10 @@ const SideBar = () => {
           </div>
           <div></div>
         </div>
+
+        {isResourcesOpen && (
+          <div className="absolute bottom-0 left-0 w-60 h-[400px] bg-gradient-to-t z-10 from-[rgba(0.4,0,0,0.6)] to-transparent backdrop-blur-xs pointer-events-none"></div>
+        )}
       </div>
     </div>
   );
