@@ -11,7 +11,7 @@ const LayoutWrapper = ({ children }) => {
     <div className="flex">
       <SideBar />
       <div
-        className={`flex-1  overflow-hidden px-4 ${
+        className={`flex-1  overflow-hidden px-5 ${
           sideBarOpen ? "ml-60" : "ml-[75px] relative"
         }`}
       >

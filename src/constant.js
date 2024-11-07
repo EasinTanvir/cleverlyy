@@ -1,2 +1,3 @@
 import logoImage from "./assets/images/logo.png";
-export { logoImage };
+import penImage from "./assets/images/pen.png";
+export { logoImage, penImage };
