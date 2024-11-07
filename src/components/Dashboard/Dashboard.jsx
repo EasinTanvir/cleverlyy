@@ -177,7 +177,7 @@ const Dashboard = () => {
               <Notifications />
             </div>
             <div className="bg-custom-gradient flex justify-between items-center px-4  h-14 rounded-md ">
-              <h1 className="title">Let's Start</h1>
+              <h1 className="title">Let&apos;s Start</h1>
               <button className="w-7 h-7 bg-black rounded-full flex-center">
                 <RiArrowRightWideFill className="text-white" />
               </button>
