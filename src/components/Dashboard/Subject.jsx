@@ -16,10 +16,9 @@ const Subject = () => {
     <div className="mt-4 rounded-md relative ">
       <Swiper
         effect={"cube"}
-        grabCursor={true}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         modules={[EffectFade]}
         scrollbar={{ draggable: true }}

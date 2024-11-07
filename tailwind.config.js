@@ -10,8 +10,10 @@ module.exports = {
       colors: {
         sideBarColor: "#5449be",
         boxColor: "#cac2ff",
+        boxColor2: "#ebe9ff",
         textColor: "#9127d5",
         textColor2: "#5d5d5d",
+        textColor3: "#FCCD3F",
         moonColor: "#5e17eb",
         avatarBg: "#005A9A",
         joinBtnColor: "#aed092",
