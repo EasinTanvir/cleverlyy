@@ -17,6 +17,13 @@ module.exports = {
         moonColor: "#5e17eb",
         avatarBg: "#005A9A",
         joinBtnColor: "#aed092",
+
+        banner: {
+          color1: "#FDC200", // Yellow
+          color2: "#FF2C2C", // Red
+          color3: "#21AD61", // Green
+          color4: "#723DA6", // Blue
+        },
       },
       backgroundImage: {
         "custom-gradient": "linear-gradient(180deg, #ffffff, #c7d9ff)",

@@ -5,7 +5,7 @@ import { penImage } from "@/constant";
 
 const ResourceCart = ({ title = "Revision" }) => {
   return (
-    <div className="p-3 min-w-60 max-w-60 ">
+    <div className="p-3 min-w-56 max-w-56">
       <div className="flex items-center gap-2  ">
         <div className="relative w-10">
           <Image className="w-full h-full" src={penImage} alt={title} />

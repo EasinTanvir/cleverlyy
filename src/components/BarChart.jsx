@@ -60,15 +60,6 @@ const BarChartComponent = ({ dataValues }) => {
         position: "top",
       },
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: "Count",
-        },
-      },
-    },
   };
 
   return <Bar data={data} options={options} />;

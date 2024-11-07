@@ -12,7 +12,7 @@ const LayoutWrapper = ({ children }) => {
       <SideBar />
       <div
         className={`flex-1  overflow-hidden  ${
-          sideBarOpen ? "ml-60" : "ml-[75px] relative"
+          sideBarOpen ? "lg:ml-60 ml-[75px]" : "ml-[75px] relative"
         }`}
       >
         <Header sideBarOpen={sideBarOpen} />

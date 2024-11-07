@@ -7,7 +7,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1024) {
         setSidebarOpen(false);
       } else {
         setSidebarOpen(true);

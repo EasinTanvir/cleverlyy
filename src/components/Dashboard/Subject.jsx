@@ -15,6 +15,28 @@ const Subject = () => {
   return (
     <div className="mt-4 rounded-md relative ">
       <Swiper
+        breakpoints={{
+          300: {
+            width: 600,
+            slidesPerView: 2,
+          },
+          640: {
+            width: 600,
+            slidesPerView: 2,
+          },
+          768: {
+            width: 600,
+            slidesPerView: 3,
+          },
+          992: {
+            width: 600,
+            slidesPerView: 3,
+          },
+          1200: {
+            width: 600,
+            slidesPerView: 4,
+          },
+        }}
         effect={"cube"}
         autoplay={{
           delay: 4000,

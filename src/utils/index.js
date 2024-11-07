@@ -1,3 +1,5 @@
+import { dashboardImg } from "@/constant";
+
 const subjects = [
   "Mathematics",
   "English",
@@ -55,5 +57,26 @@ export const notificationsData = [
     date: "Thu, 21 Apr",
     startTime: "2 PM",
     endTime: "3 PM",
+  },
+];
+
+export const bannerLists = [
+  {
+    id: 1,
+    image: dashboardImg,
+    title: "Mathematics",
+    subtitle: "Experience the latest in home entertainment",
+  },
+  {
+    id: 2,
+    image: dashboardImg,
+    title: "English",
+    subtitle: "Experience the latest in home entertainment",
+  },
+  {
+    id: 3,
+    image: dashboardImg,
+    title: "Physics",
+    subtitle: "Experience the latest in home entertainment",
   },
 ];
