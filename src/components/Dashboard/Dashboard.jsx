@@ -1,7 +1,9 @@
 import React from "react";
 import { HiPencil } from "react-icons/hi2";
+import { RiArrowRightWideFill } from "react-icons/ri";
 
 import ResourceCart from "./ResourceCart";
+import Subject from "./Subject";
 
 const Dashboard = () => {
   return (
@@ -13,18 +15,24 @@ const Dashboard = () => {
 
       <div className="flex gap-4">
         <React.Fragment>
-          <div className="space-y-4 flex-1">
+          <div className="space-y-4 min-w-[67%] max-w-[67%]">
             <div className="bg-boxColor h-44 rounded-md"></div>
 
             <div className="flex gap-4">
-              <ResourceCart />
-              <ResourceCart />
-              <ResourceCart />
+              <ResourceCart title="Revision Notes" />
+              <ResourceCart title="Yearwise QP" />
+              <ResourceCart title="Chapterwise QP" />
+              <ResourceCart title="Other Resources" />
+            </div>
+
+            <div className="max-w-full">
+              <h1 className="title">Your Subjects</h1>
+              <Subject />
             </div>
           </div>
         </React.Fragment>
         <React.Fragment>
-          <div className="space-y-4 w-1/3">
+          <div className="space-y-4 min-w-[33%] max-w-[33%]">
             <div className="bg-custom-gradient h-44 rounded-md relative p-4">
               <div className="w-14 h-14 rounded-full absolute -top-10 left-0 right-0 mx-auto bg-avatarBg flex-center">
                 logo
@@ -59,12 +67,15 @@ const Dashboard = () => {
                   300 Students active
                 </span>
               </div>
-              <div className="flex justify-between mt-8">
-                <span className="text-textColor2 text-xs w-1/4">
-                  Last viewed: physics o -level cambridge thread
+              <div className="flex justify-between mt-8 pe-4">
+                <span className="text-textColor2 text-xs w-1/3">
+                  Last viewed: physics <br /> o -level cambridge thread
                 </span>
-                <button className="flex-1 uppercase border border-joinBtnColor text-joinBtnColor">
-                  Join Now
+                <button className=" uppercase border border-r-0 border-joinBtnColor text-joinBtnColor w-36  rounded-md relative text-sm font-semibold">
+                  <span>Join Now</span>
+                  <span className="border border-joinBtnColor rounded-2xl w-10 h-8 absolute -right-4 bottom-0 top-0 my-auto flex-center">
+                    <RiArrowRightWideFill size={20} />
+                  </span>
                 </button>
               </div>
             </div>

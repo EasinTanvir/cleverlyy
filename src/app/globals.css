@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-horizontal > .swiper-scrollbar {
+  display: none !important;
+}
+
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
   }
   .title {
-    @apply text-[18px] font-semibold;
+    @apply text-[18px] font-bold;
   }
 }

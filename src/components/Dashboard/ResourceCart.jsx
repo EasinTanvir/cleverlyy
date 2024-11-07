@@ -11,8 +11,8 @@ const ResourceCart = ({ title = "Revision" }) => {
           <Image className="w-full h-full" src={penImage} alt={title} />
         </div>
         <div>
-          <h6 className="text-[10px]">Chapterwise QP</h6>
-          <h1 className="text-[16px] font-semibold">{title}</h1>
+          <h6 className="text-[10px]">Resources</h6>
+          <h1 className="text-[16px] font-bold">{title}</h1>
         </div>
       </div>
 
