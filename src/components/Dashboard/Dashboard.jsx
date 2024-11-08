@@ -59,11 +59,10 @@ const Dashboard = () => {
                 </button>
               </div>
 
-              <div className="flex 2xl:flex-row flex-col gap-4">
-                <div className="2xl:w-[49%]">
-                  <BarChart dataValues={dummyData} />
-                </div>
+              <div className="w-full">
+                <BarChart dataValues={dummyData} />
 
+                {/* 
                 <div className="2xl:w-[49%]">
                   <div className="mb-5 flex justify-between items-center mt-6">
                     <h1 className="title">Physics</h1>
@@ -84,7 +83,7 @@ const Dashboard = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 

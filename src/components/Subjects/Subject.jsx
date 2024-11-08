@@ -2,9 +2,12 @@ import React from "react";
 import { FaFlask, FaAtom, FaChartLine, FaPlus } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
-import SubjectCard from "./SubjectCart";
 import Sorting from "./Sorting";
+import GcseSubjectCart from "./GcseSubjectCart";
+import IntALevelSubjectCart from "./IntALevelSubjectCart";
+import ALevelSubjectCart from "./ALevelSubjectCart";
 
 const subjects = [
   {
@@ -12,33 +15,21 @@ const subjects = [
     code: "4CH1 | Science (Double Award) 4SD0",
     color: "#F9FDE7",
     icon: FaFlask,
-    progress: [
-      { label: "Yearwise QP", value: 80, details: "8/14" },
-      { label: "Chapterwise QP", value: 80, details: "18/24" },
-      { label: "Revision Notes", value: 80, details: "240/300" },
-    ],
+    value: 70,
   },
   {
     title: "Physics",
     code: "4PH1 | Science (Double Award) 4SD0",
     color: "#EAF4FF",
     icon: FaAtom,
-    progress: [
-      { label: "Yearwise QP", value: 80, details: "8/14" },
-      { label: "Chapterwise QP", value: 80, details: "18/24" },
-      { label: "Revision Notes", value: 80, details: "240/300" },
-    ],
+    value: 60,
   },
   {
     title: "Economics",
     code: "4PH1 | Science (Double Award) 4SD0",
     color: "#FFFBEB",
     icon: FaChartLine,
-    progress: [
-      { label: "Yearwise QP", value: 80, details: "8/14" },
-      { label: "Chapterwise QP", value: 80, details: "18/24" },
-      { label: "Revision Notes", value: 80, details: "240/300" },
-    ],
+    value: 40,
   },
 ];
 
@@ -76,51 +67,65 @@ const Subject = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4">
-        {/* {subjects.map((subject, index) => (
-          <SubjectCard
+      <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
+        {subjects.map((subject, index) => (
+          <GcseSubjectCart
             key={index}
             color={subject.color}
             icon={subject.icon}
             title={subject.title}
             code={subject.code}
             progress={subject.progress}
+            value={subject.value}
           />
-        ))} */}
-        <SubjectCard />
+        ))}
       </div>
+
+      <React.Fragment>
+        <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
+          <div className="w-80  flex flex-col items-center justify-center">
+            <FaFlask size={40} />
+            <h1 className="text-[27px] font-bold">Chemistry</h1>
+            <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
+          </div>
+          <div className="flex-1 ">
+            <div className="flex flex-wrap gap-6">
+              {subjects.map((subject, index) => (
+                <IntALevelSubjectCart
+                  key={index}
+                  color={subject.color}
+                  icon={MdOutlineKeyboardDoubleArrowRight}
+                  title="Unit"
+                  code={subject.code}
+                  progress={subject.progress}
+                  value={subject.value}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+
+      <React.Fragment>
+        <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
+          <div className="w-80  flex flex-col items-center justify-center">
+            <FaFlask size={40} />
+            <h1 className="text-[27px] font-bold">Chemistry</h1>
+            <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
+          </div>
+          <div className="flex-1 ">
+            <ALevelSubjectCart
+              color={"#ffffff"}
+              icon={MdOutlineKeyboardDoubleArrowRight}
+              title="Advanced Subsidiary (AS)"
+              value={70}
+            />
+          </div>
+        </div>
+      </React.Fragment>
     </div>
   );
 };
 
 export default Subject;
-
-const SubjectCards = ({ color, icon: Icon, title, code, progress }) => {
-  return (
-    <div className={`bg-[${color}] rounded-lg shadow-lg p-6 w-96 border`}>
-      <div className="flex items-center space-x-4">
-        <div className="bg-white p-4 rounded-full">
-          <Icon className="text-gray-700 text-3xl" />
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold">{title}</h2>
-          <p className="text-gray-500">{code}</p>
-        </div>
-      </div>
-      <div className="mt-4  gap-4">
-        {progress.map((item, index) => (
-          <div key={index} className="flex">
-            <p className="text-sm text-gray-600">{item.label}</p>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div
-                className="bg-green-500 h-2.5 rounded-full"
-                style={{ width: `${item.value}%` }}
-              ></div>
-            </div>
-            <p className="text-sm text-gray-500">{item.details}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
