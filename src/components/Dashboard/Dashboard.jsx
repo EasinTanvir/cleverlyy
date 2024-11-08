@@ -26,7 +26,7 @@ const dummyData = [
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6 px-5 mb-5">
+    <div className="space-y-6  ">
       <h1 className="text-[26px]">
         Welcome, <span className="text-textColor font-semibold">Nahian</span>,
         Let’s Get started today
@@ -39,7 +39,7 @@ const Dashboard = () => {
               <Carousel />
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 xs:grid-cols-2 ">
               <ResourceCart title="Revision Notes" />
               <ResourceCart title="Yearwise QP" />
               <ResourceCart title="Chapterwise QP" />

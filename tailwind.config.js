@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "500px", // Adds a custom "xs" breakpoint at 350px
+      },
       colors: {
         sideBarColor: "#5449be",
         boxColor: "#cac2ff",
