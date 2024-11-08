@@ -8,6 +8,9 @@ import Sorting from "./Sorting";
 import GcseSubjectCart from "./GcseSubjectCart";
 import IntALevelSubjectCart from "./IntALevelSubjectCart";
 import ALevelSubjectCart from "./ALevelSubjectCart";
+import { subjectLists } from "@/utils/subject";
+import Image from "next/image";
+import { chemistry } from "@/constant";
 
 const subjects = [
   {
@@ -43,19 +46,19 @@ const Subject = () => {
         </h1>
       </div>
 
-      <div className="flex  ">
-        <div className="w-[23%]  flex justify-between items-center">
+      <div className="flex sm:flex-row flex-col sm:gap-0 gap-4  ">
+        <div className="xl:w-[23%] sm:w-[40%] w-full  flex justify-between items-center">
           <div className="text-sm">
             <p>Chemistry, Chapterwise, Organic 2.2</p>
             <p className=" text-textColor text-[13px]">
               Continue from where you left
             </p>
           </div>
-          <button>
+          <button className="sm:block hidden">
             <RiArrowRightSLine size={35} />
           </button>
         </div>
-        <div className="flex-1  flex justify-end items-center gap-4">
+        <div className="flex-1  flex lg:flex-row flex-col justify-end lg:items-center items-end gap-4">
           <button>
             <TfiMenuAlt size={30} />
           </button>
@@ -67,26 +70,41 @@ const Subject = () => {
         </div>
       </div>
 
-      <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
-        {subjects.map((subject, index) => (
-          <GcseSubjectCart
-            key={index}
-            color={subject.color}
-            icon={subject.icon}
-            title={subject.title}
-            code={subject.code}
-            progress={subject.progress}
-            value={subject.value}
-          />
-        ))}
+      <div className="pt-4 ">
+        <div className="flex sm:flex-row flex-col justify-between pb-10">
+          <h1 className="text-xl">International GCSE</h1>
+          <div className="flex items-center gap-2 font-semibold text-lg">
+            <h1>Pearson</h1> | <h1>Edescel</h1>
+          </div>
+        </div>
+        <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
+          {subjectLists.map((subject, index) => (
+            <GcseSubjectCart
+              key={index}
+              color={subject.color}
+              image={subject.image}
+              title={subject.title}
+              value={70}
+            />
+          ))}
+        </div>
       </div>
 
-      <React.Fragment>
+      <div className="pt-10">
+        <div className="flex sm:flex-row flex-col justify-between pb-10">
+          <h1 className="text-xl">Edexcel: International A-Level</h1>
+          <div className="flex items-center gap-2 font-semibold text-lg">
+            <h1>Pearson</h1> | <h1>Edescel</h1>
+          </div>
+        </div>
+
         <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
-            <FaFlask size={40} />
+            <div className="w-[115px] ">
+              <Image className="max-w-24" src={chemistry} alt="logo" />
+            </div>
             <h1 className="text-[27px] font-bold">Chemistry</h1>
-            <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
+            <p className="text-[11px]">4CH1 | Science (Double Award) 4SD0 </p>
           </div>
           <div className="flex-1 ">
             <div className="flex flex-wrap gap-6">
@@ -105,14 +123,22 @@ const Subject = () => {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
 
-      <React.Fragment>
+      <div className="pt-10">
+        <div className="flex sm:flex-row flex-col justify-between pb-10">
+          <h1 className="text-xl">Cambridge A-Levels</h1>
+          <div className="flex items-center gap-2 font-semibold text-lg">
+            <h1>Pearson</h1> | <h1>Edescel</h1>
+          </div>
+        </div>
         <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
-            <FaFlask size={40} />
+            <div className="w-[115px] ">
+              <Image className="max-w-24" src={chemistry} alt="logo" />
+            </div>
             <h1 className="text-[27px] font-bold">Chemistry</h1>
-            <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
+            <p className="text-[11px]">4CH1 | Science (Double Award) 4SD0 </p>
           </div>
           <div className="flex-1 ">
             <ALevelSubjectCart
@@ -123,7 +149,7 @@ const Subject = () => {
             />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     </div>
   );
 };

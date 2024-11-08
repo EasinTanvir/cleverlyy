@@ -13,7 +13,7 @@ const IntALevelSubjectCart = ({
 }) => {
   return (
     <div
-      className={`bg-[${color}] p-5 md:w-[360px] rounded-2xl  border-[1px] shadow-md space-y-12`}
+      className={`bg-[${color}] cursor-pointer p-5 md:w-[360px] rounded-2xl  border-[1px] shadow-md space-y-12`}
     >
       <div className="flex  gap-5">
         <div className="w-[125px]">

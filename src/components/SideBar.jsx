@@ -228,18 +228,23 @@ const SideBar = () => {
         </div>
 
         <div
-          className={` bg-custom-gradient  p-3 z-50 rounded-2xl  absolute bottom-4 left-4 ${
+          className={` bg-custom-gradient  p-5 z-50 rounded-[27px]  absolute bottom-4 left-4 ${
             sideBarOpen ? "w-52" : "w-[44px]"
           }  `}
         >
           <div className={`${isHidden} `}>
             <h1 className="text-md  font-semibold">Go Premium</h1>
-            <span className="text-sm">Unlock all features:</span>
-            <ul className={`list-disc text-xs ps-8 pt-1 `}>
+            <span className="text-[10px] font-medium">
+              Unlock all features:
+            </span>
+            <ul className={`list-disc text-[10px] ps-6   font-medium`}>
               <li>Full revision notes</li>
               <li>AI-checked papers</li>
               <li>Track your progress</li>
             </ul>
+            <span className="text-textColor text-[11px] font-bold">
+              and many more
+            </span>
           </div>
           <div></div>
         </div>
