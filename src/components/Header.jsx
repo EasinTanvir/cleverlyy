@@ -7,7 +7,7 @@ import { FaMoon } from "react-icons/fa";
 const Header = ({ sideBarOpen }) => {
   return (
     <div
-      className={`fixed ${
+      className={`fixed border ${
         !sideBarOpen
           ? "left-[75px] w-[calc(100%-75px)]"
           : "left-60 w-[calc(100%-240px)]"

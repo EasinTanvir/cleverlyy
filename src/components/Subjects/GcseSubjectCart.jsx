@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import ProgressBar from "./ProgressBar";
+import Link from "next/link";
 
 const GcseSubjectCart = ({ color, image, value, title }) => {
   return (
-    <div
+    <Link
+      href="/subjects/info"
       style={{ backgroundColor: color }}
       className={` cursor-pointer px-5 pb-5 pt-3 md:w-[375px] rounded-2xl  border-[1px] shadow-md space-y-9`}
     >
@@ -23,7 +25,7 @@ const GcseSubjectCart = ({ color, image, value, title }) => {
         <ProgressBar value={value} title="Chapterwise QP" />
         <ProgressBar value={value} title="Revision Notes" />
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -80,3 +80,55 @@ export const bannerLists = [
     subtitle: "Experience the latest in home entertainment",
   },
 ];
+
+export const chapters = [
+  {
+    name: "Chapter 1: Introduction to Physics",
+    progress: 75,
+    topics: [
+      {
+        name: "Topic 1: Basic Concepts",
+        isExpanded: false,
+        progress: 60,
+        subtopics: [
+          { name: "Subtopic 1: What is Physics?", isSolved: true },
+          { name: "Subtopic 2: Importance of Physics", isSolved: false },
+        ],
+      },
+      {
+        name: "Topic 2: Physical Quantities and Units",
+        isExpanded: false,
+        progress: 90,
+        subtopics: [
+          { name: "Subtopic 1: Measurement Units", isSolved: true },
+          { name: "Subtopic 2: SI Units", isSolved: true },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Chapter 2: Forces and Motion",
+    progress: 50,
+    topics: [
+      {
+        name: "Topic 1: Types of Forces",
+        isExpanded: false,
+        progress: 40,
+        subtopics: [
+          { name: "Subtopic 1: Contact Forces", isSolved: false },
+          { name: "Subtopic 2: Non-contact Forces", isSolved: false },
+        ],
+      },
+      {
+        name: "Topic 2: Newton's Laws of Motion",
+        isExpanded: false,
+        progress: 60,
+        subtopics: [
+          { name: "Subtopic 1: First Law of Motion", isSolved: true },
+          { name: "Subtopic 2: Second Law of Motion", isSolved: false },
+          { name: "Subtopic 3: Third Law of Motion", isSolved: false },
+        ],
+      },
+    ],
+  },
+];

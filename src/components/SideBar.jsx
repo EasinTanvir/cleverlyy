@@ -89,7 +89,9 @@ const SideBar = () => {
           <Link
             href="/subjects"
             className={`flex items-center gap-2 ${
-              path === "/subjects" ? "bg-white text-black ps-2" : "text-white"
+              path.startsWith("/subjects")
+                ? "bg-white text-black ps-2"
+                : "text-white"
             }  py-1  rounded-md  `}
           >
             <MdOutlineSubject size={25} />

@@ -92,7 +92,7 @@ const Dashboard = () => {
 
             <div className="flex xl:flex-row flex-col gap-4">
               <div className="flex-1 min-h-44 border rounded-lg  flex-center">
-                videe
+                video
               </div>
               <div className="border border-black h-44 rounded-2xl p-5 flex-1">
                 <div className="flex justify-between">

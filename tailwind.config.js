@@ -17,9 +17,14 @@ module.exports = {
         textColor: "#9127d5",
         textColor2: "#5d5d5d",
         textColor3: "#FCCD3F",
+        textColor4: "#8c7bff",
         moonColor: "#5e17eb",
         avatarBg: "#005A9A",
         joinBtnColor: "#aed092",
+        borderColor: "#efe0fe",
+        borderColor2: "#dddddd",
+        checkColor: "#00a552",
+        yearBg: "#efecf5",
 
         banner: {
           color1: "#FDC200", // Yellow
@@ -31,6 +36,7 @@ module.exports = {
       backgroundImage: {
         "custom-gradient": "linear-gradient(180deg, #ffffff, #c7d9ff)",
         premiumbtnbg: "linear-gradient(135deg, #e6b6ff, #ffffff, #ffa7a7)",
+        progressbg: "linear-gradient(90deg, #fefcfe, #ddcff7)",
       },
     },
   },

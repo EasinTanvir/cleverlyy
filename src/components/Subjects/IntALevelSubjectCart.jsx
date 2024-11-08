@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFlask, FaAtom, FaChartLine } from "react-icons/fa";
 import ProgressBar from "./ProgressBar";
+import Link from "next/link";
 
 const IntALevelSubjectCart = ({
   color,
@@ -12,7 +13,8 @@ const IntALevelSubjectCart = ({
   index,
 }) => {
   return (
-    <div
+    <Link
+      href="/subjects/info"
       className={`bg-[${color}] cursor-pointer p-5 md:w-[360px] rounded-2xl  border-[1px] shadow-md space-y-12`}
     >
       <div className="flex  gap-5">
@@ -33,7 +35,7 @@ const IntALevelSubjectCart = ({
         <ProgressBar value={value} title="Chapterwise QP" />
         <ProgressBar value={value} title="Revision Notes" />
       </div>
-    </div>
+    </Link>
   );
 };
 
