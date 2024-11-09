@@ -31,7 +31,7 @@ const RevisionNotesChapter = ({
               value={100}
               size={30}
               thickness={10}
-              className="absolute text-purple-200"
+              className="absolute text-blankCircle"
             />
 
             <CircularProgress
@@ -39,7 +39,7 @@ const RevisionNotesChapter = ({
               value={progress}
               size={30}
               thickness={10}
-              className="text-purple-500"
+              className="text-circle"
             />
           </div>
         </div>

@@ -30,6 +30,8 @@ module.exports = {
         yearBg4: "#8878f9",
         examBg: "#ededed",
         selectExamBg: "#cbc2ff",
+        circle: "#746cca",
+        blankCircle: "#e4e0ff",
 
         banner: {
           color1: "#FDC200", // Yellow

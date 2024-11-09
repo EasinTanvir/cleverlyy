@@ -91,8 +91,11 @@ const Dashboard = () => {
             </div>
 
             <div className="flex xl:flex-row flex-col gap-4">
-              <div className="flex-1 min-h-44 border rounded-lg  flex-center">
-                video
+              <div className="flex-1 min-h-44 max-h-44 border rounded-lg  flex-center">
+                <video
+                  className="w-full h-full"
+                  src="https://res.cloudinary.com/dmrbqkzbu/image/upload/v1731161323/AI_Checking_ykujni.gif"
+                ></video>
               </div>
               <div className="border border-black h-44 rounded-2xl p-5 flex-1">
                 <div className="flex justify-between">
