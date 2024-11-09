@@ -1,7 +1,12 @@
 import React from "react";
+import ResourceRevision from "@/components/Resources/ResourceRevision/ResourceRevision";
 
 const page = () => {
-  return <div>revision page</div>;
+  return (
+    <>
+      <ResourceRevision />
+    </>
+  );
 };
 
 export default page;

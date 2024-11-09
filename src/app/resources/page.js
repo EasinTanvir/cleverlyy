@@ -1,8 +1,12 @@
-import Resource from "@/components/Resources/Resource";
 import React from "react";
+import Resource from "@/components/Resources/Resource";
 
 const page = () => {
-  return <></>;
+  return (
+    <>
+      <Resource />
+    </>
+  );
 };
 
 export default page;

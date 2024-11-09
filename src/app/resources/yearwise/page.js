@@ -1,7 +1,12 @@
 import React from "react";
+import ResourceYearWiseQp from "@/components/Resources/ResourceYearWiseQp/ResourceYearWiseQp";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <ResourceYearWiseQp />
+    </>
+  );
 };
 
 export default page;

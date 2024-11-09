@@ -6,7 +6,7 @@ const layout = ({ children }) => {
     <div>
       <ResourceLayout />
 
-      <div>{children}</div>
+      <div className="mt-4">{children}</div>
     </div>
   );
 };

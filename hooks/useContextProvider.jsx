@@ -4,6 +4,9 @@ const CartContext = React.createContext();
 
 export const ContextProvider = ({ children }) => {
   const [sideBarOpen, setSidebarOpen] = useState(true);
+  const [selectedBoard, setSelectedBoard] = useState("Cambridge");
+  const [selectedExam, setSelectedExam] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,6 +28,12 @@ export const ContextProvider = ({ children }) => {
   const sendData = {
     sideBarOpen,
     setSidebarOpen,
+    selectedExam,
+    setSelectedExam,
+    selectedSubject,
+    setSelectedSubject,
+    selectedBoard,
+    setSelectedBoard,
   };
 
   return (

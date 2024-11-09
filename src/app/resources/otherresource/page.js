@@ -1,7 +1,12 @@
 import React from "react";
+import OtherResources from "@/components/Resources/OtherResources/OtherResources";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <OtherResources />
+    </>
+  );
 };
 
 export default page;

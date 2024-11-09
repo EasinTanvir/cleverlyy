@@ -88,14 +88,14 @@ const dummyData = {
       ],
       "Variant-3": [
         {
-          paper_id: 1723,
+          paper_id: 1733,
           paper: "Paper 1",
           type: "Markscheme",
           name: "9701_f14_ms_21.pdf",
           file_url: "https://your-s3-url/path/to/paper11.pdf",
         },
         {
-          paper_id: 1724,
+          paper_id: 1734,
           paper: "Paper 2",
           type: "Question Paper",
           name: "9701_f14_qp_22.pdf",
@@ -155,7 +155,7 @@ const PaperView = () => {
             </div>
             <div className="flex-1 flex md:flex-row flex-col  justify-end  gap-7">
               <div>
-                <div className="flex flex-col items-center space-y-2 ">
+                <div className="flex flex-col items-center space-y-3 ">
                   <button className="w-fit px-3.5 py-2 rounded-xl text-white bg-textColor4">
                     View Question paper
                   </button>
