@@ -1,13 +1,25 @@
 import React from "react";
 import RevisionNotesChapter from "@/components/Subjects/ChapterWiseRevisionNotes/RevisionNotesChapter";
 import { chapters } from "@/utils";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+import Action from "./Action";
 
 const ResourceRevision = () => {
   return (
-    <div>
-      <div className="mt-12 flex xl:flex-row flex-col  gap-9  ">
+    <div className="relative">
+      <div className="flex justify-end md:mb-0 mb-4">
+        <Link href="/subjects/chapterwise-revision-notes">
+          <button className="flex items-center gap-2 px-4 py-1 border border-borderColor2 rounded-lg text-textColor2 ">
+            View All{" "}
+            <FaArrowRight className="text-gray-500 group-hover:text-blue-600" />
+          </button>
+        </Link>
+      </div>
+      <Action />
+      <div className="mt-12 flex flex-wrap  gap-9 ">
         {chapters.map((item, i) => (
-          <RevisionNotesChapter key={i} chapterIndex={i} {...item} />
+          <RevisionNotesChapter key={i} chapterIndex={i} {...item} isBlur />
         ))}
       </div>
     </div>

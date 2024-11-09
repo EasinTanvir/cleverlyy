@@ -131,7 +131,7 @@ const PaperView = () => {
           <button
             key={session}
             onClick={() => handleTabClick(session)}
-            className={`px-5  text-black rounded text-xl py-3 ${
+            className={`px-5  text-black rounded rounded-b-none text-xl py-3 ${
               selectedSession === session ? "bg-yearBg " : ""
             }`}
           >
@@ -141,7 +141,7 @@ const PaperView = () => {
       </div>
 
       {/* Variants Display */}
-      <div className="bg-yearBg rounded-2xl p-5">
+      <div className="bg-yearBg rounded-2xl p-5 rounded-tl-none">
         {!selectedPaper ? (
           <h1 className="text-[16px] text-center py-8">Select a Paper</h1>
         ) : (

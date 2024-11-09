@@ -27,7 +27,7 @@ const ChapterWiseRevisionNotes = () => {
             Expertly curated notes simplify complex topics, highlighting key
             concepts for exam success.
           </p>
-          <div className="flex gap-2 items-center text-lg text-textColor">
+          <div className="flex sm:flex-row flex-col gap-2 items-center text-lg text-textColor">
             <span className="underline">See Full Syllabus </span> |
             <span className="underline">Recommended Books</span>
           </div>

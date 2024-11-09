@@ -6,6 +6,14 @@
   display: none !important;
 }
 
+.blur-mask {
+  mask-image: linear-gradient(to right, black 0%, white 100%);
+  mask-size: 100% 100%;
+  -webkit-mask-image: linear-gradient(to right, black 0%, white 100%);
+  -webkit-mask-size: 100% 100%;
+  filter: blur(1px); /* Adjust blur level here */
+}
+
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
