@@ -25,6 +25,11 @@ module.exports = {
         borderColor2: "#dddddd",
         checkColor: "#00a552",
         yearBg: "#efecf5",
+        yearBg2: "#e4e0ff",
+        yearBg3: "#edffa9",
+        yearBg4: "#8878f9",
+        examBg: "#ededed",
+        selectExamBg: "#cbc2ff",
 
         banner: {
           color1: "#FDC200", // Yellow

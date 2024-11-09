@@ -80,11 +80,14 @@ const RevisionNotesChapter = ({
                     <span>
                       {subtopic.isSolved ? (
                         <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
-                          <IoMdCheckmark size={12} />
+                          <IoMdCheckmark size={15} className="" />
                         </div>
                       ) : (
                         <div className="w-5 h-5 rounded-full flex-center border border-textColor2 text-textColor2">
-                          <IoMdCheckmark size={12} />
+                          <IoMdCheckmark
+                            className="text-textColor2"
+                            size={15}
+                          />
                         </div>
                       )}
                     </span>

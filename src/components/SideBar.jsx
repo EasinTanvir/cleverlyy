@@ -102,7 +102,7 @@ const SideBar = () => {
 
           <div onClick={() => setSidebarOpen(true)}>
             <Link
-              href="/resources/revisionnote"
+              href="/resources"
               onClick={toggleResources}
               className={`flex items-center gap-2 cursor-pointer py-1 rounded-md  ${
                 path.startsWith("/resources")

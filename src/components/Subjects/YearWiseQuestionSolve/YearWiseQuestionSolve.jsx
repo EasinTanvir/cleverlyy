@@ -2,7 +2,7 @@ import React from "react";
 import { PiBookOpenTextDuotone } from "react-icons/pi";
 
 import { YearSelector } from "./YearSelector";
-import PaperViewer from "./Variant";
+import PaperView from "./PaperView";
 
 const YearWiseQuestionSolve = () => {
   return (
@@ -14,7 +14,7 @@ const YearWiseQuestionSolve = () => {
         </span>
       </div>
 
-      <div className="mt-10 bg-yearBg p-5 rounded-xl space-y-1">
+      <div className="mt-10 bg-yearBg p-5 rounded-2xl space-y-1">
         <div className="flex justify-between items-center">
           <h1 className="text-[22px]">
             Year <span className="text-textColor4">(+/-)</span>
@@ -24,7 +24,9 @@ const YearWiseQuestionSolve = () => {
         <YearSelector />
       </div>
 
-      <PaperViewer />
+      <div className="mt-20 ">
+        <PaperView />
+      </div>
     </div>
   );
 };
