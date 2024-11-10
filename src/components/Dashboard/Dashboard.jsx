@@ -91,13 +91,25 @@ const Dashboard = () => {
             </div>
 
             <div className="flex xl:flex-row flex-col gap-4">
-              <div className="flex-1 min-h-44 max-h-44 border rounded-lg  flex-center">
-                <video
-                  className="w-full h-full"
-                  src="https://res.cloudinary.com/dmrbqkzbu/image/upload/v1731161323/AI_Checking_ykujni.gif"
-                ></video>
+              <div className="xl:w-[50%] w-full  flex-center border rounded-lg h-[190px]   bg-[#2a0055]">
+                <button class="ai-button">
+                  <div class="ai-button-content">
+                    <div>
+                      <h2>AI Checking</h2>
+                      <ul>
+                        <li>Any Subject</li>
+                        <li>Any paper</li>
+                        <li>Last 10 years</li>
+                      </ul>
+                    </div>
+                    <div class="ai-solve">
+                      Solve
+                      <span>➲</span>
+                    </div>
+                  </div>
+                </button>
               </div>
-              <div className="border border-black h-44 rounded-2xl p-5 flex-1">
+              <div className="border border-black h-[190px]  rounded-2xl p-5 xl:w-[50%] w-full">
                 <div className="flex justify-between">
                   <h1 className="title w-1/2">
                     Thinktank: An answer for every question
@@ -106,7 +118,7 @@ const Dashboard = () => {
                     <Image className="w-full" src={dashboardImg} alt="logo" />
                   </div>
                 </div>
-                <div className="flex lg:flex-row flex-col gap-3 justify-between mt-5 pe-5">
+                <div className="flex flex-row  gap-3 justify-between mt-5 pe-5">
                   <p className="text-xs w-52 ">
                     Check out our learning hacks, <br /> tips & latest updates &
                     many more

@@ -35,6 +35,11 @@ module.exports = {
         iconColor: "#5e18eb",
         cardColor: "#f1eaff",
         dashboardBd: "#f7f7f5",
+        progress2: "#203a72",
+        progressBorder: "#203172",
+        textBlue: "#2244b4",
+        iconColor4: "#8c52ff",
+        btnColor6: "#eee5ff",
 
         banner: {
           color1: "#FDC200", // Yellow
