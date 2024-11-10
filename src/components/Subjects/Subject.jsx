@@ -38,7 +38,7 @@ const subjects = [
 
 const Subject = () => {
   return (
-    <div className="space-y-10 px-4">
+    <div className="space-y-10  bg-dashboardBd ">
       <div>
         <h1 className="text-bold text-[27px] font-bold">Hi, Easin</h1>
         <h1 className="text-bold text-xl ">
@@ -98,7 +98,7 @@ const Subject = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
+        <div className="flex gap-8 bg-[#f9fde7] shadow-md px-6 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
             <div className="w-[115px] ">
               <Image className="max-w-24" src={chemistry} alt="logo" />
@@ -106,7 +106,7 @@ const Subject = () => {
             <h1 className="text-[27px] font-bold">Chemistry</h1>
             <p className="text-[11px]">4CH1 | Science (Double Award) 4SD0 </p>
           </div>
-          <div className="flex-1 ">
+          <div className="flex-1  ">
             <div className="flex flex-wrap gap-6">
               {subjects.map((subject, index) => (
                 <IntALevelSubjectCart
@@ -132,7 +132,7 @@ const Subject = () => {
             <h1>Pearson</h1> | <h1>Edescel</h1>
           </div>
         </div>
-        <div className="flex gap-8 bg-[#f9fde7] px-6 py-10 rounded-xl">
+        <div className="flex gap-8 bg-[#f9fde7] shadow-md px-6 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
             <div className="w-[115px] ">
               <Image className="max-w-24" src={chemistry} alt="logo" />

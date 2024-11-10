@@ -9,8 +9,8 @@ import { Divider } from "@mui/material";
 
 const ChapterWiseRevisionNotes = () => {
   return (
-    <div>
-      <div className="flex items-center gap-2">
+    <div className="">
+      <div className="flex items-center gap-2 ">
         <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
         <span className="text-sm underline ">
           Cambridge Chemistry : O-level / Revision Notes

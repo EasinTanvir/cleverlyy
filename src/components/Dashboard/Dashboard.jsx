@@ -27,7 +27,7 @@ const dummyData = [
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6  ">
+    <div className="space-y-6  p-8">
       <h1 className="text-[26px]">
         Welcome, <span className="text-textColor font-semibold">Nahian</span>,
         Let’s Get started today

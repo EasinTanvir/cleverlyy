@@ -9,7 +9,7 @@ import ChapterWiseQuestion from "./ChapterWiseQuestion";
 const SubjectInfo = () => {
   return (
     <div className="">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 ">
         <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
         <span className="text-sm underline ">
           Cambridge Chemistry : O-level

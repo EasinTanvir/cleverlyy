@@ -32,6 +32,9 @@ module.exports = {
         selectExamBg: "#cbc2ff",
         circle: "#746cca",
         blankCircle: "#e4e0ff",
+        iconColor: "#5e18eb",
+        cardColor: "#f1eaff",
+        dashboardBd: "#f7f7f5",
 
         banner: {
           color1: "#FDC200", // Yellow

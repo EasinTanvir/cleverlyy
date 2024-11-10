@@ -7,7 +7,7 @@ export const Dropdown = () => {
   const [selectedSession, setSelectedSession] = useState("");
 
   const years = ["2024", "2023", "2022", "2021", "2020"];
-  const sessions = ["First", "Second", "Third"];
+  const sessions = ["Jan/Feb", "May/June", "Oct/Nov"];
 
   return (
     <div className="flex  flex-col gap-4 mt-5">

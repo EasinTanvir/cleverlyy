@@ -8,7 +8,7 @@ const ResourceLayoutWrapper = ({ children }) => {
 
   if (!selectedExam || !selectedSubject) return;
 
-  return <>{children}</>;
+  return <div className="px-4 pb-8">{children}</div>;
 };
 
 export default ResourceLayoutWrapper;

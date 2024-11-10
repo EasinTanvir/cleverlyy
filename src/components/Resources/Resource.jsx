@@ -15,7 +15,7 @@ const Resource = () => {
 
   return (
     <div>
-      <div className="mt-8">
+      <div className="mt-8  ">
         <React.Fragment>
           <div>
             <div className="flex-center mt-16">

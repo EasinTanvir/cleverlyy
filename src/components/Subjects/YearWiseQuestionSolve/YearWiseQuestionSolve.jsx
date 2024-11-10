@@ -6,7 +6,7 @@ import PaperView from "./PaperView";
 
 const YearWiseQuestionSolve = () => {
   return (
-    <div>
+    <div className="">
       <div className="flex items-center gap-2">
         <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
         <span className="text-sm underline ">

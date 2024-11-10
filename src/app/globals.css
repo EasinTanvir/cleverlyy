@@ -6,12 +6,19 @@
   display: none !important;
 }
 
-.blur-mask {
-  mask-image: linear-gradient(to right, black 0%, white 100%);
-  mask-size: 100% 100%;
-  -webkit-mask-image: linear-gradient(to right, black 0%, white 100%);
-  -webkit-mask-size: 100% 100%;
-  filter: blur(1px); /* Adjust blur level here */
+/* Customize scrollbar for the component */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the scrollbar for horizontal scrolling */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbc2ff; /* Scrollbar color */
+  border-radius: 10px; /* Rounded scrollbar corners */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Track color */
 }
 
 @layer utilities {

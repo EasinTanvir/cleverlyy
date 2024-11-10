@@ -16,7 +16,7 @@ const LayoutWrapper = ({ children }) => {
         }`}
       >
         <Header sideBarOpen={sideBarOpen} />
-        <div className="mt-28 px-5 pb-14">{children}</div>
+        <div className="pt-20  bg-dashboardBd">{children}</div>
       </div>
     </div>
   );

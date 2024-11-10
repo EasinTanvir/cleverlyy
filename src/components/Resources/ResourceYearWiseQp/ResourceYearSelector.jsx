@@ -58,7 +58,7 @@ export const ResourceYearSelector = () => {
             id={`year-${year}`}
             onClick={() => setSelectedYear(year)}
             className={`px-4 py-2 text-lg   rounded-lg cursor-pointer ${
-              year === selectedYear ? "bg-textColor4 text-white" : "bg-white"
+              year === selectedYear ? "text-black font-medium" : "text-gray-400"
             }`}
           >
             {year}
