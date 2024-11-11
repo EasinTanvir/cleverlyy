@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectFade } from "swiper/modules";
+import { Pagination, EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -9,41 +9,34 @@ import "swiper/css/effect-fade";
 import { bannerLists } from "@/utils";
 import Image from "next/image";
 
-//using custom color from tailwind config
+// using custom color from tailwind config
 const colors = ["bg-banner-color1", "bg-banner-color2", "bg-banner-color3"];
 
 const Carousel = () => {
   return (
-    <div className="py-2 rounded-md">
+    <div className="pb-2  rounded-2xl">
       <Swiper
-        effect={"cube"}
         grabCursor={true}
-        cubeEffect={{
-          shadow: true,
-          slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94,
-        }}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
         }}
-        modules={[Pagination, EffectFade]}
+        modules={[Pagination, EffectFade, Autoplay]}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         slidesPerView={1}
       >
         {bannerLists.map((item, i) => (
           <SwiperSlide key={item.id}>
-            <div className={`carousel-item rounded-md   h-44 ${colors[i]}`}>
+            <div className={`carousel-item rounded-2xl h-[200px] ${colors[i]}`}>
               <div className="flex justify-between h-full">
-                <div className=" flex-1 flex-center">
+                <div className="flex-1 flex-center">
                   <div className="text-center">
                     <h1 className="title">{item.title}</h1>
                     <p>{item.subtitle}</p>
                   </div>
                 </div>
-                <div className=" flex-1 flex-center">
+                <div className="flex-1 flex-center">
                   <div className="relative w-16 h-16">
                     <Image
                       className="w-full h-full"

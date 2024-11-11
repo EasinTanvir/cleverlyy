@@ -143,7 +143,7 @@ const PaperView = () => {
       {/* Variants Display */}
       <div className="bg-yearBg rounded-2xl p-5 rounded-tl-none">
         {!selectedPaper ? (
-          <h1 className="text-[16px] text-center py-8">Select a Paper</h1>
+          <h1 className="text-[18px] text-center py-8">Select a Paper</h1>
         ) : (
           <div className="flex lg:flex-row flex-col lg:items-start items-center justify-between mb-6">
             <div className="flex-1  pt-3">
@@ -177,12 +177,12 @@ const PaperView = () => {
               <div>
                 <div className="flex flex-col items-center w-52 ">
                   <div className="flex items-center space-x-2 mb-2 text-gray-800">
-                    <span className="font-medium text-[16px] italic">
+                    <span className="font-medium text-[18px] italic">
                       Previous Marks
                     </span>
                     <FaInfoCircle className="text-gray-500" />
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 text-[18px]">
                     <div className="  py-1.5 px-3 bg-yearBg2 text-black rounded-xl">
                       <span>73 (A)</span>
                     </div>
@@ -205,9 +205,9 @@ const PaperView = () => {
         <div className="flex flex-wrap lg:justify-start justify-center gap-7  ">
           {Object.entries(data[selectedSession]).map(([variant, papers]) => (
             <div key={variant} className="p-4  rounded-xl bg-white  w-[330px]">
-              <h2 className="text-[20px] font-medium mb-2">{variant}</h2>
+              <h2 className="text-[22px] font-medium mb-2">{variant}</h2>
               <div className="flex justify-end mb-2">
-                <span className="text-sm">Last Solved</span>
+                <span className="text-lg">Last Solved</span>
               </div>
               <ul className="space-y-5">
                 {papers.map((paper) => (
@@ -225,7 +225,7 @@ const PaperView = () => {
                         <IoMdCheckmark size={15} className="" />
                       </div>
 
-                      <span className="text-[16px]">{paper.paper}</span>
+                      <span className="text-[18px]">{paper.paper}</span>
                     </div>
                     {/* <a
                       href={paper.file_url}
@@ -236,7 +236,7 @@ const PaperView = () => {
                       View
                     </a> */}
 
-                    <span className="text-[16px]">76 (A)</span>
+                    <span className="text-[18px]">76 (A)</span>
                   </li>
                 ))}
               </ul>

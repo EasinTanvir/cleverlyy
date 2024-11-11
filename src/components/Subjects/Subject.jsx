@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFlask, FaAtom, FaChartLine, FaPlus } from "react-icons/fa";
+import Image from "next/image";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
@@ -8,9 +9,8 @@ import Sorting from "./Sorting";
 import GcseSubjectCart from "./GcseSubjectCart";
 import IntALevelSubjectCart from "./IntALevelSubjectCart";
 import ALevelSubjectCart from "./ALevelSubjectCart";
-import { subjectLists } from "@/utils/subject";
-import Image from "next/image";
-import { chemistry } from "@/constant";
+import { subjectLists } from "../../utils/subject";
+import { chemistry } from "../../constant";
 
 const subjects = [
   {
@@ -55,7 +55,7 @@ const Subject = () => {
             </p>
           </div>
           <button className="sm:block hidden">
-            <RiArrowRightSLine size={35} />
+            <RiArrowRightSLine size={45} />
           </button>
         </div>
         <div className="flex-1  flex lg:flex-row flex-col justify-end lg:items-center items-end gap-4">

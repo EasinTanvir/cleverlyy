@@ -1,8 +1,6 @@
 import React from "react";
-import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa"; // Import icons
-import { AiOutlineInfoCircle } from "react-icons/ai"; // Info icon
-import { chemistry } from "@/constant";
-import Image from "next/image";
+import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const ChapterWiseQuestion = () => {
   return (
@@ -27,13 +25,13 @@ const ChapterWiseQuestion = () => {
             className="bg-purple-500 h-[13px] rounded-full relative"
             style={{ width: "50%" }}
           >
-            <span className="text-white text-[10px] absolute right-2  top-0  ">
+            <span className="text-white text-[9px] absolute right-2  top-0  ">
               50%
             </span>
           </div>
         </div>
 
-        <div className="flex justify-between text-xs mt-1">
+        <div className="flex justify-between text-xs mt-2">
           <span>Start Now</span>
           <span>0/84</span>
         </div>
@@ -44,17 +42,17 @@ const ChapterWiseQuestion = () => {
           <p className="text-right">
             <span className="text-textColor font-bold  ">Focused Practice</span>{" "}
             - Tackle questions
-            <span className="text-textColor font-bold">topic </span> by topic
-            chapter by
+            <span className="text-textColor font-bold"> topic </span> by topic
+            chapter by{" "}
             <span className="text-textColor font-bold">chapter </span>
           </p>
           <FaHandPointer className="text-black mt-1" size={40} />
         </div>
         <div className="flex items-start space-x-5">
           <p className="text-right">
-            <span className="text-textColor font-bold">Real Exam</span>Questions
-            - Practice with authentic
-            <span className="text-textColor font-bold">chapter-based</span>
+            <span className="text-textColor font-bold">Real Exam </span>
+            Questions - Practice with authentic{" "}
+            <span className="text-textColor font-bold">chapter-based</span>{" "}
             questions.
           </p>{" "}
           <FaBrain className="mt-1" size={40} />
@@ -62,10 +60,9 @@ const ChapterWiseQuestion = () => {
         <div className="flex items-start space-x-5">
           <p className="text-right">
             Instant <span className="text-textColor font-bold">Feedback</span>-
-            Get immediate
+            Get immediate{" "}
             <span className="text-textColor font-bold">results </span>
-            to track
-            <span className="text-textColor font-bold">progress </span>
+            to track <span className="text-textColor font-bold">progress </span>
           </p>{" "}
           <FaChartLine className=" mt-1" size={40} />
         </div>
@@ -79,7 +76,7 @@ const ChapterWiseQuestion = () => {
       </div>
 
       {/* Info Icon */}
-      <div className="absolute bottom-2 right-2 ">
+      <div className="absolute bottom-3 right-3 ">
         <AiOutlineInfoCircle className="text-black" size={24} />
       </div>
     </div>

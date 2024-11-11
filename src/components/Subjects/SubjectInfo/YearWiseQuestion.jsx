@@ -1,11 +1,9 @@
 import React from "react";
-import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa"; // Import icons
-import { AiOutlineInfoCircle } from "react-icons/ai"; // Info icon
-import { chemistry } from "@/constant";
-import Image from "next/image";
+import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import Link from "next/link";
 
-const YearWiseQuestion = ({ title }) => {
+const YearWiseQuestion = () => {
   return (
     <div className="relative w-80 mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
@@ -28,13 +26,13 @@ const YearWiseQuestion = ({ title }) => {
             className="bg-purple-500 h-[13px] rounded-full relative"
             style={{ width: "50%" }}
           >
-            <span className="text-white text-[10px] absolute right-2  top-0  ">
+            <span className="text-white text-[9px] absolute right-2  top-0  ">
               50%
             </span>
           </div>
         </div>
 
-        <div className="flex justify-between text-xs mt-1">
+        <div className="flex justify-between text-xs mt-2">
           <span>Start Now</span>
           <span>0/84</span>
         </div>
@@ -44,26 +42,26 @@ const YearWiseQuestion = ({ title }) => {
         <div className="flex items-start space-x-5">
           <FaHandPointer className="text-black mt-1" size={40} />
           <p>
-            <span className="text-textColor ">Interactive</span> paper solving -
-            timed practice & solved paper{" "}
-            <span className="text-textColor">retrieval</span>
+            <span className="text-textColor font-bold ">Interactive</span> paper
+            solving - timed practice & solved paper{" "}
+            <span className="text-textColor font-bold">retrieval</span>
           </p>
         </div>
         <div className="flex items-start space-x-5">
           <FaBrain className="mt-1" size={40} />
           <p>
-            <span className="text-textColor">AI Checking</span> along with
-            suggestions in seconds for Solved paper
+            <span className="text-textColor font-bold">AI Checking</span> along
+            with suggestions in seconds for Solved paper
           </p>
         </div>
         <div className="flex items-start space-x-5">
           <FaChartLine className=" mt-1" size={40} />
           <p>
-            <span className="text-textColor ">Tracking</span>,{" "}
+            <span className="text-textColor font-bold ">Tracking</span>,{" "}
             <span className="underline">Markschemes</span>,{" "}
             <span className="underline">note taking</span>,{" "}
-            <span className="underline">Grade boundaries</span> with yearly
-            coverage
+            <span className="underline">Grade boundaries</span> with{" "}
+            <span className="text-textColor font-bold ">yearly</span> coverage
           </p>
         </div>
       </div>
@@ -71,14 +69,14 @@ const YearWiseQuestion = ({ title }) => {
       {/* Solve Button */}
       <div className="mt-6 mb-3 text-center ">
         <Link href="/subjects/yearwise-question-solve">
-          <button className="w-40 bg-textColor4 font-bold text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor">
+          <button className="w-40 bg-textColor4  text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor font-bold">
             Solve
           </button>
         </Link>
       </div>
 
       {/* Info Icon */}
-      <div className="absolute bottom-2 right-2 ">
+      <div className="absolute bottom-3 right-3 ">
         <AiOutlineInfoCircle className="text-black" size={24} />
       </div>
     </div>

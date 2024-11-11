@@ -124,4 +124,7 @@
   .title {
     @apply text-[18px] font-bold;
   }
+  .title2 {
+    @apply text-[22px] font-bold;
+  }
 }

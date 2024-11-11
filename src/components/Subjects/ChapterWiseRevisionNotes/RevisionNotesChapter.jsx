@@ -8,8 +8,6 @@ import { IoMdCheckmark } from "react-icons/io";
 const RevisionNotesChapter = ({
   name,
   progress,
-  isExpanded,
-
   chapterIndex,
   topics,
   isBlur = false,
@@ -42,7 +40,8 @@ const RevisionNotesChapter = ({
               value={100}
               size={30}
               thickness={10}
-              className="absolute text-blankCircle"
+              sx={{ color: "#e4e0ff" }}
+              className="absolute "
             />
 
             <CircularProgress
@@ -50,6 +49,7 @@ const RevisionNotesChapter = ({
               value={progress}
               size={30}
               thickness={10}
+              sx={{ color: "#746cca" }}
               className="text-circle"
             />
           </div>

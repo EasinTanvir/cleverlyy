@@ -1,7 +1,8 @@
 import React from "react";
-import { PiBookOpenTextDuotone } from "react-icons/pi";
 import Image from "next/image";
-import { chemistry } from "@/constant";
+import { PiBookOpenTextDuotone } from "react-icons/pi";
+
+import { chemistry } from "../../../constant";
 import YearWiseQuestion from "./YearWiseQuestion";
 import ChapterWiseNotes from "./ChapterWiseNotes";
 import ChapterWiseQuestion from "./ChapterWiseQuestion";
@@ -17,24 +18,32 @@ const SubjectInfo = () => {
       </div>
 
       <div className="flex lg:flex-row flex-col items-center">
-        <div className="flex-1  space-y-6">
-          <h1 className="text-[28px] font-bold mt-5">
+        <div className="flex-1  space-y-5">
+          <h1 className="text-[30px] font-bold mt-5">
             Cambridge Chemistry : O level
           </h1>
           <p>
             From concise and detailed
-            <span className=" text-textColor">revision notes</span> that
-            simplify complex concepts to{" "}
-            <span className=" text-textColor">chapterwise</span> and
-            <span className=" text-textColor">
+            <span className=" text-textColor font-bold">
+              {" "}
+              revision notes
+            </span>{" "}
+            that simplify complex concepts to{" "}
+            <span className=" text-textColor font-bold">
+              chapterwise
+            </span> and{" "}
+            <span className=" text-textColor font-bold">
               yearwise question papers
             </span>{" "}
             that allow you to practice with real{" "}
-            <span className=" text-textColor">exam questions</span>, you’ll find
-            all the tools necessary to{" "}
-            <span className=" text-textColor">master the syllabus</span>.
+            <span className=" text-textColor font-bold">exam questions</span>,
+            you’ll find all the tools necessary to{" "}
+            <span className=" text-textColor font-bold">
+              master the syllabus
+            </span>
+            .
           </p>
-          <div className="flex gap-2 items-center">
+          <div className="flex text-[18px] gap-2 items-center">
             <span className="underline">Specifications </span> |
             <span className="underline">Specimen Papers </span> |{" "}
             <span className="underline"> Recommended Books </span>

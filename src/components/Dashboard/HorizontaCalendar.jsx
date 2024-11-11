@@ -30,9 +30,7 @@ const Calendar = () => {
   return (
     <div className="pt-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-lg font-semibold text-black font-metropolis">
-          {currentMonthYear}
-        </h2>
+        <h2 className="title2">{currentMonthYear}</h2>
         <div className="space-x-3">
           <button onClick={handlePreviousWeek}>
             <RiArrowLeftLine className="text-textColor2" />

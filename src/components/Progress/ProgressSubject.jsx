@@ -48,7 +48,7 @@ const chartData = { complete: 2, incomplete: 6, notStarted: 2 };
 const SubjectCard = ({ subject }) => {
   return (
     <div className="py-10 px-4 bg-progressbg rounded-lg">
-      <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2  gap-y-16 ">
+      <div className="grid xl:grid-cols-4 md:grid-cols-2  gap-y-16 ">
         <div className="  border-black md:border-r-2 pe-8">
           <MdSuperscript size={35} />
           <h1 className="text-[24px]">Physics</h1>

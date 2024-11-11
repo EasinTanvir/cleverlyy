@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { MdFace } from "react-icons/md";
-import { HiArrowLongRight } from "react-icons/hi2";
+import { FiArrowRight } from "react-icons/fi";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { Dropdown } from "./DropDown";
-import Link from "next/link";
 
 const Resource = () => {
   const { selectedExam, setSelectedExam, selectedSubject, setSelectedSubject } =
@@ -57,9 +57,9 @@ const ChapterWiseRevisioncard = ({ title, link }) => {
       <div className="px-6 py-7 border border-borderColor2 rounded-2xl">
         <h1 className="title">{title}</h1>
         <div className="mt-4">
-          <div className="w-full bg-gray-200 rounded-full h-[13px] mt-2">
+          <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
             <div
-              className="bg-purple-500 h-[13px] rounded-full relative"
+              className="bg-purple-500 h-[14px] rounded-full relative"
               style={{ width: "50%" }}
             >
               <span className="text-white text-[10px] absolute right-2  top-0  ">
@@ -68,7 +68,7 @@ const ChapterWiseRevisioncard = ({ title, link }) => {
             </div>
           </div>
 
-          <div className="flex justify-between text-xs mt-1">
+          <div className="flex justify-between text-xs mt-2">
             <span>Start Now</span>
             <span>0/84</span>
           </div>
@@ -83,9 +83,9 @@ const YearWisecard = ({ title, link }) => {
     <div className="p-6 border border-borderColor2 rounded-2xl min-h-full max-h-full  relative">
       <h1 className="title">{title}</h1>
       <div className="mt-4">
-        <div className="w-full bg-gray-200 rounded-full h-[13px] mt-2">
+        <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
           <div
-            className="bg-purple-500 h-[13px] rounded-full relative"
+            className="bg-purple-500 h-[14px] rounded-full relative"
             style={{ width: "50%" }}
           >
             <span className="text-white text-[10px] absolute right-2  top-0  ">
@@ -94,7 +94,7 @@ const YearWisecard = ({ title, link }) => {
           </div>
         </div>
 
-        <div className="flex justify-between text-xs mt-1">
+        <div className="flex justify-between text-xs mt-2">
           <span>Start Now</span>
           <span>0/84</span>
         </div>
@@ -102,14 +102,14 @@ const YearWisecard = ({ title, link }) => {
 
       <div className="mt-8 flex items-center gap-3">
         <MdFace />
-        <p className="text-[13px]">Digitally Solvable Pdf with AI Checking</p>
+        <p className="text-[15px]">Digitally Solvable Pdf with AI Checking</p>
       </div>
 
       <Dropdown />
 
       <Link href={link}>
-        <button className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full bg-black flex-center">
-          <HiArrowLongRight size={14} className="text-white" />
+        <button className="absolute right-3.5 bottom-3.5 w-6 h-6 rounded-full bg-black flex-center">
+          <FiArrowRight size={16} className="text-white" />
         </button>
       </Link>
     </div>

@@ -17,9 +17,12 @@ const YearWiseQuestionSolve = () => {
       <div className="mt-10 bg-yearBg p-5 rounded-2xl space-y-1">
         <div className="flex justify-between items-center">
           <h1 className="text-[22px]">
-            Year <span className="text-textColor4">(+/-)</span>
+            Year <span className="text-iconColor4 text-[20px]">(+/-)</span>
           </h1>
-          <h1 className="underline text-textColor4"> Specimen Papers</h1>
+          <h1 className="underline text-iconColor4 italic text-[20px]">
+            {" "}
+            Specimen Papers
+          </h1>
         </div>
         <YearSelector />
       </div>

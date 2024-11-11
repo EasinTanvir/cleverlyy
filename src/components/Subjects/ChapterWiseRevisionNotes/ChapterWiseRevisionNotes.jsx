@@ -1,8 +1,6 @@
 import React from "react";
 import RevisionNotesChapter from "./RevisionNotesChapter";
 import { PiBookOpenTextDuotone } from "react-icons/pi";
-import Image from "next/image";
-import { chemistry } from "@/constant";
 import WeeklyGoal from "./WeeklyGoal";
 import { chapters } from "@/utils";
 import { Divider } from "@mui/material";

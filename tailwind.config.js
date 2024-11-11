@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       screens: {
         xs: "500px", // Adds a custom "xs" breakpoint at 350px
+        extralg: "1400px", // Adds a custom "xs" breakpoint at 350px
       },
       colors: {
         sideBarColor: "#5449be",
@@ -41,6 +42,7 @@ module.exports = {
         iconColor4: "#8c52ff",
         btnColor6: "#eee5ff",
         shadowBlack: "rgba(0, 0, 0, 0.3)",
+        customRed: "#d06161",
 
         banner: {
           color1: "#FDC200", // Yellow

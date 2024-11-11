@@ -45,11 +45,11 @@ const ResourceLayout = () => {
     <div className="py-6 p-8  bg-dashboardBd">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">
         <div className="flex-1 space-y-6">
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-[28px] font-bold">
             All the Resources You’ll ever Need
           </h1>
           <div className="flex items-center gap-4">
-            <HiOutlineComputerDesktop size={70} />
+            <HiOutlineComputerDesktop className="text-textColor" size={70} />
             <p className="leading-8 text-sm">
               Explore a comprehensive collection of study materials designed to
               help you excel in every subject, from revision notes to past
@@ -57,11 +57,11 @@ const ResourceLayout = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1  flex items-end flex-col gap-2">
-          <button className="bg-yearBg4 rounded-lg px-3.5 text-sm py-1 text-white w-fit">
+        <div className="flex-1  flex items-center justify-end  gap-2">
+          <button className="bg-yearBg4 rounded-lg px-3.5 text-sm py-1.5 text-white w-fit">
             All Subjects
           </button>
-          <button className="w-fit px-3.5 py-1  text-sm">Your Subject</button>
+          <button className="w-fit px-3.5 py-1.5  text-sm">Your Subject</button>
         </div>
       </div>
 
@@ -78,7 +78,7 @@ const ResourceLayout = () => {
             }`}
             onClick={() => {
               setSelectedBoard(board.name);
-              setSelectedExam(null); // Reset exam and subject when board changes
+              setSelectedExam(null);
               setSelectedSubject(null);
             }}
           >

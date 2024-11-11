@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { AiOutlineBars } from "react-icons/ai";
+import { IoGrid } from "react-icons/io5";
 import VideoPlayer from "./VideoPlayer";
 
 const Tabs = () => {
@@ -90,7 +92,17 @@ const Tabs = () => {
 
       {/* Tab content */}
       <div className="mt-4">
-        <h1 className="text-[18px] mb-2">Most Recent</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-[18px] mb-2">Most Recent</h1>
+          <div className="flex items-center gap-3.5 bg-btnColor6 px-2.5 py-1.5 rounded-md">
+            <button>
+              <AiOutlineBars size={22} />
+            </button>
+            <button className="bg-boxColor p-1 rounded-md">
+              <IoGrid size={22} />
+            </button>
+          </div>
+        </div>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-10 mt-4">
           {filteredSubjects.map((data) =>
             data.subjects.map((subject, i) => (

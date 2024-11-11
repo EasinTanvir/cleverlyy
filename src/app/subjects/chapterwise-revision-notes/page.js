@@ -1,6 +1,5 @@
-import ChapterWiseRevisionNotes from "@/components/Subjects/ChapterWiseRevisionNotes/ChapterWiseRevisionNotes";
-
 import React from "react";
+import ChapterWiseRevisionNotes from "@/components/Subjects/ChapterWiseRevisionNotes/ChapterWiseRevisionNotes";
 
 const page = () => {
   return (
