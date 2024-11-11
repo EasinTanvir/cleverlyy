@@ -15,9 +15,9 @@ const Header = ({ sideBarOpen }) => {
     >
       <div className="flex items-center gap-7">
         {/* <button className="text-sm font-semibold">Submit Problem</button> */}
-        <div className="bg-moonColor w-9 h-9 rounded-full flex-center ">
-          <FaMoon size={20} className="text-white" />
-        </div>
+        <button className="bg-moonColor w-10 h-10 rounded-full flex-center fixed bottom-2 right-2 ">
+          <FaMoon size={22} className="text-white" />
+        </button>
         <IoSearch size={27} />
         <FaBell size={22} />
         <IoSettingsSharp size={22} />
