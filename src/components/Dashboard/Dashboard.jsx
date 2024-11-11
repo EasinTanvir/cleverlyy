@@ -92,8 +92,8 @@ const Dashboard = () => {
 
             <div className="flex xl:flex-row flex-col gap-4">
               <div className="xl:w-[50%] w-full  flex-center border rounded-lg h-[190px]   bg-[#2a0055]">
-                <button class="ai-button">
-                  <div class="ai-button-content">
+                <button className="ai-button">
+                  <div className="ai-button-content">
                     <div>
                       <h2>AI Checking</h2>
                       <ul>
@@ -102,7 +102,7 @@ const Dashboard = () => {
                         <li>Last 10 years</li>
                       </ul>
                     </div>
-                    <div class="ai-solve">
+                    <div className="ai-solve">
                       Solve
                       <span>➲</span>
                     </div>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 
@@ -7,7 +8,7 @@ const NotificationBar = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="flex  justify-between px-4 py-2.5  mb-12 rounded-full bg-[#cbc2ff] max-w-3xl">
+    <div className="flex  justify-between px-4 py-3  mb-12 rounded-full bg-[#cbc2ff] max-w-3xl">
       <button
         onClick={() => setIsVisible(false)}
         className="text-gray-600 hover:text-gray-800"

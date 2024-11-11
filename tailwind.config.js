@@ -40,6 +40,7 @@ module.exports = {
         textBlue: "#2244b4",
         iconColor4: "#8c52ff",
         btnColor6: "#eee5ff",
+        shadowBlack: "rgba(0, 0, 0, 0.3)",
 
         banner: {
           color1: "#FDC200", // Yellow
