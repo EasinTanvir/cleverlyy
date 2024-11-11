@@ -50,7 +50,6 @@ const RevisionNotesChapter = ({
               size={30}
               thickness={10}
               sx={{ color: "#746cca" }}
-              className="text-circle"
             />
           </div>
         </div>

@@ -19,7 +19,8 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
               value={100}
               size={30}
               thickness={10}
-              className="absolute text-blankCircle"
+              sx={{ color: "#e4e0ff" }}
+              className="absolute "
             />
 
             <CircularProgress
@@ -27,7 +28,7 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
               value={progress}
               size={30}
               thickness={10}
-              className="text-circle"
+              sx={{ color: "#746cca" }}
             />
           </div>
         </div>
