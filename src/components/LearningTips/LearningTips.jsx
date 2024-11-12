@@ -9,7 +9,7 @@ const LearningTips = () => {
       <NotificationBar />
       <div className="flex md:flex-row flex-col gap-5">
         <div className="flex-1 xl:pe-8 lg:pe-4 pe-2">
-          <h1 className="text-[28px]">
+          <h1 className="md:text-[28px] text-xl">
             How to revise effectively for your physics exam: Exam Guides
           </h1>
           <span className="text-[18px] mt-2">10 min read | 13 August 2024</span>

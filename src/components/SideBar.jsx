@@ -229,7 +229,7 @@ const SideBar = () => {
           </Link>
         </div>
 
-        <div
+        {/* <div
           className={` bg-custom-gradient  p-5 z-50 rounded-[27px]  absolute bottom-4 left-4 ${
             sideBarOpen ? "w-52" : "w-[44px]"
           }  `}
@@ -249,7 +249,7 @@ const SideBar = () => {
             </span>
           </div>
           <div></div>
-        </div>
+        </div> */}
 
         {isResourcesOpen && (
           <div className="absolute bottom-0 left-0 w-60 h-[400px] bg-gradient-to-t z-10 from-[rgba(0.4,0,0,0.6)] to-transparent backdrop-blur-xs pointer-events-none"></div>

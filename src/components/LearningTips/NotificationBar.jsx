@@ -14,12 +14,15 @@ const NotificationBar = () => {
         onClick={() => setIsVisible(false)}
         className="text-gray-600 hover:text-gray-800"
       >
-        <RxCross1 size={20} />
+        <RxCross1 className="" size={20} />
       </button>
-      <p className="flex-grow text-lg text-gray-800 mx-2">
+      <p className="flex-grow sm:text-lg text-sm text-gray-800 mx-2">
         Latest Updates Note Taking, Notes within AI response
       </p>
-      <a href="#" className="text-[16px] text-purple-500 underline italic">
+      <a
+        href="#"
+        className="sm:text-[16px] text-xs text-purple-500 underline italic"
+      >
         Learn More
       </a>
     </div>
