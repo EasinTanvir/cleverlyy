@@ -16,7 +16,7 @@ const ALevelSubjectCart = ({
     >
       <div className="flex gap-5">
         <div className="flex-1">
-          <h1 className="text-[27px] font-bold">{title}</h1>
+          <h1 className="md:text-[25px] text-lg font-bold">{title}</h1>
           <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
         </div>
 
