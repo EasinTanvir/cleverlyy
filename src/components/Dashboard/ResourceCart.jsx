@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { penImage } from "@/constant";
 
-const ResourceCart = ({ title, lists, noResource = false }) => {
+const ResourceCart = ({ title, lists, noResource = false, red = false }) => {
   return (
     <div className="p-3 min-w-56 max-w-56">
       <div className="flex items-center gap-2  ">
@@ -17,9 +17,20 @@ const ResourceCart = ({ title, lists, noResource = false }) => {
       </div>
 
       <ul className="text-[10px] list-disc ps-5 pt-2">
-        {lists.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+        {lists.map((item, index) => {
+          // Check if the item contains "Coming Soon"
+          const parts = item.split("Coming Soon");
+          return (
+            <li key={index}>
+              {parts[0]}
+              {parts.length > 1 && (
+                <span className={red ? `text-customRed` : "text-[#e2a161]"}>
+                  Coming Soon
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

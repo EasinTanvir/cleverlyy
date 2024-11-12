@@ -126,7 +126,7 @@ const PaperView = () => {
 
   return (
     <div className="">
-      <div className="flex space-x-4">
+      <div className="flex sm:flex-row flex-col sm:space-x-4">
         {Object.keys(data).map((session) => (
           <button
             key={session}

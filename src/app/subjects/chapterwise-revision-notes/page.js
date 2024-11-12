@@ -3,7 +3,7 @@ import ChapterWiseRevisionNotes from "@/components/Subjects/ChapterWiseRevisionN
 
 const page = () => {
   return (
-    <div className="p-8">
+    <div className="md:p-8 p-4">
       <ChapterWiseRevisionNotes />
     </div>
   );

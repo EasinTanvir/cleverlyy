@@ -8,7 +8,7 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
       style={{
         filter: `blur(${chapterIndex === 0 ? 0.6 : chapterIndex + 0.2}px)`,
       }}
-      className="p-4 space-y-4 xl:w-[550px]"
+      className="md:p-4  space-y-4 xl:w-[550px] "
     >
       <div className="border-2 border-borderColor2  p-[18px] rounded-xl ">
         <div className="flex justify-between items-center mb-2 pb-3 border-b-[1px] border-borderColor2">

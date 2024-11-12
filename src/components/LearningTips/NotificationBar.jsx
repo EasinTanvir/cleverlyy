@@ -9,7 +9,7 @@ const NotificationBar = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="flex  justify-between px-4 items-center py-3  mb-12 rounded-full bg-[#cbc2ff] max-w-3xl">
+    <div className="flex md:flex-row flex-col  justify-between px-4 items-center py-3  mb-12 rounded-full bg-[#cbc2ff] max-w-3xl">
       <button
         onClick={() => setIsVisible(false)}
         className="text-gray-600 hover:text-gray-800"

@@ -24,7 +24,7 @@ const RevisionNotesChapter = ({
 
   return (
     <div
-      className={`p-4 space-y-4 xl:w-[550px] `}
+      className={`md:p-4 space-y-4 xl:w-[550px] `}
       style={{
         filter: isBlur
           ? `blur(${chapterIndex === 0 ? 0.6 : chapterIndex + 0.2}px)`

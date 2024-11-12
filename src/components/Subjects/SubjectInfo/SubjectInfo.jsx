@@ -17,12 +17,12 @@ const SubjectInfo = () => {
         </span>
       </div>
 
-      <div className="flex lg:flex-row flex-col items-center">
+      <div className="flex  lg:flex-row flex-col items-center">
         <div className="flex-1  space-y-5">
-          <h1 className="text-[30px] font-bold mt-5">
+          <h1 className="md:text-[30px] text-xl font-bold mt-5">
             Cambridge Chemistry : O level
           </h1>
-          <p>
+          <p className="">
             From concise and detailed
             <span className=" text-textColor font-bold">
               {" "}
@@ -43,7 +43,7 @@ const SubjectInfo = () => {
             </span>
             .
           </p>
-          <div className="flex text-[18px] gap-2 items-center">
+          <div className="flex md:flex-row flex-col text-[18px] gap-2 items-center">
             <span className="underline">Specifications </span> |
             <span className="underline">Specimen Papers </span> |{" "}
             <span className="underline"> Recommended Books </span>

@@ -26,7 +26,7 @@ const dummyData = [
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6  p-8">
+    <div className="space-y-6 ">
       <h1 className="text-[28px]">
         Welcome, <span className="text-textColor font-bold">Nahian,</span> Let’s
         Get started today
@@ -46,6 +46,7 @@ const Dashboard = () => {
                   "Over 10000+ revision notes",
                   "Flashcards: Coming Soon",
                 ]}
+                red
               />
               <ResourceCart
                 title="Yearwise QP"
@@ -136,7 +137,7 @@ const Dashboard = () => {
                   </div>
                 </button>
               </div>
-              <div className="border border-black h-[190px]  rounded-2xl p-5 extralg:w-[50%] w-full">
+              <div className="border border-black min-h-[190px]  rounded-2xl p-5 extralg:w-[50%] w-full">
                 <div className="flex justify-between">
                   <h1 className="title w-1/2">
                     Thinktank: An answer for every question
@@ -145,7 +146,7 @@ const Dashboard = () => {
                     <Image className="w-full" src={dashboardImg} alt="logo" />
                   </div>
                 </div>
-                <div className="flex flex-row  gap-3 justify-between mt-5 pe-5">
+                <div className="flex md:flex-row flex-col  gap-3 md:justify-between mt-5 md:pe-5">
                   <p className="text-xs w-52 ">
                     Check out our learning hacks, <br /> tips & latest updates &
                     many more
@@ -163,7 +164,7 @@ const Dashboard = () => {
         </React.Fragment>
         <React.Fragment>
           <div className="space-y-6 2xl:w-[32%] lg:w-[40%] w-full ">
-            <div className="bg-custom-gradient border-4 border-black  rounded-xl h-[200px] relative px-4 pt-4">
+            <div className="bg-custom-gradient border-4 border-black  rounded-xl min-h-[200px] relative px-4 pt-4">
               <div className="w-20 h-20 rounded-full absolute -top-10 left-0 right-0 mx-auto bg-avatarBg flex-center">
                 <Image className="w-full h-full" src={avatar} alt="avatar" />
               </div>

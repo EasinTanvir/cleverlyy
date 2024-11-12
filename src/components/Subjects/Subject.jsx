@@ -77,7 +77,7 @@ const Subject = () => {
             <h1>Pearson</h1> | <h1>Edescel</h1>
           </div>
         </div>
-        <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
+        <div className="grid bg-white md:p-4 p-0.5 rounded-md 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
           {subjectLists.map((subject, index) => (
             <GcseSubjectCart
               key={index}
@@ -98,7 +98,7 @@ const Subject = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 bg-[#f9fde7] shadow-md px-6 py-10 rounded-xl">
+        <div className="flex md:flex-row flex-col gap-8 bg-white shadow-md md:px-6 px-3 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
             <div className="w-[115px] ">
               <Image className="max-w-24" src={chemistry} alt="logo" />
@@ -132,7 +132,7 @@ const Subject = () => {
             <h1>Pearson</h1> | <h1>Edescel</h1>
           </div>
         </div>
-        <div className="flex gap-8 bg-[#f9fde7] shadow-md px-6 py-10 rounded-xl">
+        <div className="flex md:flex-row flex-col gap-8 bg-[#f9fde7] shadow-md sm:px-6 px-3 py-10 rounded-xl">
           <div className="w-80  flex flex-col items-center justify-center">
             <div className="w-[115px] ">
               <Image className="max-w-24" src={chemistry} alt="logo" />

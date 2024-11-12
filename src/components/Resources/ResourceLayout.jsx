@@ -42,7 +42,7 @@ const ResourceLayout = () => {
   const exams = board ? board.exams : [];
 
   return (
-    <div className="py-6 p-8  bg-dashboardBd">
+    <div className="py-6 md:p-8 p-4  bg-dashboardBd">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">
         <div className="flex-1 space-y-6">
           <h1 className="text-[28px] font-bold">

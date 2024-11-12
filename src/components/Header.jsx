@@ -11,7 +11,7 @@ const Header = ({ sideBarOpen }) => {
         !sideBarOpen
           ? "left-[75px] w-[calc(100%-75px)]"
           : "left-60 w-[calc(100%-240px)]"
-      } top-0   py-6 flex justify-end px-5 z-40 bg-white shadow-md `}
+      } top-0   py-6 flex justify-end md:px-5 px-4 z-40 bg-white shadow-md `}
     >
       <div className="flex items-center gap-7">
         {/* <button className="text-sm font-semibold">Submit Problem</button> */}

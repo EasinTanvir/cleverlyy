@@ -18,7 +18,7 @@ const ResourceChapterWiseQp = () => {
         </Link>
       </div>
       <Action />
-      <div className="mt-12 flex flex-wrap  gap-9  max-w-[80%]  ">
+      <div className="mt-12 flex flex-wrap  gap-9  sm:max-w-[80%]  ">
         {chapters.map((item, i) => (
           <ChapterProgressCart key={i} {...item} chapterIndex={i} />
         ))}
