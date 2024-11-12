@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
@@ -41,14 +41,19 @@ const ResourceLayout = () => {
   const board = boardsData.find((board) => board.name === selectedBoard);
   const exams = board ? board.exams : [];
 
+  useEffect(() => {
+    setSelectedExam(null);
+    setSelectedSubject(null);
+  }, []);
+
   return (
     <div className="py-6 md:p-8 p-4  bg-dashboardBd">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">
         <div className="flex-1 space-y-6">
-          <h1 className="text-[28px] font-bold">
+          <h1 className="md:text-[28px] text-lg font-bold">
             All the Resources You’ll ever Need
           </h1>
-          <div className="flex items-center gap-4">
+          <div className="flex md:flex-row flex-col items-center gap-4">
             <HiOutlineComputerDesktop className="text-textColor" size={70} />
             <p className="leading-8 text-sm">
               Explore a comprehensive collection of study materials designed to
@@ -92,7 +97,7 @@ const ResourceLayout = () => {
         {selectedBoard === "Edexcel" ? (
           <div className=" min-h-72 flex-center">Coming Soon</div>
         ) : (
-          <div className="flex justify-around space-x-4 border-b border-black pb-10 pt-4 ">
+          <div className="flex flex-wrap gap-4 justify-around space-x-4 border-b border-black pb-10 pt-4 ">
             {exams.length > 0 ? (
               exams.map((exam) => (
                 <button

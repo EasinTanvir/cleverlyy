@@ -15,7 +15,7 @@ const IntALevelSubjectCart = ({
   return (
     <Link
       href="/subjects/info"
-      className={`bg-[${color}] cursor-pointer p-5 md:w-[360px] w-full rounded-2xl  border-[1px] shadow-md space-y-12 `}
+      className={`bg-[#f9fde7] cursor-pointer p-5 md:w-[360px] w-full rounded-2xl  border-[1px] shadow-md space-y-12 `}
     >
       <div className="flex  gap-5">
         <div className="w-[125px]">
