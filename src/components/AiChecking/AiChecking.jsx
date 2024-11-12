@@ -8,7 +8,7 @@ const AiChecking = () => {
     <div>
       <ResourceLayout />
       <AiLayoutWrapper>
-        <div>
+        <div className="md:p-8 p-4">
           <AiPaperSelector />
         </div>
       </AiLayoutWrapper>
