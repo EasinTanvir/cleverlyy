@@ -8,6 +8,10 @@ export const ContextProvider = ({ children }) => {
   const [selectedExam, setSelectedExam] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
 
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedGrade, setSelectedGrade] = useState(null);
+  const [selectedSchool, setSelectedSchool] = useState(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -34,6 +38,12 @@ export const ContextProvider = ({ children }) => {
     setSelectedSubject,
     selectedBoard,
     setSelectedBoard,
+    selectedCountry,
+    setSelectedCountry,
+    selectedGrade,
+    setSelectedGrade,
+    selectedSchool,
+    setSelectedSchool,
   };
 
   return (

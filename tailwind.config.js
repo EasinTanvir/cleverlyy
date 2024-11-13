@@ -55,6 +55,8 @@ module.exports = {
         "custom-gradient": "linear-gradient(180deg, #ffffff, #c7d9ff)",
         premiumbtnbg: "linear-gradient(135deg, #e6b6ff, #ffffff, #ffa7a7)",
         progressbg: "linear-gradient(90deg, #fefcfe, #ddcff7)",
+        "custom-pastel-gradient":
+          "linear-gradient(135deg, #FFDEE9, #B5FFFC, #FFC7FF)", // approximate colors from image
       },
     },
   },

@@ -2,6 +2,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import ContextWrapper from "@/contextProvider/ContextProvider";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Montserrat({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.className}`}>
+        <Toaster />
         <ContextWrapper>
           <LayoutWrapper>{children}</LayoutWrapper>
         </ContextWrapper>

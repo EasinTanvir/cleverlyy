@@ -190,7 +190,9 @@ const SideBar = () => {
           <Link
             href="/aichecking"
             className={`flex items-center gap-2 ${
-              path === "/aichecking" ? "bg-white text-black ps-2" : "text-white"
+              path.startsWith("/aichecking")
+                ? "bg-white text-black ps-2"
+                : "text-white"
             }  py-1  rounded-md  `}
           >
             <FaRegCheckCircle size={25} />
