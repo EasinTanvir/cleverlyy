@@ -5,6 +5,8 @@ import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import BoardAndExam from "./BoardAndExam";
 import SchoolAndGrade from "./SchoolAndGrade";
 import { useContextProvider } from "../../../hooks/useContextProvider";
+import SubjectInfo from "./SubjectInfo";
+import InfoPlan from "./InfoPlan";
 
 const steps = [
   "Country",
@@ -51,6 +53,8 @@ const Info = () => {
         {activeStep === 0 && <CountrySelection />}
         {activeStep === 1 && <SchoolAndGrade />}
         {activeStep === 2 && <BoardAndExam />}
+        {activeStep === 3 && <SubjectInfo />}
+        {activeStep === 4 && <InfoPlan />}
       </div>
 
       <div
