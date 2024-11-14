@@ -13,7 +13,7 @@ const ResourceYearWiseQp = () => {
           <div className="min-w-fit ms-8 ">
             <ResourceYearSelector />
           </div>
-          <div className="xl:w-[600px]  w-[500px] ">
+          <div className="xl:w-[700px]  w-[500px] ">
             <ResourcePaperView
               selectedPaper={selectedPaper}
               setSelectedPaper={setSelectedPaper}

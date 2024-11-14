@@ -28,7 +28,7 @@ const Calendar = () => {
   const currentMonthYear = currentDate.format("MMMM YYYY");
 
   return (
-    <div className="pt-6">
+    <div className="">
       <div className="flex justify-between items-center mb-6">
         <h2 className="title2">{currentMonthYear}</h2>
         <div className="space-x-3">

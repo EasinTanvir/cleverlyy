@@ -39,7 +39,7 @@ const Dashboard = () => {
               <Carousel />
             </div>
 
-            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 xs:grid-cols-2 ">
+            <div className="grid 2xl:grid-cols-4 extralg:grid-cols-3 xs:grid-cols-2  gap-3 ">
               <ResourceCart
                 title="Revision Notes"
                 lists={[
@@ -80,8 +80,8 @@ const Dashboard = () => {
               <Subject />
             </div>
 
-            <div className="">
-              <div className="mb-6 flex justify-between items-center">
+            <div className="bg-white rounded-3xl p-5">
+              <div className="mb-6  flex justify-between items-center">
                 <h1 className="title">Your Progress</h1>
                 <Link href="/progress">
                   <button className="text-sm text-textColor2 underline">
@@ -163,7 +163,7 @@ const Dashboard = () => {
           </div>
         </React.Fragment>
         <React.Fragment>
-          <div className="space-y-6 2xl:w-[32%] lg:w-[40%] w-full ">
+          <div className="space-y-10 2xl:w-[32%] lg:w-[40%] w-full ">
             <div className="bg-custom-gradient border-4 border-black  rounded-xl min-h-[200px] relative px-4 pt-4">
               <div className="w-20 h-20 rounded-full absolute -top-10 left-0 right-0 mx-auto bg-avatarBg flex-center">
                 <Image className="w-full h-full" src={avatar} alt="avatar" />
@@ -190,8 +190,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div>
-              <div className="flex justify-between pt-7 ">
+            <div className="bg-white  px-3.5 py-4 rounded-xl ">
+              <div className="flex justify-between  ">
                 <h1 className="title2 ">Forum</h1>
                 <button className="flex items-center gap-1">
                   <HiPencil size={12} />{" "}
@@ -219,15 +219,21 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className=" bg-white px-3.5 py-4 rounded-xl">
               <Calendar />
+
+              <div>
+                {meetingsData.map((meeting, index) => (
+                  <MeetingItem key={index} meeting={meeting} />
+                ))}
+              </div>
             </div>
 
-            <div className=" mx-auto bg-white  space-y-5">
+            {/* <div className=" mx-auto   space-y-5 p-4 rounded-2xl bg-red-700">
               {meetingsData.map((meeting, index) => (
                 <MeetingItem key={index} meeting={meeting} />
               ))}
-            </div>
+            </div> */}
             <div>
               <Notifications />
             </div>

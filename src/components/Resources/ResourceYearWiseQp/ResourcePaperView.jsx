@@ -205,7 +205,7 @@ const ResourcePaperView = ({ selectedPaper, setSelectedPaper }) => {
         </div>
 
         {/* Variants Display */}
-        <div className="bg-yearBg rounded-2xl p-5 rounded-l-none rounded-br-none min-h-80  xl:max-w-[500px] xl:min-w-[500px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] ">
+        <div className="bg-yearBg rounded-2xl p-5 rounded-l-none rounded-br-none min-h-80  xl:max-w-[600px] xl:min-w-[600px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] ">
           <div className="flex flex-col gap-7  ">
             {Object.entries(data[selectedSession]).map(([variant, papers]) => (
               <div
@@ -245,7 +245,7 @@ const ResourcePaperView = ({ selectedPaper, setSelectedPaper }) => {
           </div>
         </div>
       </div>
-      <div className="bg-yearBg ml-[77px] rounded-b-xl flex justify-between items-center xl:max-w-[500px] xl:min-w-[500px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] p-5">
+      <div className="bg-yearBg ml-[77px] rounded-b-xl flex justify-between items-center xl:max-w-[600px] xl:min-w-[600px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] p-5">
         <IoScan size={28} />
         <Link href="/subjects/yearwise-question-solve">
           <button className="bg-boxColor px-3 text-sm py-1.5 rounded-md">

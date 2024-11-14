@@ -6,7 +6,7 @@ import NotificationItem from "./NotificationItem";
 
 const Notifications = () => {
   return (
-    <div className="p-4">
+    <div className="p-5 bg-white rounded-2xl">
       <div className="flex justify-between items-center mb-4">
         <h2 className="title">Notifications</h2>
         <button className="text-sm text-gray-500 hover:text-gray-700">

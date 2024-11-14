@@ -34,7 +34,7 @@ const Subject = () => {
           },
           1200: {
             width: 600,
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
         }}
         effect={"cube"}
@@ -44,7 +44,6 @@ const Subject = () => {
         }}
         modules={[EffectFade]}
         scrollbar={{ draggable: true }}
-        slidesPerView={5}
       >
         {subjects.map((item, i) => (
           <SwiperSlide key={i}>
