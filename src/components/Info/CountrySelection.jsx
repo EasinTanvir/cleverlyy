@@ -1,6 +1,6 @@
-"use client";
 import React, { useState } from "react";
 import { FiSearch, FiCheck } from "react-icons/fi";
+
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { NotFound } from "../NotFound";
 
@@ -31,7 +31,7 @@ function CountrySelection() {
   };
 
   return (
-    <div className="flex flex-col items-center p-6  max-w-3xl mx-auto">
+    <div className="flex flex-col items-center p-6  xl:w-[78%] md:w-[88%] w-full  mx-auto ">
       <h2 className="text-black text-3xl  font-bold mb-4">
         SELECT YOUR <span className="text-textColor">COUNTRY & CITY</span>
       </h2>
@@ -49,12 +49,16 @@ function CountrySelection() {
       </div>
 
       {/* Country List */}
-      <div className="grid grid-cols-2 gap-4 w-full">
+      <div className="grid grid-cols-2 gap-4 w-full  px-8 pt-3">
         {filteredCountries.length > 0 &&
           filteredCountries.map((country, index) => (
             <div
               key={country.name}
-              className={`flex items-center justify-between p-4 rounded-lg cursor-pointer transition-colors duration-300 bg-white`}
+              className={`flex items-center justify-between p-[18px] rounded-2xl cursor-pointer  bg-white border-[3px] ${
+                selectedCountry?.name === country.name
+                  ? "border-green-600"
+                  : "border-transparent"
+              } `}
               onClick={() => handleCountryClick(country)}
             >
               <span className="text-lg font-semibold flex items-center">

@@ -5,7 +5,7 @@ import { penImage } from "@/constant";
 
 const ResourceCart = ({ title, lists, noResource = false, red = false }) => {
   return (
-    <div className="p-3 min-w-56 max-w-56">
+    <div className="p-3 min-w-56 max-w-56 bg-white rounded-xl">
       <div className="flex items-center gap-2  ">
         <div className="relative w-10">
           <Image className="w-full h-full" src={penImage} alt={title} />

@@ -12,6 +12,12 @@ export const ContextProvider = ({ children }) => {
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedSchool, setSelectedSchool] = useState(null);
 
+  const [selectedInfoExam, setSelectedInfoExam] = useState(null);
+  const [selectedInfoBoard, setSelectedInfoBoard] = useState(null);
+
+  const [selectedChapters, setSelectedChapters] = useState([]);
+  const [selectedPaper, setSelectedPaper] = useState(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -44,6 +50,14 @@ export const ContextProvider = ({ children }) => {
     setSelectedGrade,
     selectedSchool,
     setSelectedSchool,
+    selectedInfoExam,
+    setSelectedInfoExam,
+    selectedInfoBoard,
+    setSelectedInfoBoard,
+    selectedChapters,
+    setSelectedChapters,
+    selectedPaper,
+    setSelectedPaper,
   };
 
   return (

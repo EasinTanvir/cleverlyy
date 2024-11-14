@@ -1,10 +1,9 @@
-"use client";
-
 import React, { useState } from "react";
-import { FaBusinessTime, FaDatabase, FaChevronDown } from "react-icons/fa"; // Example icons
+import { FaBusinessTime, FaDatabase, FaChevronDown } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import { motion } from "framer-motion";
+import { useContextProvider } from "../../../hooks/useContextProvider";
 
 const subjectsData = [
   {
@@ -30,8 +29,13 @@ const subjectsData = [
 
 export default function SubjectInfo() {
   const [selectedSubject, setSelectedSubject] = useState(null);
-  const [selectedPaper, setSelectedPaper] = useState(null);
-  const [selectedChapters, setSelectedChapters] = useState([]);
+
+  const {
+    selectedChapters,
+    setSelectedChapters,
+    selectedPaper,
+    setSelectedPaper,
+  } = useContextProvider();
 
   const handleSubjectSelect = (subject) => {
     setSelectedSubject(subject);
@@ -49,22 +53,24 @@ export default function SubjectInfo() {
   };
 
   return (
-    <div className="p-6 w-1/2 mx-auto">
+    <div className="p-6 xl:w-[78%] md:w-[88%] w-full  mx-auto">
       {/* Selected Chapters */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {selectedChapters.map((chapter, index) => (
-          <div
-            key={index}
-            className="bg-white flex items-center gap-2 py-2 px-5 rounded-xl"
-          >
-            <span>{chapter}</span>
-            <MdClose
-              className="cursor-pointer"
-              onClick={() => handleRemoveChapter(chapter)}
-            />
-          </div>
-        ))}
-      </div>
+      {selectedChapters.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-24">
+          {selectedChapters.map((chapter, index) => (
+            <div
+              key={index}
+              className="bg-white flex items-center gap-2 py-2 px-5 rounded-xl"
+            >
+              <span>{chapter}</span>
+              <MdClose
+                className="cursor-pointer"
+                onClick={() => handleRemoveChapter(chapter)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Subject Selector */}
       <div className="flex justify-between items-center">
@@ -83,14 +89,14 @@ export default function SubjectInfo() {
       <hr className="border border-black w-full my-2" />
 
       {/* Subjects */}
-      <div className="grid grid-cols-2 gap-4 mt-6">
+      <div className="grid grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
         {subjectsData.map((subject) => (
           <div key={subject.id}>
             {/* Subject Card */}
             <div
-              className={`flex items-center p-4 border-2 py-5 rounded-2xl bg-white cursor-pointer ${
+              className={`flex items-center p-4 border-[3px] py-5 rounded-2xl bg-white cursor-pointer ${
                 selectedSubject?.id === subject.id
-                  ? "border-green-500"
+                  ? "border-green-600"
                   : "border-transparent"
               }`}
               onClick={() => handleSubjectSelect(subject)}

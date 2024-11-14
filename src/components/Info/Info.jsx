@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import { Step, StepLabel, Stepper } from "@mui/material";
+import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa6";
+
 import CountrySelection from "./CountrySelection";
-import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import BoardAndExam from "./BoardAndExam";
 import SchoolAndGrade from "./SchoolAndGrade";
 import { useContextProvider } from "../../../hooks/useContextProvider";
@@ -19,12 +22,13 @@ const steps = [
 const Info = () => {
   const {
     selectedCountry,
-    setSelectedCountry,
     selectedGrade,
-    setSelectedGrade,
     selectedSchool,
-    setSelectedSchool,
+    selectedInfoExam,
+    selectedInfoBoard,
+    selectedPaper,
   } = useContextProvider();
+
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -37,10 +41,12 @@ const Info = () => {
 
   const disableNextButton =
     !selectedCountry ||
-    (activeStep === 1 && (!selectedGrade || !selectedSchool));
+    (activeStep === 1 && (!selectedGrade || !selectedSchool)) ||
+    (activeStep === 2 && (!selectedInfoExam || !selectedInfoBoard)) ||
+    (activeStep === 3 && !selectedPaper);
 
   return (
-    <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  px-10">
+    <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  px-10 relative">
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={index}>
@@ -57,29 +63,27 @@ const Info = () => {
         {activeStep === 4 && <InfoPlan />}
       </div>
 
-      <div
-        className="flex justify-between items-center px-4 fixed z-50 h-24 bottom-0 bg-custom-pastel-gradient left-0 w-full py-4 border border-slate-200"
-        style={{ boxShadow: "0 -2px 4px rgba(100, 100, 100, 0.15)" }}
+      <button
+        variant="outlined"
+        disabled={activeStep === 0}
+        onClick={handleBack}
+        className={`bg-textColor   w-14 h-14 flex-center rounded-full absolute lg:left-8 left-2 top-0 bottom-0 my-auto ${
+          activeStep === 0 ? "opacity-45" : "opacity-100"
+        }`}
       >
-        <Button
-          variant="outlined"
-          disabled={activeStep === 0}
-          onClick={handleBack}
+        <FaArrowLeft size={30} className="text-white" />
+      </button>
+      {activeStep !== steps.length - 1 && (
+        <button
+          disabled={disableNextButton}
+          onClick={handleNext}
+          className={` ${
+            disableNextButton ? "opacity-45" : "opacity-100"
+          } bg-textColor w-14 h-14 flex-center rounded-full absolute lg:right-8 right-2 top-0 bottom-0 my-auto`}
         >
-          Back
-        </Button>
-        {activeStep !== steps.length - 1 && (
-          <button
-            disabled={disableNextButton}
-            onClick={handleNext}
-            className={` ${
-              disableNextButton ? "opacity-45" : "opacity-100"
-            } text-white rounded-lg px-4 py-2 bg-textColor`}
-          >
-            Next
-          </button>
-        )}
-      </div>
+          <FaArrowRight size={30} className="text-white" />
+        </button>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className=" md:p-8 p-3">
+    <div className=" md:p-8 p-3  bg-dashboardBd">
       <Dashboard />;
     </div>
   );
