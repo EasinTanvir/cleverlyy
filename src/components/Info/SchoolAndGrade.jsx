@@ -27,7 +27,7 @@ const SchoolAndGrade = () => {
   return (
     <div className="p-6 flex flex-col items-center xl:w-[78%] md:w-[88%] w-full  mx-auto">
       <div className="w-full  ">
-        <h2 className="text-black text-center text-3xl  font-bold mb-4 uppercase">
+        <h2 className="text-black text-center md:text-3xl text-xl  font-bold mb-4 uppercase">
           SELECT YOUR{" "}
           <span className="text-textColor">School & Class/Grade</span>
         </h2>
@@ -36,14 +36,14 @@ const SchoolAndGrade = () => {
       </div>
 
       {/* Grade Selector */}
-      <div className="flex items-center gap-4 mt-9">
+      <div className="flex lg:flex-wrap flex-wrap justify-center items-center gap-4 mt-9">
         <h3 className=" text-xl">Class/Grade:</h3>
-        <div className="flex space-x-4 ">
+        <div className="flex flex-wrap justify-center  gap-4 ">
           {grades.map((grade) => (
             <button
               key={grade}
               onClick={() => handleGradeSelect(grade)}
-              className={`px-10 py-2.5 text-lg border-[3px] bg-white rounded-xl text-textColor ${
+              className={`px-10 py-2.5 text-xl border-[3px] bg-white rounded-xl text-textColor ${
                 selectedGrade === grade
                   ? " border-green-600 "
                   : "border-transparent"
@@ -56,7 +56,7 @@ const SchoolAndGrade = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="flex justify-between items-center mt-16 w-full  ">
+      <div className="flex flex-wrap justify-between items-center mt-16 w-full  ">
         <h1 className="text-xl">Dhaka</h1>
         <div className="relative flex items-center gap-3 mb-4 w-96">
           <input
@@ -76,7 +76,7 @@ const SchoolAndGrade = () => {
 
       {/* School List */}
 
-      <div className="flex gap-5 mt-5 w-full">
+      <div className="flex flex-wrap gap-5 mt-5 w-full">
         {filteredSchools.length > 0 &&
           filteredSchools.map((school) => (
             <div

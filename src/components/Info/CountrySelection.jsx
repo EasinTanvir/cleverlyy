@@ -32,7 +32,7 @@ function CountrySelection() {
 
   return (
     <div className="flex flex-col items-center p-6  xl:w-[78%] md:w-[88%] w-full  mx-auto ">
-      <h2 className="text-black text-3xl  font-bold mb-4">
+      <h2 className="text-black md:text-3xl text-xl  font-bold mb-4">
         SELECT YOUR <span className="text-textColor">COUNTRY & CITY</span>
       </h2>
 
@@ -49,7 +49,7 @@ function CountrySelection() {
       </div>
 
       {/* Country List */}
-      <div className="grid grid-cols-2 gap-4 w-full  px-8 pt-3">
+      <div className="grid md:grid-cols-2 gap-4 w-full  px-8 pt-3">
         {filteredCountries.length > 0 &&
           filteredCountries.map((country, index) => (
             <div

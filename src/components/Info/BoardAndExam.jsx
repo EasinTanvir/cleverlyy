@@ -34,16 +34,16 @@ const BoardAndExam = () => {
   return (
     <div className="p-6 xl:w-[78%] md:w-[88%] w-full  mx-auto">
       <div>
-        <h2 className="text-black text-3xl  font-bold  uppercase">
+        <h2 className="text-black md:text-3xl text-xl  font-bold  uppercase">
           SELECT YOUR <span className="text-textColor">Exam & Board : </span>
         </h2>
 
         <hr className="border border-black w-full my-6" />
       </div>
 
-      <div className="flex justify-around items-start gap-20 lg:w-[80%] w-full mx-auto  pt-6">
-        <div className="w-1/2">
-          <div className="flex items-center gap-2">
+      <div className="flex md:flex-row flex-col justify-around items-start gap-20 lg:w-[80%] w-full mx-auto  pt-6">
+        <div className="md:w-1/2 w-full">
+          <div className="flex items-center md:justify-start justify-center gap-2">
             <FaUniversity size={30} />
             <div>
               <h2 className="font-bold text-2xl">Cambridge Assesment</h2>
@@ -77,7 +77,7 @@ const BoardAndExam = () => {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className="md:w-1/2 w-full">
           <h2 className="font-bold mb-4 text-2xl text-center">
             Pearson | Edexcel
           </h2>

@@ -73,8 +73,8 @@ export default function SubjectInfo() {
       )}
 
       {/* Subject Selector */}
-      <div className="flex justify-between items-center">
-        <h2 className="text-black text-3xl font-bold mb-4 uppercase">
+      <div className="flex md:flex-row flex-col justify-between items-center">
+        <h2 className="text-black md:text-3xl text-xl font-bold mb-4 uppercase">
           SELECT YOUR <span className="text-textColor">Subjects</span>
         </h2>
 
@@ -89,7 +89,7 @@ export default function SubjectInfo() {
       <hr className="border border-black w-full my-2" />
 
       {/* Subjects */}
-      <div className="grid grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
+      <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
         {subjectsData.map((subject) => (
           <div key={subject.id}>
             {/* Subject Card */}

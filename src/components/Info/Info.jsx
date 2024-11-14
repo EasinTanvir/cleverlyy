@@ -46,8 +46,11 @@ const Info = () => {
     (activeStep === 3 && !selectedPaper);
 
   return (
-    <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  px-10 relative">
-      <Stepper activeStep={activeStep}>
+    <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  md:px-10 px-4 relative">
+      <Stepper
+        className="flex flex-wrap md:gap-0 gap-10  lg:w-[80%] w-[90%] mx-auto"
+        activeStep={activeStep}
+      >
         {steps.map((label, index) => (
           <Step key={index}>
             <StepLabel>{label}</StepLabel>
