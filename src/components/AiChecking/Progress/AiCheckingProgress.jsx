@@ -1,9 +1,10 @@
 import React from "react";
-import ResponseDisplay from "./Response";
 import { Divider } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
 import { TbAlertTriangle } from "react-icons/tb";
+
+import ResponseDisplay from "./Response";
 
 const AiCheckingProgress = () => {
   return (

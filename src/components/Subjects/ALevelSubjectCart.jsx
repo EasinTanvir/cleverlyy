@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFlask, FaAtom, FaChartLine } from "react-icons/fa";
+
 import ProgressBar from "./ProgressBar";
 
 const ALevelSubjectCart = ({

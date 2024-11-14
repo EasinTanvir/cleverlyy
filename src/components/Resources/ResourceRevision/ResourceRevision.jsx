@@ -1,8 +1,9 @@
 import React from "react";
-import RevisionNotesChapter from "@/components/Subjects/ChapterWiseRevisionNotes/RevisionNotesChapter";
-import { chapters } from "@/utils";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+
+import RevisionNotesChapter from "@/components/Subjects/ChapterWiseRevisionNotes/RevisionNotesChapter";
+import { chapters } from "@/utils";
 import Action from "./Action";
 
 const ResourceRevision = () => {

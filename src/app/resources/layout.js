@@ -6,7 +6,6 @@ const layout = ({ children }) => {
   return (
     <div>
       <ResourceLayout />
-
       <div className="mt-4">
         <ResourceLayoutWrapper>{children}</ResourceLayoutWrapper>
       </div>

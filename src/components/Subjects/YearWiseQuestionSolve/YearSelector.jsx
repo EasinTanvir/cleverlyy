@@ -1,22 +1,19 @@
 "use client";
-
 import React, { useRef, useState, useEffect } from "react";
 import dayjs from "dayjs";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+
 export const YearSelector = () => {
   const scrollRef = useRef(null);
   const [selectedYear, setSelectedYear] = useState(dayjs().year());
 
-  // Function to scroll left
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: -100, behavior: "smooth" });
     }
   };
 
-  // Function to scroll right
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 100, behavior: "smooth" });

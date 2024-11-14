@@ -1,9 +1,10 @@
 import React from "react";
-import RevisionNotesChapter from "./RevisionNotesChapter";
 import { PiBookOpenTextDuotone } from "react-icons/pi";
+import { Divider } from "@mui/material";
+
+import RevisionNotesChapter from "./RevisionNotesChapter";
 import WeeklyGoal from "./WeeklyGoal";
 import { chapters } from "@/utils";
-import { Divider } from "@mui/material";
 
 const ChapterWiseRevisionNotes = () => {
   return (

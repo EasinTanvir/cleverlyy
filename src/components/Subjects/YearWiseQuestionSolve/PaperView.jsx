@@ -111,7 +111,7 @@ const dummyData = {
 };
 
 import React, { useState } from "react";
-import { FaFile, FaFileAlt, FaInfoCircle } from "react-icons/fa";
+import { FaFileAlt, FaInfoCircle } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 
 const PaperView = () => {

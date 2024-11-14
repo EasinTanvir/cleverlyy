@@ -1,10 +1,10 @@
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 import { chapters } from "@/utils";
 import ChapterProgressCart from "./ChapterProgressCart";
 import Action from "../ResourceRevision/Action";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 
 const ResourceChapterWiseQp = () => {
   return (

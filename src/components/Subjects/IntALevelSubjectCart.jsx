@@ -1,7 +1,7 @@
 import React from "react";
-import { FaFlask, FaAtom, FaChartLine } from "react-icons/fa";
-import ProgressBar from "./ProgressBar";
 import Link from "next/link";
+
+import ProgressBar from "./ProgressBar";
 
 const IntALevelSubjectCart = ({
   color,
