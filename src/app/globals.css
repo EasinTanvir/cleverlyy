@@ -107,6 +107,13 @@
   font-size: 1.5em;
 }
 
+select:disabled {
+  border-color: #d1d5db; /* Light gray color for disabled state */
+  background-color: #f9fafb; /* Optional: lighter background for disabled state */
+  color: #9ca3af; /* Optional: dimmed text color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate disabled */
+}
+
 /* Keyframes for animated background */
 @keyframes wave {
   0% {
