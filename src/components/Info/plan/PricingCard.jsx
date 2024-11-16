@@ -57,10 +57,7 @@ const PricingCard = () => {
         </ul>
 
         <hr className="border-[1px] my-6" />
-        <button
-          className="w-full px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg border-4 border-borderColor2"
-          disabled
-        >
+        <button className="w-full px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg border-2 border-borderColor2">
           Currently on this plan
         </button>
       </div>
@@ -141,7 +138,7 @@ const PricingCard = () => {
           </h3>
         </div>
         <div className="w-full bg-custom-pastel-gradient rounded-xl shadow-md p-6 relative ">
-          <h3 className="text-lg font-semibold text-textColor bg-custom-pastel-gradient w-fit px-4 py-1 rounded-md  flex items-center">
+          <h3 className="text-lg font-semibold text-textColor bg-white w-fit px-4 py-1 rounded-md  flex items-center">
             Premium <FaGem className="ml-2 text-pink-500" />
           </h3>
           <p className="text-xl  text-gray-800   mt-8">

@@ -42,17 +42,31 @@ const PricingTable = () => {
                 </th>
               </tr>
               <tr className="border-b border-black">
-                <td className="p-4 font-semibold border border-black">
-                  Monthly Plan
+                <td
+                  rowSpan={2}
+                  className=" font-semibold border border-black h-full"
+                >
+                  <div className="flex h-[119px]">
+                    <div className="flex-center w-[35%]">
+                      <span>Price in BDT</span>
+                    </div>
+                    <div className=" w-[65%] border-l border-black">
+                      <div className="h-[50%] flex-center border-b  border-black ">
+                        <span>Monthly Plan</span>
+                      </div>
+                      <div className="h-[50%] flex-center ">
+                        <h3 className="font-semibold text-purple-500 ">
+                          Annual Plan (70% off)
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
                 </td>
                 <td className="p-4 border border-black">Free</td>
                 <td className="p-4 border border-black">1000/month</td>
                 <td className="p-4 border border-black">1300/month</td>
               </tr>
               <tr className="border-b border-black">
-                <td className="p-4 font-semibold text-purple-500 border border-black">
-                  Annual Plan (70% off)
-                </td>
                 <td className="p-4 border border-black">—</td>
                 <td className="p-4 border border-black">300/month</td>
                 <td className="p-4 border border-black">400/month</td>

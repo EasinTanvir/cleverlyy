@@ -12,7 +12,7 @@ const PricingHeader = () => {
         Select from multiple annual & multiple plans to find the perfect match
         for your studies. All for a{" "}
         <span className="font-semibold italic">price less than that of a</span>{" "}
-        <span className="font-bold italic">burger</span>.
+        <span className="font-bold italic underline">burger</span>.
       </p>
       <div className="flex justify-center mt-4">
         <FaHamburger className="text-yellow-600 text-4xl" />
