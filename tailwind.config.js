@@ -43,6 +43,8 @@ module.exports = {
         btnColor6: "#eee5ff",
         shadowBlack: "rgba(0, 0, 0, 0.3)",
         customRed: "#d06161",
+        purpleLight: "#EAE2F8",
+        purpleDark: "#A78BFA",
 
         banner: {
           color1: "#FDC200", // Yellow
