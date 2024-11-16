@@ -21,7 +21,7 @@ const PricingTable = () => {
                     <span className="text-purple-500">PLANS</span>
                   </h2>
                   <p className="text-center italic">
-                    Find one that's right for you
+                    Find one that&apos;s right for you
                   </p>
                 </th>
                 <th className="p-4 text-lg font-semibold border border-black">
