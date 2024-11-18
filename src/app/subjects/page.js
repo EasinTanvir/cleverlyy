@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React, { Suspense } from "react";
 import { FaPlus } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
