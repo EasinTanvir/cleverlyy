@@ -1,17 +1,33 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 
 import ProgressBar from "../../ProgressBar";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { useContextProvider } from "../../../../../hooks/useContextProvider";
 
 const SubjectUnit = ({
-  icon: Icon,
   unit_name,
   revision_progress,
   chapterwise_progress,
   yearwise_progress,
+
+  subject_name,
+  board_name,
 }) => {
+  const { setUserSelectedSubject } = useContextProvider();
+
   return (
     <Link
+      onClick={() =>
+        setUserSelectedSubject({
+          yearwise_progress,
+          revision_progress,
+          chapterwise_progress,
+          subject_name,
+          board_name,
+        })
+      }
       href="/subjects/info"
       className={`bg-[#f9fde7] cursor-pointer p-5 md:w-[360px] w-full rounded-2xl  border-[1px] shadow-md space-y-12 `}
     >
@@ -22,7 +38,7 @@ const SubjectUnit = ({
         </div>
 
         <div className="w-[32px]   flex justify-end">
-          <Icon size={34} />
+          <MdOutlineKeyboardDoubleArrowRight size={34} />
         </div>
       </div>
 

@@ -1,8 +1,13 @@
+"use client";
 import React from "react";
 import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
+import ProgressBar from "./ProgressBar";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
+
 const ChapterWiseQuestion = () => {
+  const { userSelectedSubject } = useContextProvider();
   return (
     <div className="relative min-w-80 max-w-80 mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
@@ -20,21 +25,7 @@ const ChapterWiseQuestion = () => {
 
       {/* Progress Bar */}
       <div className="mt-4">
-        <div className="w-full bg-gray-200 rounded-full h-[13px] mt-1">
-          <div
-            className="bg-purple-500 h-[13px] rounded-full relative"
-            style={{ width: "50%" }}
-          >
-            <span className="text-white text-[9px] absolute right-2  top-0  ">
-              50%
-            </span>
-          </div>
-        </div>
-
-        <div className="flex justify-between text-xs mt-2">
-          <span>Start Now</span>
-          <span>0/84</span>
-        </div>
+        <ProgressBar progress={userSelectedSubject?.chapterwise_progress} />
       </div>
 
       <div className="mt-6 space-y-7 text-sm text-black font-medium">

@@ -189,7 +189,7 @@ export const mapSubjectDetails = (subjects) => {
     return {
       ...subject,
       color: matchedSubject?.color || "#ffffff", // Default color if not matched
-      image: matchedSubject?.image || null, // Default image if not matched
+      image: matchedSubject?.image || chemistry, // Default image if not matched
     };
   });
 };

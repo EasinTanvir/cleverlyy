@@ -6,22 +6,19 @@ import { chemistry } from "../../../constant";
 import YearWiseQuestion from "./YearWiseQuestion";
 import ChapterWiseNotes from "./ChapterWiseNotes";
 import ChapterWiseQuestion from "./ChapterWiseQuestion";
+import SubjectTitle from "./SubjectTitle";
 
 const SubjectInfo = () => {
   return (
     <div className="">
       <div className="flex items-center gap-2 ">
         <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
-        <span className="text-sm underline ">
-          Cambridge Chemistry : O-level
-        </span>
+        <SubjectTitle variant="inline" />
       </div>
 
       <div className="flex  lg:flex-row flex-col items-center">
         <div className="flex-1  space-y-5">
-          <h1 className="md:text-[30px] text-xl font-bold mt-5">
-            Cambridge Chemistry : O level
-          </h1>
+          <SubjectTitle variant="heading" />
           <p className="">
             From concise and detailed
             <span className=" text-textColor font-bold">

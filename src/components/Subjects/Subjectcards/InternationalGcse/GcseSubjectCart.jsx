@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import ProgressBar from "../../ProgressBar";
 import Link from "next/link";
-import { economics } from "@/constant";
+
+import ProgressBar from "../../ProgressBar";
+import { useContextProvider } from "../../../../../hooks/useContextProvider";
 
 const GcseSubjectCart = ({
   color,
@@ -11,9 +14,21 @@ const GcseSubjectCart = ({
   revision_progress,
   chapterwise_progress,
   subject_name,
+  board_name,
 }) => {
+  const { setUserSelectedSubject } = useContextProvider();
+
   return (
     <Link
+      onClick={() =>
+        setUserSelectedSubject({
+          yearwise_progress,
+          revision_progress,
+          chapterwise_progress,
+          subject_name,
+          board_name,
+        })
+      }
       href="/subjects/info"
       style={{ backgroundColor: color }}
       className={` cursor-pointer md:px-5 px-2.5 pb-5 pt-3 md:w-[375px] w-full rounded-2xl  border-[1px] shadow-md space-y-9`}

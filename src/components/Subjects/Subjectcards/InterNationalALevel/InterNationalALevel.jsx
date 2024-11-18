@@ -19,7 +19,11 @@ const InterNationalALevel = ({ subjectLists, board_name, title }) => {
 
         <div className="space-y-5">
           {mapSubjectDetails(subjectLists.subjects).map((subject) => (
-            <ALevelSubject key={subject.subject_id} {...subject} />
+            <ALevelSubject
+              key={subject.subject_id}
+              {...subject}
+              board_name={board_name}
+            />
           ))}
         </div>
       </div>
@@ -40,6 +44,7 @@ const ALevelSubject = ({
   yearwise_progress,
   image,
   color,
+  board_name,
 }) => {
   return (
     <>
@@ -58,12 +63,13 @@ const ALevelSubject = ({
                 <SubjectUnit
                   key={index}
                   color={""}
-                  icon={MdOutlineKeyboardDoubleArrowRight}
                   unit_name={unit.unit_name}
                   unit_number={unit.unit_number}
                   revision_progress={unit.revision_progress}
                   chapterwise_progress={unit.chapterwise_progress}
                   yearwise_progress={unit.yearwise_progress}
+                  subject_name={subject_name}
+                  board_name={board_name}
                 />
               ))}
             </div>

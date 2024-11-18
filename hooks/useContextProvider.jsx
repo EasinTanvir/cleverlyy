@@ -18,6 +18,9 @@ export const ContextProvider = ({ children }) => {
   const [selectedChapters, setSelectedChapters] = useState([]);
   const [selectedPaper, setSelectedPaper] = useState(null);
 
+  //selected Subject
+  const [userSelectedSubject, setUserSelectedSubject] = useState(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -58,6 +61,8 @@ export const ContextProvider = ({ children }) => {
     setSelectedChapters,
     selectedPaper,
     setSelectedPaper,
+    userSelectedSubject,
+    setUserSelectedSubject,
   };
 
   return (
