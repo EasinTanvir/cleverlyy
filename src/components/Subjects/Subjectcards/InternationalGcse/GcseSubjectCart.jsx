@@ -1,9 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../../ProgressBar";
 import Link from "next/link";
+import { economics } from "@/constant";
 
-const GcseSubjectCart = ({ color, image, value, title }) => {
+const GcseSubjectCart = ({
+  color,
+  image,
+  yearwise_progress,
+  revision_progress,
+  chapterwise_progress,
+  subject_name,
+}) => {
   return (
     <Link
       href="/subjects/info"
@@ -12,18 +20,18 @@ const GcseSubjectCart = ({ color, image, value, title }) => {
     >
       <div className="flex items-center gap-5">
         <div className="w-[115px] ">
-          <Image className="max-w-24" src={image} alt={title} />
+          <Image className="max-w-24" src={image} alt={subject_name} />
         </div>
         <div className="flex-1 text-end">
-          <h1 className="md:text-[25px] text-lg font-bold">{title}</h1>
+          <h1 className="md:text-[25px] text-lg font-bold">{subject_name}</h1>
           <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
         </div>
       </div>
 
       <div className="space-y-4 ">
-        <ProgressBar value={value} title="Yearwise QP" />
-        <ProgressBar value={value} title="Chapterwise QP" />
-        <ProgressBar value={value} title="Revision Notes" />
+        <ProgressBar value={yearwise_progress} title="Yearwise QP" />
+        <ProgressBar value={chapterwise_progress} title="Chapterwise QP" />
+        <ProgressBar value={revision_progress} title="Revision Notes" />
       </div>
     </Link>
   );

@@ -1,42 +1,36 @@
 import React from "react";
-import { FaFlask, FaAtom, FaChartLine, FaPlus } from "react-icons/fa";
 import Image from "next/image";
+import { FaPlus } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { TfiMenuAlt } from "react-icons/tfi";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 import Sorting from "./Sorting";
-import GcseSubjectCart from "./GcseSubjectCart";
-import IntALevelSubjectCart from "./IntALevelSubjectCart";
-import ALevelSubjectCart from "./ALevelSubjectCart";
-import { subjectLists } from "../../utils/subject";
-import { chemistry } from "../../constant";
 
-const subjects = [
-  {
-    title: "Chemistry",
-    code: "4CH1 | Science (Double Award) 4SD0",
-    color: "#F9FDE7",
-    icon: FaFlask,
-    value: 70,
-  },
-  {
-    title: "Physics",
-    code: "4PH1 | Science (Double Award) 4SD0",
-    color: "#EAF4FF",
-    icon: FaAtom,
-    value: 60,
-  },
-  {
-    title: "Economics",
-    code: "4PH1 | Science (Double Award) 4SD0",
-    color: "#FFFBEB",
-    icon: FaChartLine,
-    value: 40,
-  },
-];
+import InternationalGcse from "./Subjectcards/InternationalGcse/InternationalGcse";
+import InterNationalALevel from "./Subjectcards/InterNationalALevel/InterNationalALevel";
 
-const Subject = () => {
+const Subject = ({ edexcelSubjectLists, cambridgeSubjectLists }) => {
+  const edexcelGcseOLevelExamLists = edexcelSubjectLists?.exams?.find(
+    (exam) => exam.exam_name === "IGCSE" || exam.exam_name === "O Level"
+  );
+  const edexcelInternationalALevelExamLists = edexcelSubjectLists?.exams?.find(
+    (exam) => exam.exam_name === "International A Levels"
+  );
+  const edexcelALevelExamListsExamLists = edexcelSubjectLists?.exams?.find(
+    (exam) => exam.exam_name === "AD" || exam.exam_name === "A Level"
+  );
+
+  const cambridgeGcseOLevelExamLists = cambridgeSubjectLists?.exams?.find(
+    (exam) => exam.exam_name === "IGCSE" || exam.exam_name === "O Level"
+  );
+  const cambridgeInternationalALevelExamLists =
+    cambridgeSubjectLists?.exams?.find(
+      (exam) => exam.exam_name === "International A Levels"
+    );
+  const cambridgeALevelExamListsExamLists = cambridgeSubjectLists?.exams?.find(
+    (exam) => exam.exam_name === "AD" || exam.exam_name === "A Level"
+  );
+
   return (
     <div className="space-y-10  bg-dashboardBd ">
       <div>
@@ -70,86 +64,53 @@ const Subject = () => {
         </div>
       </div>
 
-      <div className="pt-4 ">
-        <div className="flex sm:flex-row flex-col justify-between pb-10">
-          <h1 className="text-xl">International GCSE</h1>
-          <div className="flex items-center gap-2 font-semibold text-lg">
-            <h1>Pearson</h1> | <h1>Edescel</h1>
-          </div>
-        </div>
-        <div className="grid bg-white md:p-4 p-0.5 rounded-md 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
-          {subjectLists.map((subject, index) => (
-            <GcseSubjectCart
-              key={index}
-              color={subject.color}
-              image={subject.image}
-              title={subject.title}
-              value={70}
-            />
-          ))}
-        </div>
-      </div>
+      <React.Fragment>
+        {edexcelGcseOLevelExamLists && (
+          <InternationalGcse
+            subjectLists={edexcelGcseOLevelExamLists}
+            board_name={edexcelSubjectLists.board_name}
+          />
+        )}
+        {cambridgeGcseOLevelExamLists && (
+          <InternationalGcse
+            subjectLists={cambridgeGcseOLevelExamLists}
+            board_name={cambridgeSubjectLists.board_name}
+          />
+        )}
+      </React.Fragment>
 
-      <div className="pt-10">
-        <div className="flex sm:flex-row flex-col justify-between pb-10">
-          <h1 className="text-xl">Edexcel: International A-Level</h1>
-          <div className="flex items-center gap-2 font-semibold text-lg">
-            <h1>Pearson</h1> | <h1>Edescel</h1>
-          </div>
-        </div>
-
-        <div className="flex md:flex-row flex-col gap-8 bg-white shadow-md md:px-6 px-3 py-10 rounded-xl">
-          <div className="w-80  flex flex-col items-center justify-center">
-            <div className="w-[115px] ">
-              <Image className="max-w-24" src={chemistry} alt="logo" />
-            </div>
-            <h1 className="text-[27px] font-bold">Chemistry</h1>
-            <p className="text-[11px]">4CH1 | Science (Double Award) 4SD0 </p>
-          </div>
-          <div className="flex-1  ">
-            <div className="flex flex-wrap gap-6">
-              {subjects.map((subject, index) => (
-                <IntALevelSubjectCart
-                  key={index}
-                  color={subject.color}
-                  icon={MdOutlineKeyboardDoubleArrowRight}
-                  title="Unit"
-                  code={subject.code}
-                  progress={subject.progress}
-                  value={subject.value}
-                  index={index}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="pt-10">
-        <div className="flex sm:flex-row flex-col justify-between pb-10">
-          <h1 className="text-xl">Cambridge A-Levels</h1>
-          <div className="flex items-center gap-2 font-semibold text-lg">
-            <h1>Pearson</h1> | <h1>Edescel</h1>
-          </div>
-        </div>
-        <div className="flex md:flex-row flex-col gap-8 bg-[#f9fde7] shadow-md sm:px-6 px-3 py-10 rounded-xl">
-          <div className="w-80  flex flex-col items-center justify-center">
-            <div className="w-[115px] ">
-              <Image className="max-w-24" src={chemistry} alt="logo" />
-            </div>
-            <h1 className="text-[27px] font-bold">Chemistry</h1>
-            <p className="text-[11px]">4CH1 | Science (Double Award) 4SD0 </p>
-          </div>
-          <div className="flex-1 ">
-            <ALevelSubjectCart
-              color={"#ffffff"}
-              icon={MdOutlineKeyboardDoubleArrowRight}
-              title="Advanced Subsidiary (AS)"
-              value={70}
-            />
-          </div>
-        </div>
-      </div>
+      <React.Fragment>
+        {edexcelInternationalALevelExamLists && (
+          <InterNationalALevel
+            subjectLists={edexcelInternationalALevelExamLists}
+            board_name={edexcelSubjectLists.board_name}
+            title="International A-Level"
+          />
+        )}
+        {cambridgeInternationalALevelExamLists && (
+          <InterNationalALevel
+            subjectLists={cambridgeInternationalALevelExamLists}
+            board_name={cambridgeSubjectLists.board_name}
+            title="A-Level"
+          />
+        )}
+      </React.Fragment>
+      <React.Fragment>
+        {edexcelALevelExamListsExamLists && (
+          <InterNationalALevel
+            subjectLists={edexcelALevelExamListsExamLists}
+            board_name={edexcelSubjectLists.board_name}
+            title="International A-Level"
+          />
+        )}
+        {cambridgeALevelExamListsExamLists && (
+          <InterNationalALevel
+            subjectLists={cambridgeALevelExamListsExamLists}
+            board_name={cambridgeSubjectLists.board_name}
+            title="A-Level"
+          />
+        )}
+      </React.Fragment>
     </div>
   );
 };

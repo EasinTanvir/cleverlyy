@@ -1,0 +1,32 @@
+import React from "react";
+import GcseSubjectCart from "./GcseSubjectCart";
+import { mapSubjectDetails } from "@/utils/subject";
+
+const InternationalGcse = ({ board_name, subjectLists }) => {
+  return (
+    <div className="pt-4">
+      <div className="flex sm:flex-row flex-col justify-between pb-10">
+        <h1 className="text-xl">{board_name}: International GCSE</h1>
+        <div className="flex items-center gap-2 font-semibold text-lg">
+          <h1>Pearson</h1> | <h1>{board_name}</h1>
+        </div>
+      </div>
+      <div className="grid bg-white md:p-4 p-0.5 rounded-md 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
+        {subjectLists &&
+          mapSubjectDetails(subjectLists.subjects).map((subject, index) => (
+            <GcseSubjectCart
+              key={index}
+              color={subject.color}
+              image={subject.image}
+              subject_name={subject.subject_name}
+              revision_progress={subject.revision_progress}
+              chapterwise_progress={subject.chapterwise_progress}
+              yearwise_progress={subject.yearwise_progress}
+            />
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default InternationalGcse;

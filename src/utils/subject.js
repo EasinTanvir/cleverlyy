@@ -31,7 +31,7 @@ export const subjectLists = [
     image: economics,
   },
   {
-    title: "Mathematics",
+    title: "Mathematics B",
     color: "#f8e8e8",
     image: mathematics,
   },
@@ -46,12 +46,17 @@ export const subjectLists = [
     image: accounting,
   },
   {
-    title: "English Language B",
+    title: "English Labguage B",
     color: "#f0f4ff",
     image: englishLanguage,
   },
   {
     title: "Mathematics A",
+    color: "#ffefdf",
+    image: mathematics,
+  },
+  {
+    title: "Mathematics",
     color: "#ffefdf",
     image: mathematics,
   },
@@ -169,3 +174,17 @@ export const subjectLists = [
 //     image: "",
 //   },
 // ];
+
+export const mapSubjectDetails = (subjects) => {
+  if (!subjects || subjects?.length === 0) return;
+  return subjects.map((subject) => {
+    const matchedSubject = subjectLists.find(
+      (item) => item.title.toLowerCase() === subject.subject_name.toLowerCase()
+    );
+    return {
+      ...subject,
+      color: matchedSubject?.color || "#ffffff", // Default color if not matched
+      image: matchedSubject?.image || null, // Default image if not matched
+    };
+  });
+};
