@@ -61,6 +61,11 @@ export const subjectLists = [
     image: mathematics,
   },
   {
+    title: "Additional Mathematics",
+    color: "#ffefdf",
+    image: mathematics,
+  },
+  {
     title: "Computer Science",
     color: "#e5f2ff",
     image: computerScience,
@@ -91,7 +96,7 @@ export const subjectLists = [
     image: biology,
   },
   {
-    title: "Bangla",
+    title: "Bengali",
     color: "#efefef",
     image: bangla,
   },

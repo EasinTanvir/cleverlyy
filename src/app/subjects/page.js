@@ -1,14 +1,13 @@
-export const dynamic = "force-dynamic";
-
 import React from "react";
 import Subject from "@/components/Subjects/Subject";
+
+const findBoardSubjects = (data, boardName) =>
+  data.find((item) => item.board_name === boardName);
 
 const SubjectWrapper = async () => {
   const response = await fetch(`${process.env.BACKEND_URL}/users/7/subjects`, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
   });
 
   if (!response.ok) {
@@ -20,13 +19,8 @@ const SubjectWrapper = async () => {
     throw new Error("Failed to fetch subject data");
   }
 
-  const edexcelSubjectLists = data.find(
-    (item) => item.board_name === "Edexcel"
-  );
-
-  const cambridgeSubjectLists = data.find(
-    (item) => item.board_name === "Cambridge"
-  );
+  const edexcelSubjectLists = findBoardSubjects(data, "Edexcel");
+  const cambridgeSubjectLists = findBoardSubjects(data, "Cambridge");
 
   return (
     <Subject

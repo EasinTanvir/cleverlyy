@@ -1,50 +1,56 @@
 import React from "react";
-import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { TfiMenuAlt } from "react-icons/tfi";
 
 import Sorting from "./Sorting";
-
 import InternationalGcse from "./Subjectcards/InternationalGcse/InternationalGcse";
 import InterNationalALevel from "./Subjectcards/InterNationalALevel/InterNationalALevel";
 
+const findExamByName = (exams, names) =>
+  exams?.find((exam) => names.includes(exam.exam_name));
+
 const Subject = ({ edexcelSubjectLists, cambridgeSubjectLists }) => {
-  const edexcelGcseOLevelExamLists = edexcelSubjectLists?.exams?.find(
-    (exam) => exam.exam_name === "IGCSE" || exam.exam_name === "O Level"
+  const edexcelGcseOLevelExamLists = findExamByName(
+    edexcelSubjectLists?.exams,
+    ["IGCSE", "O Level"]
   );
-  const edexcelInternationalALevelExamLists = edexcelSubjectLists?.exams?.find(
-    (exam) => exam.exam_name === "International A Levels"
+  const edexcelInternationalALevelExamLists = findExamByName(
+    edexcelSubjectLists?.exams,
+    ["International A Levels"]
   );
-  const edexcelALevelExamListsExamLists = edexcelSubjectLists?.exams?.find(
-    (exam) => exam.exam_name === "AD" || exam.exam_name === "A Level"
+  const edexcelALevelExamListsExamLists = findExamByName(
+    edexcelSubjectLists?.exams,
+    ["AD", "A Level"]
   );
 
-  const cambridgeGcseOLevelExamLists = cambridgeSubjectLists?.exams?.find(
-    (exam) => exam.exam_name === "IGCSE" || exam.exam_name === "O Level"
+  const cambridgeGcseOLevelExamLists = findExamByName(
+    cambridgeSubjectLists?.exams,
+    ["IGCSE", "O Level"]
   );
-  const cambridgeInternationalALevelExamLists =
-    cambridgeSubjectLists?.exams?.find(
-      (exam) => exam.exam_name === "International A Levels"
-    );
-  const cambridgeALevelExamListsExamLists = cambridgeSubjectLists?.exams?.find(
-    (exam) => exam.exam_name === "AD" || exam.exam_name === "A Level"
+  const cambridgeInternationalALevelExamLists = findExamByName(
+    cambridgeSubjectLists?.exams,
+    ["International A Levels"]
+  );
+  const cambridgeALevelExamListsExamLists = findExamByName(
+    cambridgeSubjectLists?.exams,
+    ["AD", "A Level"]
   );
 
   return (
-    <div className="space-y-10  bg-dashboardBd ">
+    <div className="space-y-10 bg-dashboardBd">
       <div>
         <h1 className="text-bold text-[27px] font-bold">Hi, Easin</h1>
-        <h1 className="text-bold text-xl ">
+        <h1 className="text-bold text-xl">
           Start exploring your subjects for smarter, stress-free exam prep
         </h1>
       </div>
 
-      <div className="flex sm:flex-row flex-col sm:gap-0 gap-4  ">
-        <div className="xl:w-[23%] sm:w-[40%] w-full  flex justify-between items-center">
+      <div className="flex sm:flex-row flex-col sm:gap-0 gap-4">
+        <div className="xl:w-[23%] sm:w-[40%] w-full flex justify-between items-center">
           <div className="text-sm">
             <p>Chemistry, Chapterwise, Organic 2.2</p>
-            <p className=" text-textColor text-[13px]">
+            <p className="text-textColor text-[13px]">
               Continue from where you left
             </p>
           </div>
@@ -52,7 +58,7 @@ const Subject = ({ edexcelSubjectLists, cambridgeSubjectLists }) => {
             <RiArrowRightSLine size={45} />
           </button>
         </div>
-        <div className="flex-1  flex lg:flex-row flex-col justify-end lg:items-center items-end gap-4">
+        <div className="flex-1 flex lg:flex-row flex-col justify-end lg:items-center items-end gap-4">
           <button>
             <TfiMenuAlt size={30} />
           </button>
@@ -77,9 +83,6 @@ const Subject = ({ edexcelSubjectLists, cambridgeSubjectLists }) => {
             board_name={cambridgeSubjectLists.board_name}
           />
         )}
-      </React.Fragment>
-
-      <React.Fragment>
         {edexcelInternationalALevelExamLists && (
           <InterNationalALevel
             subjectLists={edexcelInternationalALevelExamLists}
@@ -94,8 +97,6 @@ const Subject = ({ edexcelSubjectLists, cambridgeSubjectLists }) => {
             title="A-Level"
           />
         )}
-      </React.Fragment>
-      <React.Fragment>
         {edexcelALevelExamListsExamLists && (
           <InterNationalALevel
             subjectLists={edexcelALevelExamListsExamLists}
