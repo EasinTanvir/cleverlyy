@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 
 const CartContext = React.createContext();
@@ -20,6 +21,11 @@ export const ContextProvider = ({ children }) => {
 
   //selected Subject
   const [userSelectedSubject, setUserSelectedSubject] = useState(null);
+
+  //yearwise qps
+
+  const currentYear = dayjs().year();
+  const [selectedYear, setSelectedYear] = useState(currentYear - 1);
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,6 +69,8 @@ export const ContextProvider = ({ children }) => {
     setSelectedPaper,
     userSelectedSubject,
     setUserSelectedSubject,
+    selectedYear,
+    setSelectedYear,
   };
 
   return (

@@ -23,6 +23,7 @@ const InternationalGcse = ({ board_name, subjectLists }) => {
               chapterwise_progress={subject.chapterwise_progress}
               yearwise_progress={subject.yearwise_progress}
               board_name={board_name}
+              subject_id={subject.subject_id}
             />
           ))}
       </div>

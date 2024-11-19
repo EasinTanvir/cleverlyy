@@ -70,6 +70,7 @@ const ALevelSubject = ({
                   yearwise_progress={unit.yearwise_progress}
                   subject_name={subject_name}
                   board_name={board_name}
+                  subject_id={subject_id}
                 />
               ))}
             </div>

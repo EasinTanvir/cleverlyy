@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const { useContextProvider } = require("../../../../hooks/useContextProvider");
 
-const SubjectTitle = ({ variant = "inline" }) => {
+const SubjectTitle = ({ variant = "inline", extra = false }) => {
   const router = useRouter();
   const { userSelectedSubject } = useContextProvider();
 
@@ -18,7 +18,8 @@ const SubjectTitle = ({ variant = "inline" }) => {
   if (variant === "inline") {
     return (
       <span className="text-sm underline">
-        {userSelectedSubject?.subject_name} : {userSelectedSubject?.board_name}
+        {userSelectedSubject?.subject_name} : {userSelectedSubject?.board_name}{" "}
+        {extra ? " / Yearwise QPs" : null}
       </span>
     );
   }

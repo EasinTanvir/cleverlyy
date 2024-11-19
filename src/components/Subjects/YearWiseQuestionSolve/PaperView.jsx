@@ -110,14 +110,41 @@ const dummyData = {
   // Add more years if needed
 };
 
+function extractPaperIdsByYear(data, targetYear) {
+  let paperIds = [];
+
+  if (data[targetYear]) {
+    // Check if the target year exists in the data
+    for (const session in data[targetYear]) {
+      for (const variant in data[targetYear][session]) {
+        data[targetYear][session][variant].forEach((paper) => {
+          if (paper.paper_id && paper.type === "Question Paper") {
+            paperIds.push(paper.paper_id);
+          }
+        });
+      }
+    }
+  }
+
+  return paperIds;
+}
+
 import React, { useState } from "react";
 import { FaFileAlt, FaInfoCircle } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
 
-const PaperView = () => {
-  const [selectedSession, setSelectedSession] = useState("Jan/Feb");
+const PaperView = ({ yearWisePapers }) => {
+  const [selectedSession, setSelectedSession] = useState("May/June");
   const [selectedPaper, setSelectedPaper] = useState(null);
-  const data = dummyData["2014"];
+
+  const { selectedYear } = useContextProvider();
+
+  const data = yearWisePapers[selectedYear];
+
+  const papersId = extractPaperIdsByYear(yearWisePapers, selectedYear);
+
+  console.log(papersId);
 
   const handleTabClick = (session) => {
     setSelectedPaper(null);
@@ -202,32 +229,36 @@ const PaperView = () => {
           </div>
         )}
 
-        <div className="flex flex-wrap lg:justify-start justify-center gap-7  ">
-          {Object.entries(data[selectedSession]).map(([variant, papers]) => (
-            <div key={variant} className="p-4  rounded-xl bg-white  w-[330px]">
-              <h2 className="text-[22px] font-medium mb-2">{variant}</h2>
-              <div className="flex justify-end mb-2">
-                <span className="text-lg">Last Solved</span>
-              </div>
-              <ul className="space-y-5">
-                {papers.map((paper) => (
-                  <li
-                    onClick={() => setSelectedPaper(paper.paper_id)}
-                    key={paper.paper_id}
-                    className={`flex items-center justify-between cursor-pointer px-2 py-[6px]  ${
-                      selectedPaper === paper.paper_id
-                        ? "bg-yearBg  rounded-md"
-                        : ""
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
-                        <IoMdCheckmark size={15} className="" />
-                      </div>
+        {selectedSession && data && (
+          <div className="flex flex-wrap lg:justify-start justify-center gap-7  ">
+            {Object.entries(data[selectedSession]).map(([variant, papers]) => (
+              <div
+                key={variant}
+                className="p-4  rounded-xl bg-white  w-[330px]"
+              >
+                <h2 className="text-[22px] font-medium mb-2">{variant}</h2>
+                <div className="flex justify-end mb-2">
+                  <span className="text-lg">Last Solved</span>
+                </div>
+                <ul className="space-y-5">
+                  {papers.map((paper) => (
+                    <li
+                      onClick={() => setSelectedPaper(paper.paper_id)}
+                      key={paper.paper_id}
+                      className={`flex items-center justify-between cursor-pointer px-2 py-[6px]  ${
+                        selectedPaper === paper.paper_id
+                          ? "bg-yearBg  rounded-md"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
+                          <IoMdCheckmark size={15} className="" />
+                        </div>
 
-                      <span className="text-[18px]">{paper.paper}</span>
-                    </div>
-                    {/* <a
+                        <span className="text-[18px]">{paper.paper}</span>
+                      </div>
+                      {/* <a
                       href={paper.file_url}
                       className="text-blue-500 underline"
                       target="_blank"
@@ -236,13 +267,14 @@ const PaperView = () => {
                       View
                     </a> */}
 
-                    <span className="text-[18px]">76 (A)</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+                      <span className="text-[18px]">76 (A)</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,27 +1,47 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Divider } from "@mui/material";
 
 import ChapterWiseRevisionNotes from "@/components/Subjects/ChapterWiseRevisionNotes/ChapterWiseRevisionNotes";
 import WeeklyGoal from "@/components/Subjects/ChapterWiseRevisionNotes/WeeklyGoal";
 import { PiBookOpenTextDuotone } from "react-icons/pi";
+import Skeleton from "@/components/Skeleton";
+import SubjectTitle from "@/components/Subjects/SubjectInfo/SubjectTitle";
 
-const page = () => {
+const ChapterWiseRevisionNotesWrapper = async ({ subjectId }) => {
+  const response = await fetch(
+    `${process.env.BACKEND_URL}/revision-notes/7/${subjectId}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  if (!data) {
+    throw new Error("Failed to fetch chapterwise revision notes data");
+  }
+
+  return <ChapterWiseRevisionNotes revisionNoteLists={data} />;
+};
+
+const ChapterWiseRevisionNote = async ({ params }) => {
+  const { subjectId } = await params;
   return (
     <div className="md:p-8 p-4">
       <>
         <div className="flex items-center gap-2 ">
           <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
-          <span className="text-sm underline ">
-            Cambridge Chemistry : O-level / Revision Notes
-          </span>
+          <SubjectTitle variant="inline" />
         </div>
 
         <div className="flex lg:flex-row flex-col items-center lg:gap-0 gap-7">
           <div className="flex-1  space-y-6">
-            <h1 className="text-[28px] font-bold mt-5">
-              Cambridge Chemistry : O level -{" "}
-              <span className="text-textColor">Revision Notes</span>
-            </h1>
+            <SubjectTitle variant="heading" />
             <p>
               Expertly curated notes simplify complex topics, highlighting key
               concepts for exam success.
@@ -41,9 +61,17 @@ const page = () => {
         <Divider className="text-black mt-12" />
       </>
 
-      <ChapterWiseRevisionNotes />
+      <Suspense
+        fallback={
+          <div className="py-9">
+            <Skeleton />
+          </div>
+        }
+      >
+        <ChapterWiseRevisionNotesWrapper subjectId={subjectId} />
+      </Suspense>
     </div>
   );
 };
 
-export default page;
+export default ChapterWiseRevisionNote;

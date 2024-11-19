@@ -1,12 +1,22 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import dayjs from "dayjs";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
 
-export const YearSelector = () => {
+export const YearSelector = ({ yearWisePapers }) => {
   const scrollRef = useRef(null);
-  const [selectedYear, setSelectedYear] = useState(dayjs().year());
+
+  const { selectedYear, setSelectedYear } = useContextProvider();
+
+  // Extract years from the API data
+  const years = Object.keys(yearWisePapers).map(Number);
+
+  // Set the default selected year to the current year if it exists in the data
+  // const currentYear = dayjs().year();
+  // const [selectedYear, setSelectedYear] = useState(
+  //   years.includes(currentYear) ? currentYear : currentYear - 1 // Default to the first year if currentYear doesn't exist
+  // );
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -20,21 +30,17 @@ export const YearSelector = () => {
     }
   };
 
-  // Generate a range of years from 1990 to 2090
-  const years = Array.from({ length: 101 }, (_, index) => 1990 + index);
-  const currentYear = dayjs().year();
-
   // Automatically scroll to the current year on initial render
   useEffect(() => {
-    if (scrollRef.current && selectedYear === currentYear) {
-      const currentYearIndex = years.indexOf(currentYear);
-      const offset = (currentYearIndex - 5) * 80;
+    if (scrollRef.current && selectedYear) {
+      const currentYearIndex = years.indexOf(selectedYear);
+      const offset = (currentYearIndex - 2) * 80; // Adjust offset for better centering
       scrollRef.current.scrollTo({
         left: Math.max(offset, 0),
         behavior: "smooth",
       });
     }
-  }, [years, currentYear, selectedYear]);
+  }, [years, selectedYear]);
 
   return (
     <div className="flex items-center space-x-4">
@@ -49,7 +55,7 @@ export const YearSelector = () => {
       {/* Scrollable Container */}
       <div
         ref={scrollRef}
-        className="flex overflow-x-hidden space-x-5 p-2  rounded-md"
+        className="flex overflow-x-hidden space-x-5 p-2 rounded-md"
         style={{ whiteSpace: "nowrap" }}
       >
         {years.map((year) => (
@@ -67,7 +73,6 @@ export const YearSelector = () => {
 
       {/* Right Arrow Icon */}
       <button onClick={scrollRight}>
-        {" "}
         <MdKeyboardArrowRight
           size={26}
           className="cursor-pointer text-4xl hover:text-gray-700"

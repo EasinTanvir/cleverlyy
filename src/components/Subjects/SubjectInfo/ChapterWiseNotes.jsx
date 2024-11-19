@@ -8,6 +8,9 @@ import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 const ChapterWiseNotes = () => {
   const { userSelectedSubject } = useContextProvider();
+
+  console.log(userSelectedSubject);
+
   return (
     <div className="relative w-80 mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
@@ -63,7 +66,9 @@ const ChapterWiseNotes = () => {
       </div>
 
       <div className="mt-6 mb-3 text-center ">
-        <Link href="/subjects/chapterwise-revision-notes">
+        <Link
+          href={`/subjects/chapterwise-revision-notes/${userSelectedSubject?.subject_id}`}
+        >
           <button className="w-40 bg-textColor4  text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor font-bold">
             Revise
           </button>

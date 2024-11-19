@@ -15,6 +15,7 @@ const GcseSubjectCart = ({
   chapterwise_progress,
   subject_name,
   board_name,
+  subject_id,
 }) => {
   const { setUserSelectedSubject } = useContextProvider();
 
@@ -27,6 +28,7 @@ const GcseSubjectCart = ({
           chapterwise_progress,
           subject_name,
           board_name,
+          subject_id,
         })
       }
       href="/subjects/info"

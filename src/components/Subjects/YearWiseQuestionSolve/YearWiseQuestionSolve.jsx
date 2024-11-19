@@ -3,34 +3,38 @@ import { PiBookOpenTextDuotone } from "react-icons/pi";
 
 import { YearSelector } from "./YearSelector";
 import PaperView from "./PaperView";
+import { NotFound } from "@/components/NotFound";
 
-const YearWiseQuestionSolve = () => {
+const YearWiseQuestionSolve = ({ yearWisePapers }) => {
   return (
-    <div className="">
-      <div className="flex items-center gap-2">
-        <PiBookOpenTextDuotone size={25} /> <span className="-me-1">/</span>
-        <span className="text-sm underline ">
-          Cambridge Chemistry : O-level / Yearwise QPs
-        </span>
-      </div>
-
-      <div className="mt-10 bg-yearBg p-5 rounded-2xl space-y-1">
-        <div className="flex justify-between items-center">
-          <h1 className="text-[22px]">
-            Year <span className="text-iconColor4 text-[20px]">(+/-)</span>
-          </h1>
-          <h1 className="underline text-iconColor4 italic text-[20px]">
-            {" "}
-            Specimen Papers
-          </h1>
+    <React.Fragment>
+      {yearWisePapers ? (
+        <>
+          <div className="mt-10 bg-yearBg p-5 rounded-2xl space-y-1">
+            <div className="flex justify-between items-center">
+              <h1 className="text-[22px]">
+                Year <span className="text-iconColor4 text-[20px]">(+/-)</span>
+              </h1>
+              <h1 className="underline text-iconColor4 italic text-[20px]">
+                {" "}
+                Specimen Papers
+              </h1>
+            </div>
+            <YearSelector yearWisePapers={yearWisePapers} />
+          </div>
+          <div className="mt-20 ">
+            <PaperView yearWisePapers={yearWisePapers} />
+          </div>
+        </>
+      ) : (
+        <div className="my-14">
+          <NotFound
+            title="YearWise Progress Data is not Avaiable"
+            desc="Please try with different subject"
+          />
         </div>
-        <YearSelector />
-      </div>
-
-      <div className="mt-20 ">
-        <PaperView />
-      </div>
-    </div>
+      )}
+    </React.Fragment>
   );
 };
 
