@@ -117,7 +117,7 @@ const ResourceLayout = ({ subjectLists }) => {
 
                 setUserSelectedSubject({
                   subject_name: subject.subject_name,
-                  board_name: selectedBoard.board_name,
+                  board_name: selectedBoard.board_name || "Cambridge",
                 });
               }}
             >

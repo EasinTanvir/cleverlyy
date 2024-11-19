@@ -17,13 +17,16 @@ const ChapterWiseRevisionNotesWrapper = async ({ subjectId }) => {
   );
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(
+      errorData.message || `HTTP error! status: ${response.status}`
+    );
   }
 
   const data = await response.json();
 
   if (!data) {
-    throw new Error("Failed to fetch chapterwise revision notes data");
+    throw new Error("Failed to fetch yearwise notes data");
   }
 
   return <ChapterWiseRevisionNotes revisionNoteLists={data} />;

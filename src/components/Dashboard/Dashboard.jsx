@@ -47,6 +47,7 @@ const Dashboard = () => {
                   "Flashcards: Coming Soon",
                 ]}
                 red
+                link="/resources/revisionnote"
               />
               <ResourceCart
                 title="Yearwise QP"
@@ -55,6 +56,7 @@ const Dashboard = () => {
                   "Digitally solvable papers",
                   "AI checking",
                 ]}
+                link="/resources/yearwise"
               />
               <ResourceCart
                 title="Chapterwise QP"
@@ -63,6 +65,7 @@ const Dashboard = () => {
                   "Progress Tracking",
                   "Quizzes: Coming Soon",
                 ]}
+                link="/resources/chapterwise"
               />
               <ResourceCart
                 title="Other Resources"
@@ -71,6 +74,7 @@ const Dashboard = () => {
                   "Grade Boundaries",
                   " Recommended Books",
                 ]}
+                link="/resources/otherresource"
                 noResource
               />
             </div>
@@ -119,7 +123,10 @@ const Dashboard = () => {
             </div>
 
             <div className="flex extralg:flex-row flex-col gap-4 pt-5">
-              <div className="extralg:w-[50%] w-full  flex-center border rounded-3xl h-[190px]   bg-[#2a0055]">
+              <Link
+                href="/aichecking"
+                className="extralg:w-[50%] w-full  flex-center border rounded-3xl h-[190px]   bg-[#2a0055]"
+              >
                 <button className="ai-button">
                   <div className="ai-button-content">
                     <div>
@@ -136,7 +143,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </button>
-              </div>
+              </Link>
               <div className="border border-black min-h-[190px]  rounded-2xl p-5 extralg:w-[50%] w-full">
                 <div className="flex justify-between">
                   <h1 className="title w-1/2">

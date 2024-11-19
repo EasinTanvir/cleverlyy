@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { FaChevronDown, FaFilePdf, FaInfoCircle } from "react-icons/fa";
-import { BsUpload } from "react-icons/bs";
 import Link from "next/link";
 
 const data = [

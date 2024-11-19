@@ -39,8 +39,6 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
 const YearWiseQuestionSolves = async ({ params }) => {
   const { subjectId } = await params;
 
-  console.log(subjectId);
-
   return (
     <div className="md:p-8 p-4">
       <>

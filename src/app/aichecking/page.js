@@ -1,12 +1,36 @@
-import React from "react";
+import React, { Suspense } from "react";
 import AiChecking from "@/components/AiChecking/AiChecking";
+import Skeleton from "@/components/Skeleton";
 
-const page = () => {
+const AiCheckingHelper = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/all`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  if (!data) {
+    throw new Error("Failed to fetch available subjects");
+  }
+
+  return <AiChecking subjectLists={data} />;
+};
+
+const AiCheckings = () => {
   return (
     <div className=" bg-dashboardBd">
-      <AiChecking />
+      <Suspense fallback={<Skeleton />}>
+        <AiCheckingHelper />
+      </Suspense>
     </div>
   );
 };
 
-export default page;
+export default AiCheckings;

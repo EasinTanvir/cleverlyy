@@ -26,6 +26,7 @@ export const ContextProvider = ({ children }) => {
 
   const currentYear = dayjs().year();
   const [selectedYear, setSelectedYear] = useState(currentYear - 1);
+  const [selectedSession, setSelectedSession] = useState("May/June");
 
   //dropdown
   const [dropDownSelectedYear, setDropDownSelectedYear] = useState("");
@@ -75,6 +76,8 @@ export const ContextProvider = ({ children }) => {
     setUserSelectedSubject,
     selectedYear,
     setSelectedYear,
+    selectedSession,
+    setSelectedSession,
     dropDownSelectedYear,
     setDropDownSelectedYear,
     dropDownSelectedSession,

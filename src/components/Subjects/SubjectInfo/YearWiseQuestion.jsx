@@ -61,8 +61,8 @@ const YearWiseQuestion = () => {
       {/* Solve Button */}
       <div className="mt-6 mb-3 text-center ">
         <Link
-          // href={`/subjects/yearwise-question-solve/${userSelectedSubject?.subject_id}`}
-          href={`/subjects/yearwise-question-solve/17`}
+          href={`/subjects/yearwise-question-solve/${userSelectedSubject?.subject_id}`}
+          //href={`/subjects/yearwise-question-solve/17`}
         >
           <button className="w-40 bg-textColor4  text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor font-bold">
             Solve

@@ -3,10 +3,10 @@ import ResourceLayout from "../Resources/ResourceLayout";
 import AiPaperSelector from "./AiPaperSelector";
 import AiLayoutWrapper from "./AiLayoutWrapper";
 
-const AiChecking = () => {
+const AiChecking = ({ subjectLists }) => {
   return (
     <div>
-      <ResourceLayout />
+      <ResourceLayout subjectLists={subjectLists} />
       <AiLayoutWrapper>
         <div className="md:p-8 p-4">
           <AiPaperSelector />

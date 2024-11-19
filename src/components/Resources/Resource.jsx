@@ -1,24 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { MdFace } from "react-icons/md";
 import { FiArrowRight } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { Dropdown } from "./DropDown";
 import Skeleton from "../Skeleton";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Resource = () => {
-  const { selectedExam, setSelectedExam, selectedSubject, setSelectedSubject } =
-    useContextProvider();
+  const { selectedExam, selectedSubject } = useContextProvider();
 
   const [subjectInfo, setSubjectInfo] = useState(null);
   const [loader, setLoader] = useState(false);
-
-  console.log("subjectInfo", subjectInfo);
-
-  if (!selectedExam || !selectedSubject) return;
 
   const fetchSubjectInfo = async (subject_id) => {
     try {
@@ -54,6 +48,8 @@ const Resource = () => {
     }
   }, [selectedSubject]);
 
+  if (!selectedExam || !selectedSubject) return;
+
   if (loader)
     return (
       <div className="mt-10">
@@ -81,6 +77,7 @@ const Resource = () => {
                       title="Chapterwise Revision Notes"
                       link="/subjects/chapterwise-revision-notes"
                       progress={subjectInfo?.revision_progress}
+                      allowed
                     />
                   </div>
                 </div>
@@ -102,18 +99,25 @@ const Resource = () => {
 
 export default Resource;
 
-const ChapterWiseRevisioncard = ({ title, link, progress }) => {
+const ChapterWiseRevisioncard = ({
+  title,
+  link,
+  progress,
+  allowed = false,
+}) => {
   const { selectedSubject } = useContextProvider();
 
   const router = useRouter();
 
   const onNavigateHandler = () => {
-    const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
-    router.push(redirectUrl);
+    if (allowed) {
+      const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
+      router.push(redirectUrl);
+    }
   };
 
   return (
-    <div onClick={onNavigateHandler}>
+    <div className="cursor-pointer" onClick={onNavigateHandler}>
       <div className="px-6 py-7 border border-borderColor2 rounded-2xl">
         <h1 className="title">{title}</h1>
         <div className="mt-4">
@@ -139,15 +143,15 @@ const ChapterWiseRevisioncard = ({ title, link, progress }) => {
 };
 
 const YearWisecard = ({ title, link, yearwise_progress }) => {
-  const { dropDownSelectedYear, dropDownSelectedSession, selectedSubject } =
+  const { selectedYear, selectedSession, selectedSubject } =
     useContextProvider();
 
   const router = useRouter();
 
   const onNavigateHandler = () => {
-    if (!dropDownSelectedYear || !dropDownSelectedSession) {
-      return alert("chosse");
-    }
+    // if (!selectedSession || !selectedYear) {
+    //   return toast.error("Please select year and session");
+    // }
 
     const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
     router.push(redirectUrl);

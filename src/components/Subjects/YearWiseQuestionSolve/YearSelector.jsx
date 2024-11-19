@@ -63,7 +63,7 @@ export const YearSelector = ({ yearWisePapers }) => {
             key={year}
             onClick={() => setSelectedYear(year)}
             className={`inline-block px-4 py-[6px] text-lg font-medium border rounded-lg cursor-pointer ${
-              year === selectedYear ? "bg-textColor4 text-white" : "bg-white"
+              year == selectedYear ? "bg-textColor4 text-white" : "bg-white"
             }`}
           >
             {year}

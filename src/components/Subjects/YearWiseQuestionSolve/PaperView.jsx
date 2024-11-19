@@ -8,14 +8,17 @@ import { extractPaperIdsByYear } from "@/utils/helper";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 const PaperView = ({ yearWisePapers, subjectId }) => {
-  const [selectedSession, setSelectedSession] = useState("May/June");
   const [selectedPaper, setSelectedPaper] = useState(null);
   const [selectedPaperView, setSelectedPaperView] = useState(null);
   const [selectedPaperVariant, setSelectedPaperVariant] = useState(null);
 
-  const { selectedYear } = useContextProvider();
+  const { selectedYear, selectedSession, setSelectedSession } =
+    useContextProvider();
 
-  const data = yearWisePapers[selectedYear];
+  console.log("selectedYear", selectedYear);
+  console.log("selectedYear type", typeof selectedYear);
+
+  const data = yearWisePapers[Number(selectedYear)];
 
   const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
 
@@ -59,6 +62,8 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
       progressDetailsHandler(papersIdLists, subjectId);
     }
   }, [selectedYear, subjectId]);
+
+  if (!data || !selectedYear) return;
 
   return (
     <div className="">
