@@ -14,7 +14,10 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
   );
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(
+      errorData.message || `HTTP error! status: ${response.status}`
+    );
   }
 
   const data = await response.json();
@@ -35,6 +38,8 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
 
 const YearWiseQuestionSolves = async ({ params }) => {
   const { subjectId } = await params;
+
+  console.log(subjectId);
 
   return (
     <div className="md:p-8 p-4">

@@ -5,7 +5,7 @@ const CartContext = React.createContext();
 
 export const ContextProvider = ({ children }) => {
   const [sideBarOpen, setSidebarOpen] = useState(true);
-  const [selectedBoard, setSelectedBoard] = useState("Cambridge");
+  const [selectedBoard, setSelectedBoard] = useState({ board_id: 2 });
   const [selectedExam, setSelectedExam] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
 
@@ -26,6 +26,10 @@ export const ContextProvider = ({ children }) => {
 
   const currentYear = dayjs().year();
   const [selectedYear, setSelectedYear] = useState(currentYear - 1);
+
+  //dropdown
+  const [dropDownSelectedYear, setDropDownSelectedYear] = useState("");
+  const [dropDownSelectedSession, setdropDownSelectedSession] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,6 +75,10 @@ export const ContextProvider = ({ children }) => {
     setUserSelectedSubject,
     selectedYear,
     setSelectedYear,
+    dropDownSelectedYear,
+    setDropDownSelectedYear,
+    dropDownSelectedSession,
+    setdropDownSelectedSession,
   };
 
   return (

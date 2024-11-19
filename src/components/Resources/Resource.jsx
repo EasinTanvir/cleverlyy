@@ -1,17 +1,65 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MdFace } from "react-icons/md";
 import { FiArrowRight } from "react-icons/fi";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { Dropdown } from "./DropDown";
+import Skeleton from "../Skeleton";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Resource = () => {
   const { selectedExam, setSelectedExam, selectedSubject, setSelectedSubject } =
     useContextProvider();
 
+  const [subjectInfo, setSubjectInfo] = useState(null);
+  const [loader, setLoader] = useState(false);
+
+  console.log("subjectInfo", subjectInfo);
+
   if (!selectedExam || !selectedSubject) return;
+
+  const fetchSubjectInfo = async (subject_id) => {
+    try {
+      setLoader(true); // Start loader before the fetch
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/7/${subject_id}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (!data) {
+        throw new Error("Failed to fetch Subject info");
+      }
+
+      setSubjectInfo(data);
+    } catch (error) {
+      throw new Error("Error fetching subject info:", error);
+    } finally {
+      setLoader(false);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedSubject?.subject_id) {
+      fetchSubjectInfo(selectedSubject?.subject_id);
+    }
+  }, [selectedSubject]);
+
+  if (loader)
+    return (
+      <div className="mt-10">
+        <Skeleton />
+      </div>
+    );
 
   return (
     <div>
@@ -25,12 +73,14 @@ const Resource = () => {
                     <ChapterWiseRevisioncard
                       title="Chapterwise Question Paper"
                       link="/resources"
+                      progress={subjectInfo?.chapterwise_progress}
                     />
                   </div>
                   <div className="">
                     <ChapterWiseRevisioncard
                       title="Chapterwise Revision Notes"
                       link="/subjects/chapterwise-revision-notes"
+                      progress={subjectInfo?.revision_progress}
                     />
                   </div>
                 </div>
@@ -38,6 +88,7 @@ const Resource = () => {
                   <YearWisecard
                     title="Yearwise Question Paper"
                     link="/subjects/yearwise-question-solve"
+                    yearwise_progress={subjectInfo?.yearwise_progress}
                   />
                 </div>
               </div>
@@ -51,19 +102,28 @@ const Resource = () => {
 
 export default Resource;
 
-const ChapterWiseRevisioncard = ({ title, link }) => {
+const ChapterWiseRevisioncard = ({ title, link, progress }) => {
+  const { selectedSubject } = useContextProvider();
+
+  const router = useRouter();
+
+  const onNavigateHandler = () => {
+    const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
+    router.push(redirectUrl);
+  };
+
   return (
-    <Link href={link}>
+    <div onClick={onNavigateHandler}>
       <div className="px-6 py-7 border border-borderColor2 rounded-2xl">
         <h1 className="title">{title}</h1>
         <div className="mt-4">
           <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
             <div
               className="bg-purple-500 h-[14px] rounded-full relative"
-              style={{ width: "50%" }}
+              style={{ width: `${progress}%` }}
             >
               <span className="text-white text-[10px] absolute right-2  top-0  ">
-                50%
+                {progress}%
               </span>
             </div>
           </div>
@@ -74,11 +134,25 @@ const ChapterWiseRevisioncard = ({ title, link }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-const YearWisecard = ({ title, link }) => {
+const YearWisecard = ({ title, link, yearwise_progress }) => {
+  const { dropDownSelectedYear, dropDownSelectedSession, selectedSubject } =
+    useContextProvider();
+
+  const router = useRouter();
+
+  const onNavigateHandler = () => {
+    if (!dropDownSelectedYear || !dropDownSelectedSession) {
+      return alert("chosse");
+    }
+
+    const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
+    router.push(redirectUrl);
+  };
+
   return (
     <div className="p-6 border border-borderColor2 rounded-2xl min-h-full max-h-full  relative">
       <h1 className="title">{title}</h1>
@@ -86,10 +160,10 @@ const YearWisecard = ({ title, link }) => {
         <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
           <div
             className="bg-purple-500 h-[14px] rounded-full relative"
-            style={{ width: "50%" }}
+            style={{ width: `${yearwise_progress}%` }}
           >
             <span className="text-white text-[10px] absolute right-2  top-0  ">
-              50%
+              {yearwise_progress}%
             </span>
           </div>
         </div>
@@ -107,11 +181,11 @@ const YearWisecard = ({ title, link }) => {
 
       <Dropdown />
 
-      <Link href={link}>
-        <button className="absolute right-3.5 bottom-3.5 w-6 h-6 rounded-full bg-black flex-center">
+      <button onClick={onNavigateHandler}>
+        <span className="absolute right-3.5 bottom-3.5 w-6 h-6 rounded-full bg-black flex-center">
           <FiArrowRight size={16} className="text-white" />
-        </button>
-      </Link>
+        </span>
+      </button>
     </div>
   );
 };

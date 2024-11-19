@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useContextProvider } from "../../../hooks/useContextProvider";
+
 const { FaChevronDown } = require("react-icons/fa");
 
 export const Dropdown = () => {
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedSession, setSelectedSession] = useState("");
+  const {
+    dropDownSelectedYear,
+    setDropDownSelectedYear,
+    dropDownSelectedSession,
+    setdropDownSelectedSession,
+  } = useContextProvider();
 
-  const years = ["2024", "2023", "2022", "2021", "2020"];
-  const sessions = ["Jan/Feb", "May/June", "Oct/Nov"];
+  const years = Array.from({ length: 21 }, (_, i) => (2010 + i).toString());
+  const sessions = ["Jan", "Jan/Feb", "May/June", "Oct/Nov"];
 
   return (
     <div className="flex  flex-col gap-4 mt-5">
       <div className="relative w-60">
         <select
           className="w-full  py-2  px-3 text-sm  bg-white border  border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value)}
+          value={dropDownSelectedYear}
+          onChange={(e) => setDropDownSelectedYear(e.target.value)}
         >
           <option value="" disabled>
             Select Year
@@ -31,8 +36,8 @@ export const Dropdown = () => {
       <div className="relative w-60">
         <select
           className="w-full px-3 py-2  text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          value={selectedSession}
-          onChange={(e) => setSelectedSession(e.target.value)}
+          value={dropDownSelectedSession}
+          onChange={(e) => setdropDownSelectedSession(e.target.value)}
         >
           <option value="" disabled>
             Select Session

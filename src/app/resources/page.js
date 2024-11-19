@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Resource from "@/components/Resources/Resource";
 
-const page = () => {
+const Resources = () => {
   return (
     <>
       <Resource />
@@ -9,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Resources;
