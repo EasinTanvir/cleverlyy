@@ -5,10 +5,15 @@ import { YearSelector } from "./YearSelector";
 import PaperView from "./PaperView";
 import { NotFound } from "@/components/NotFound";
 
-const YearWiseQuestionSolve = ({ yearWisePapers, subjectId }) => {
+const YearWiseQuestionSolve = ({
+  yearWisePapers,
+  isPapaperExist,
+  subjectId,
+  message,
+}) => {
   return (
     <React.Fragment>
-      {yearWisePapers ? (
+      {yearWisePapers && isPapaperExist ? (
         <>
           <div className="mt-10 bg-yearBg p-5 rounded-2xl space-y-1">
             <div className="flex justify-between items-center">
@@ -28,10 +33,7 @@ const YearWiseQuestionSolve = ({ yearWisePapers, subjectId }) => {
         </>
       ) : (
         <div className="my-14">
-          <NotFound
-            title="YearWise Progress Data is not Avaiable"
-            desc="Please try with different subject"
-          />
+          <NotFound title={message} desc="Please try with different subject" />
         </div>
       )}
     </React.Fragment>

@@ -26,12 +26,25 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
     throw new Error("Failed to fetch chapterwise revision notes data");
   }
 
-  const yearWisePapers = Object.keys(data).length === 0 ? false : data;
+  let yearWisePapers,
+    message,
+    isPapaperExist = false;
+
+  if (data && Object.keys(data).length === 1 && data.message) {
+    console.log("Message:", data.message);
+    isPapaperExist = false;
+    message = data.message;
+  } else {
+    isPapaperExist = true;
+    yearWisePapers = Object.keys(data).length === 0 ? false : data;
+  }
 
   return (
     <YearWiseQuestionSolve
       yearWisePapers={yearWisePapers}
       subjectId={subjectId}
+      isPapaperExist
+      message={message}
     />
   );
 };
