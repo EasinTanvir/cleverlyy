@@ -11,7 +11,7 @@ import subjects from "@/utils";
 import SubjectCart from "./SubjectCart";
 import SwipperButton from "./SwipperButton";
 
-const Subject = () => {
+const Subject = ({ subjectLists }) => {
   return (
     <div className="mt-4 rounded-md relative ">
       <Swiper
@@ -45,9 +45,9 @@ const Subject = () => {
         modules={[EffectFade]}
         scrollbar={{ draggable: true }}
       >
-        {subjects.map((item, i) => (
+        {subjectLists.map((item, i) => (
           <SwiperSlide key={i}>
-            <SubjectCart title={item} />
+            <SubjectCart title={item.subject_name} />
           </SwiperSlide>
         ))}
         <SwipperButton />

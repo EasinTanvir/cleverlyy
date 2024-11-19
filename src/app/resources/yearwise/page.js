@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import ResourceYearWiseQp from "@/components/Resources/ResourceYearWiseQp/ResourceYearWiseQp";
 
-const page = () => {
+const ResourceYearWiseQuestionSolvePage = () => {
   return (
     <>
       <ResourceYearWiseQp />
@@ -9,4 +11,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ResourceYearWiseQuestionSolvePage;

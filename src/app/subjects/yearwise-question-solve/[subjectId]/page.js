@@ -36,7 +36,7 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
   );
 };
 
-const YearWiseQuestionSolves = async ({ params }) => {
+const YearWiseQuestionSolvePage = async ({ params }) => {
   const { subjectId } = await params;
 
   return (
@@ -58,4 +58,4 @@ const YearWiseQuestionSolves = async ({ params }) => {
   );
 };
 
-export default YearWiseQuestionSolves;
+export default YearWiseQuestionSolvePage;

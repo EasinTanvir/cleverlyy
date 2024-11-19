@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { HiPencil } from "react-icons/hi2";
 import { RiArrowRightWideFill } from "react-icons/ri";
@@ -14,6 +14,7 @@ import MeetingItem from "./MeetingCard";
 import { meetingsData } from "../../utils";
 import Notifications from "./Notification";
 import Carousel from "./carousel";
+import Skeleton from "../Skeleton";
 
 const dummyData = [
   { revisionNotes: 12, chapterwiseQP: 8, yearwiseQP: 15 },
@@ -23,6 +24,34 @@ const dummyData = [
   { revisionNotes: 10, chapterwiseQP: 7, yearwiseQP: 13 },
   { revisionNotes: 13, chapterwiseQP: 9, yearwiseQP: 17 },
 ];
+
+const SubjectWrapper = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/all`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(
+      errorData.message || `HTTP error! status: ${response.status}`
+    );
+  }
+
+  const data = await response.json();
+  if (!data) {
+    throw new Error("Failed to fetch available subjects");
+  }
+
+  const allSubjects = data.flatMap((board) =>
+    board.exams.flatMap((exam) => exam.subjects)
+  );
+
+  return <Subject subjectLists={allSubjects} />;
+};
 
 const Dashboard = () => {
   return (
@@ -81,7 +110,9 @@ const Dashboard = () => {
 
             <div className="overflow-hidden">
               <h1 className="title">Your Subjects</h1>
-              <Subject />
+              <Suspense fallback={<Skeleton />}>
+                <SubjectWrapper />
+              </Suspense>
             </div>
 
             <div className="bg-white rounded-3xl p-5">
