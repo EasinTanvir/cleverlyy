@@ -129,27 +129,64 @@ function extractPaperIdsByYear(data, targetYear) {
   return paperIds;
 }
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaFileAlt, FaInfoCircle } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
+import SubjectTitle from "../SubjectInfo/SubjectTitle";
 
-const PaperView = ({ yearWisePapers }) => {
+const PaperView = ({ yearWisePapers, subjectId }) => {
   const [selectedSession, setSelectedSession] = useState("May/June");
   const [selectedPaper, setSelectedPaper] = useState(null);
+  const [selectedPaperView, setSelectedPaperView] = useState(null);
+  const [selectedPaperVariant, setSelectedPaperVariant] = useState(null);
 
   const { selectedYear } = useContextProvider();
 
   const data = yearWisePapers[selectedYear];
 
-  const papersId = extractPaperIdsByYear(yearWisePapers, selectedYear);
-
-  console.log(papersId);
+  const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
 
   const handleTabClick = (session) => {
     setSelectedPaper(null);
     setSelectedSession(session);
   };
+
+  const progressDetailsHandler = async (papersIdLists, subjectId) => {
+    try {
+      const response = await fetch(
+        //`${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${subjectId}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${7}`,
+        {
+          method: "POST", // Correctly set the method here
+          headers: { "Content-Type": "application/json" }, // Add headers here
+          //body: JSON.stringify({ paperIds: papersIdLists }), // Include body here
+          body: JSON.stringify({ paperIds: [1093, 1095] }), // Include body here
+        }
+      );
+
+      // Handle the response (optional)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json(); // Parse the JSON response
+      console.log("my paper data", data);
+    } catch (err) {
+      console.error(err); // Log the error for debugging
+    }
+  };
+
+  useEffect(() => {
+    if (
+      selectedYear &&
+      papersIdLists &&
+      papersIdLists.length > 0 &&
+      subjectId
+    ) {
+      progressDetailsHandler(papersIdLists, subjectId);
+    }
+  }, [selectedYear, subjectId]);
 
   return (
     <div className="">
@@ -174,9 +211,10 @@ const PaperView = ({ yearWisePapers }) => {
         ) : (
           <div className="flex lg:flex-row flex-col lg:items-start items-center justify-between mb-6">
             <div className="flex-1  pt-3">
-              <span className="text-sm">Cambridge O Level: Chemistry</span>
+              <SubjectTitle variant="inline" />
               <h1 className="text-[26px] font-medium">
-                2019: May/June Variant 1 Paper 1
+                {selectedYear}: {selectedSession} {selectedPaperVariant}{" "}
+                {selectedPaperView?.paper}
               </h1>
               <button className=" mt-4 py-3 px-7 border">Solve</button>
             </div>
@@ -243,7 +281,11 @@ const PaperView = ({ yearWisePapers }) => {
                 <ul className="space-y-5">
                   {papers.map((paper) => (
                     <li
-                      onClick={() => setSelectedPaper(paper.paper_id)}
+                      onClick={() => {
+                        setSelectedPaper(paper.paper_id);
+                        setSelectedPaperView(paper);
+                        setSelectedPaperVariant(variant);
+                      }}
                       key={paper.paper_id}
                       className={`flex items-center justify-between cursor-pointer px-2 py-[6px]  ${
                         selectedPaper === paper.paper_id

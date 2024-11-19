@@ -1,9 +1,7 @@
 import React, { Suspense } from "react";
 
-import { PiBookOpenTextDuotone } from "react-icons/pi";
 import Skeleton from "@/components/Skeleton";
 import YearWiseQuestionSolve from "@/components/Subjects/YearWiseQuestionSolve/YearWiseQuestionSolve";
-import { YearSelector } from "@/components/Subjects/YearWiseQuestionSolve/YearSelector";
 import SubjectTitle from "@/components/Subjects/SubjectInfo/SubjectTitle";
 
 const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
@@ -27,7 +25,12 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
 
   const yearWisePapers = Object.keys(data).length === 0 ? false : data;
 
-  return <YearWiseQuestionSolve yearWisePapers={yearWisePapers} />;
+  return (
+    <YearWiseQuestionSolve
+      yearWisePapers={yearWisePapers}
+      subjectId={subjectId}
+    />
+  );
 };
 
 const YearWiseQuestionSolves = async ({ params }) => {

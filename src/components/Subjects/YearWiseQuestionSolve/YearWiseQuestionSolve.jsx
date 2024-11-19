@@ -5,7 +5,7 @@ import { YearSelector } from "./YearSelector";
 import PaperView from "./PaperView";
 import { NotFound } from "@/components/NotFound";
 
-const YearWiseQuestionSolve = ({ yearWisePapers }) => {
+const YearWiseQuestionSolve = ({ yearWisePapers, subjectId }) => {
   return (
     <React.Fragment>
       {yearWisePapers ? (
@@ -23,7 +23,7 @@ const YearWiseQuestionSolve = ({ yearWisePapers }) => {
             <YearSelector yearWisePapers={yearWisePapers} />
           </div>
           <div className="mt-20 ">
-            <PaperView yearWisePapers={yearWisePapers} />
+            <PaperView yearWisePapers={yearWisePapers} subjectId={subjectId} />
           </div>
         </>
       ) : (
