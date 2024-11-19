@@ -30,7 +30,7 @@ export const Dropdown = () => {
 
       <div className="relative w-60">
         <select
-          className="w-full px-3 py-2  bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-3 py-2  text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
           value={selectedSession}
           onChange={(e) => setSelectedSession(e.target.value)}
         >

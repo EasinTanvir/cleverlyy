@@ -6,7 +6,7 @@ import SubjectTitle from "@/components/Subjects/SubjectInfo/SubjectTitle";
 
 const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
   const response = await fetch(
-    `${process.env.BACKEND_URL}/papers/?subject_id=${subjectId}`,
+    `${process.env.BACKEND_URL}/papers/user/?user_id=7&subject_id=${subjectId}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },

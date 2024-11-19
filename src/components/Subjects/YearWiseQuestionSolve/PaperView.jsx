@@ -1,139 +1,11 @@
 "use client";
-const dummyData = {
-  2014: {
-    "Jan/Feb": {
-      "Variant-1": [
-        {
-          paper_id: 1701,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_w14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper1.pdf",
-        },
-        {
-          paper_id: 1702,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper2.pdf",
-        },
-      ],
-      "Variant-2": [
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-      ],
-    },
-    "May/June": {
-      "Variant-1": [
-        {
-          paper_id: 1707,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_s14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper5.pdf",
-        },
-        {
-          paper_id: 1710,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_s14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper6.pdf",
-        },
-      ],
-    },
-    "Oct/Nov": {
-      "Variant-1": [
-        {
-          paper_id: 1721,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper9.pdf",
-        },
-        {
-          paper_id: 1722,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_f14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper10.pdf",
-        },
-      ],
-      "Variant-2": [
-        {
-          paper_id: 1723,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper11.pdf",
-        },
-        {
-          paper_id: 1724,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_f14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper12.pdf",
-        },
-      ],
-      "Variant-3": [
-        {
-          paper_id: 1733,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper11.pdf",
-        },
-        {
-          paper_id: 1734,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_f14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper12.pdf",
-        },
-      ],
-    },
-  },
-  2015: {
-    // Add similar data structure for each year/session/variant
-  },
-  // Add more years if needed
-};
-
-function extractPaperIdsByYear(data, targetYear) {
-  let paperIds = [];
-
-  if (data[targetYear]) {
-    // Check if the target year exists in the data
-    for (const session in data[targetYear]) {
-      for (const variant in data[targetYear][session]) {
-        data[targetYear][session][variant].forEach((paper) => {
-          if (paper.paper_id && paper.type === "Question Paper") {
-            paperIds.push(paper.paper_id);
-          }
-        });
-      }
-    }
-  }
-
-  return paperIds;
-}
-
 import React, { useEffect, useState } from "react";
 import { FaFileAlt, FaInfoCircle } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
-import { useContextProvider } from "../../../../hooks/useContextProvider";
+
 import SubjectTitle from "../SubjectInfo/SubjectTitle";
+import { extractPaperIdsByYear } from "@/utils/helper";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 const PaperView = ({ yearWisePapers, subjectId }) => {
   const [selectedSession, setSelectedSession] = useState("May/June");
@@ -294,10 +166,20 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
-                          <IoMdCheckmark size={15} className="" />
+                        <div>
+                          {paper.solved ? (
+                            <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
+                              <IoMdCheckmark size={14} className="" />
+                            </div>
+                          ) : (
+                            <div className="w-5 h-5 rounded-full flex-center border border-textColor2 text-textColor2">
+                              <IoMdCheckmark
+                                className="text-textColor2"
+                                size={14}
+                              />
+                            </div>
+                          )}
                         </div>
-
                         <span className="text-[18px]">{paper.paper}</span>
                       </div>
                       {/* <a
@@ -309,7 +191,7 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
                       View
                     </a> */}
 
-                      <span className="text-[18px]">76 (A)</span>
+                      <span className="text-[18px]">{paper.score} (A)</span>
                     </li>
                   ))}
                 </ul>

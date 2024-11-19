@@ -92,20 +92,20 @@ const RevisionNotesChapter = ({
                       key={subtopicIndex}
                       className="flex items-center space-x-2"
                     >
-                      <span>
+                      <div>
                         {subtopic.is_read ? (
                           <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
-                            <IoMdCheckmark size={15} className="" />
+                            <IoMdCheckmark size={14} className="" />
                           </div>
                         ) : (
                           <div className="w-5 h-5 rounded-full flex-center border border-textColor2 text-textColor2">
                             <IoMdCheckmark
                               className="text-textColor2"
-                              size={15}
+                              size={14}
                             />
                           </div>
                         )}
-                      </span>
+                      </div>
                       <p className="text-sm">{subtopic.subtopic_name}</p>
                     </div>
                   ))}
