@@ -7,7 +7,7 @@ const ChapterWiseRevisionNotes = ({ revisionNoteLists }) => {
   return (
     <div className="">
       {revisionNoteLists && revisionNoteLists.length > 0 ? (
-        <div className="mt-12 flex xl:flex-row flex-col  gap-9  ">
+        <div className="mt-12 grid 2xl:grid-cols-3  md:grid-cols-2  gap-5  ">
           {revisionNoteLists.map((item, i) => (
             <RevisionNotesChapter key={i} chapterIndex={i} {...item} />
           ))}

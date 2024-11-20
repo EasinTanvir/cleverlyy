@@ -19,7 +19,7 @@ const ResourceRevision = ({ revisionNoteLists, subject_id }) => {
       </div>
       <Action />
       {revisionNoteLists && revisionNoteLists.length > 0 ? (
-        <div className="mt-12 flex xl:flex-row flex-col  gap-9  ">
+        <div className="mt-12 grid  md:grid-cols-2  gap-5   2xl:w-[82%] md:w-[80%]  ">
           {revisionNoteLists.map((item, i) => (
             <RevisionNotesChapter key={i} chapterIndex={i} {...item} isBlur />
           ))}

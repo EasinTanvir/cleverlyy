@@ -70,7 +70,12 @@ const RevisionNotePage = () => {
     );
   }
 
-  return <ResourceRevision revisionNoteLists={revisionNoteLists} />;
+  return (
+    <ResourceRevision
+      revisionNoteLists={revisionNoteLists}
+      subject_id={selectedSubject?.subject_id}
+    />
+  );
 };
 
 export default RevisionNotePage;
