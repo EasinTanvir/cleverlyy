@@ -123,7 +123,7 @@ const SubjectCard = ({ subject }) => {
         <React.Fragment>
           <div className=" space-y-4 ps-8 border-black md:border-r-2 pe-8 relative">
             <div className="flex justify-between items-center">
-              <h1 className="text-[22px]">Revision Notes</h1>
+              <h1 className="text-[22px]">Chapterwise QP</h1>
               <MdKeyboardDoubleArrowRight size={25} />
             </div>
             <ProgressBar progress={70} />
@@ -166,7 +166,7 @@ const SubjectCard = ({ subject }) => {
         <React.Fragment>
           <div className=" space-y-4 ps-8 relative">
             <div className="flex justify-between items-center">
-              <h1 className="text-[22px]">Revision Notes</h1>
+              <h1 className="text-[22px]">Yearwise QP</h1>
               <MdKeyboardDoubleArrowRight size={25} />
             </div>
             <ProgressBar progress={70} />
