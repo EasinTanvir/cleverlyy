@@ -27,7 +27,13 @@ const ResourceLayoutHelper = async () => {
 const layout = async ({ children }) => {
   return (
     <div>
-      <Suspense fallback={<Skeleton />}>
+      <Suspense
+        fallback={
+          <div className="m-4">
+            <Skeleton />
+          </div>
+        }
+      >
         <ResourceLayoutHelper />
       </Suspense>
 

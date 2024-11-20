@@ -62,9 +62,12 @@ const RevisionNotePage = () => {
   if (error) {
     return (
       <div>
-        <NotFound title="Something Went Wrong" desc={error} />
+        <NotFound
+          title="Something Went Wrong"
+          desc={error || "Failed to fetch data for revision notes"}
+        />
       </div>
-    ); // Display error message
+    );
   }
 
   return <ResourceRevision revisionNoteLists={revisionNoteLists} />;

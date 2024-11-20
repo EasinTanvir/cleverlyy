@@ -1,202 +1,59 @@
-"use client";
-const dummyData = {
-  2014: {
-    "Jan/Feb": {
-      "Variant-1": [
-        {
-          paper_id: 1701,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_w14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper1.pdf",
-        },
-        {
-          paper_id: 1702,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper2.pdf",
-        },
-      ],
-      "Variant-2": [
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-        {
-          paper_id: 1703,
-          paper: "Paper 55",
-          type: "Markscheme",
-          name: "9701_w14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper3.pdf",
-        },
-        {
-          paper_id: 1704,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_w14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper4.pdf",
-        },
-      ],
-    },
-    "May/June": {
-      "Variant-1": [
-        {
-          paper_id: 1707,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_s14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper5.pdf",
-        },
-        {
-          paper_id: 1710,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_s14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper6.pdf",
-        },
-      ],
-    },
-    "Oct/Nov": {
-      "Variant-1": [
-        {
-          paper_id: 1721,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_11.pdf",
-          file_url: "https://your-s3-url/path/to/paper9.pdf",
-        },
-        {
-          paper_id: 1722,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_f14_qp_12.pdf",
-          file_url: "https://your-s3-url/path/to/paper10.pdf",
-        },
-      ],
-      "Variant-2": [
-        {
-          paper_id: 1723,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper11.pdf",
-        },
-        {
-          paper_id: 1724,
-          paper: "Paper 2",
-          type: "Question Paper",
-          name: "9701_f14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper12.pdf",
-        },
-      ],
-      "Variant-3": [
-        {
-          paper_id: 1733,
-          paper: "Paper 1",
-          type: "Markscheme",
-          name: "9701_f14_ms_21.pdf",
-          file_url: "https://your-s3-url/path/to/paper11.pdf",
-        },
-        {
-          paper_id: 1734,
-          paper: "Paper 450",
-          type: "Question Paper",
-          name: "9701_f14_qp_22.pdf",
-          file_url: "https://your-s3-url/path/to/paper12.pdf",
-        },
-      ],
-    },
-  },
-  2015: {
-    // Add similar data structure for each year/session/variant
-  },
-  // Add more years if needed
-};
-
-import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { IoScan } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-const ResourcePaperView = ({ selectedPaper, setSelectedPaper }) => {
-  const [selectedSession, setSelectedSession] = useState("Jan/Feb");
+import { useContextProvider } from "../../../../hooks/useContextProvider";
+import Skeleton from "@/components/Skeleton";
 
-  const data = dummyData["2014"];
+const ResourcePaperView = ({
+  selectedPaper,
+  setSelectedPaper,
+  yearWiseQpLists,
+}) => {
+  const { selectedYear, selectedSession, setSelectedSession, selectedSubject } =
+    useContextProvider();
+  const router = useRouter();
+  const data = yearWiseQpLists[Number(selectedYear)];
 
   const handleTabClick = (session) => {
     setSelectedPaper(null);
     setSelectedSession(session);
   };
 
+  const onNavigateHandler = () => {
+    if (!selectedSubject?.subject_id) {
+      toast.error("SubjectId is require");
+      return router.push(`/subjects`);
+    }
+    router.push(
+      `/subjects/yearwise-question-solve/${selectedSubject?.subject_id}`
+    );
+  };
+
+  if (!data) return <Skeleton />;
+
   return (
     <div>
       <div className=" flex flex-row min-h-80">
-        <div className="flex flex-col  ">
+        <div className="flex flex-col">
           {Object.keys(data).map((session) => (
             <div
-              className={`  h-full flex-center rounded-md rounded-tr-none rounded-br-none  ${
-                selectedSession === session ? "bg-yearBg " : " "
+              className={`h-full overflow-hidden flex-center rounded-md rounded-tr-none rounded-br-none ${
+                selectedSession === session ? "bg-yearBg" : ""
               }`}
               key={session}
             >
               <button
                 onClick={() => handleTabClick(session)}
-                className={` transform rotate-90  `}
+                className="transform rotate-90"
+                title={session} // Tooltip shows the full session text
               >
-                {session}
+                {/* Show first 10 characters with ellipsis if text is longer */}
+                <p className="max-w-20 min-w-20 truncate">
+                  {session.length > 10 ? `${session.slice(0, 10)}...` : session}
+                </p>
               </button>
             </div>
           ))}
@@ -243,13 +100,13 @@ const ResourcePaperView = ({ selectedPaper, setSelectedPaper }) => {
           </div>
         </div>
       </div>
-      <div className="bg-yearBg ml-[77px] rounded-b-xl flex justify-between items-center xl:max-w-[600px] xl:min-w-[600px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] p-5">
+      <div className="bg-yearBg ml-[80px] rounded-b-xl flex justify-between items-center xl:max-w-[600px] xl:min-w-[600px] md:max-w-[400px] md:min-w-[400px] max-w-[350px] p-5">
         <IoScan size={28} />
-        <Link href="/subjects/yearwise-question-solve">
+        <button onClick={onNavigateHandler}>
           <button className="bg-boxColor px-3 text-sm py-1.5 rounded-md">
             View All
           </button>
-        </Link>
+        </button>
         <MdOutlineKeyboardArrowDown size={28} className="text-iconColor" />
       </div>
     </div>

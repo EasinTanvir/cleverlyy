@@ -3,10 +3,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import dayjs from "dayjs";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
 
-export const ResourceYearSelector = () => {
+export const ResourceYearSelector = ({ yearWiseQpLists }) => {
   const scrollRef = useRef(null);
-  const [selectedYear, setSelectedYear] = useState(dayjs().year());
+
+  const { selectedYear, setSelectedYear } = useContextProvider();
 
   // Function to scroll up
   const scrollUp = () => {
@@ -22,9 +24,7 @@ export const ResourceYearSelector = () => {
     }
   };
 
-  // Generate a range of years from 1990 to 2090
-  const years = Array.from({ length: 101 }, (_, index) => 1990 + index);
-  const currentYear = dayjs().year();
+  const years = Object.keys(yearWiseQpLists).map(Number);
 
   // Automatically scroll to the selected year on initial render
   useEffect(() => {

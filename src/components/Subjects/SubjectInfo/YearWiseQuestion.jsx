@@ -7,9 +7,22 @@ import Link from "next/link";
 
 import ProgressBar from "./ProgressBar";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const YearWiseQuestion = () => {
+  const router = useRouter();
   const { userSelectedSubject } = useContextProvider();
+
+  const onNavigateHandler = () => {
+    if (!userSelectedSubject?.subject_id) {
+      toast.error("SubjectId is require");
+      return router.push(`/subjects`);
+    }
+    router.push(
+      `/subjects/yearwise-question-solve/${userSelectedSubject?.subject_id}`
+    );
+  };
   return (
     <div className="relative w-80 mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
@@ -60,14 +73,14 @@ const YearWiseQuestion = () => {
 
       {/* Solve Button */}
       <div className="mt-6 mb-3 text-center ">
-        <Link
-          href={`/subjects/yearwise-question-solve/${userSelectedSubject?.subject_id}`}
-          //href={`/subjects/yearwise-question-solve/17`}
-        >
-          <button className="w-40 bg-textColor4  text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor font-bold">
+        <div>
+          <button
+            onClick={onNavigateHandler}
+            className="w-40 bg-textColor4  text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor font-bold"
+          >
             Solve
           </button>
-        </Link>
+        </div>
       </div>
 
       {/* Info Icon */}

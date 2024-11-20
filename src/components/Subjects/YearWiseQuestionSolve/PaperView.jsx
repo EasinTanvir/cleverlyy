@@ -15,9 +15,6 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
   const { selectedYear, selectedSession, setSelectedSession } =
     useContextProvider();
 
-  console.log("selectedYear", selectedYear);
-  console.log("selectedYear type", typeof selectedYear);
-
   const data = yearWisePapers[Number(selectedYear)];
 
   const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
