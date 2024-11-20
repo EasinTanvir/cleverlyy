@@ -16,9 +16,7 @@ const ResourceYearWiseQuestionSolvePage = () => {
   const fetchYearWiseQp = async (subjectId) => {
     try {
       const response = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BACKEND_URL
-        }/papers/user/?user_id=7&subject_id=${16}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/papers/user/?user_id=7&subject_id=${subjectId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
