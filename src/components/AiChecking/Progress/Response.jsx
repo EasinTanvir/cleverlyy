@@ -1,19 +1,19 @@
+"use client";
 import React from "react";
-import { FaUserCircle, FaRobot } from "react-icons/fa";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlinePencil } from "react-icons/hi";
 
-// Dummy messages array
-const messages = [
-  {
-    sender: "user",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    sender: "ai",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-];
+import { Worker } from "@react-pdf-viewer/core";
+
+import { Viewer } from "@react-pdf-viewer/core";
+
+// Import the styles
+import "@react-pdf-viewer/core/lib/styles/index.css";
+
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+
+// Import styles
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 const ResponseDisplay = () => {
   return (
@@ -29,17 +29,10 @@ const ResponseDisplay = () => {
             </span>
           </div>
 
-          <div className="space-y-4 border border-borderColor2  min-h-[420px] max-h-[420px] overflow-auto p-4 rounded-xl">
-            {messages
-              .filter((msg) => msg.sender === "user")
-              .map((msg, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <FaUserCircle className="text-purple-500 text-3xl" />
-                  <div className=" rounded-lg  text-sm max-w-[90%]">
-                    {msg.text}
-                  </div>
-                </div>
-              ))}
+          <div className="space-y-4 border border-borderColor2  min-h-[500px] max-h-[500px] overflow-auto p-4 rounded-xl">
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+              <Viewer fileUrl="http://localhost:8080/pdf/test.pdf" />
+            </Worker>
           </div>
         </div>
 
@@ -56,17 +49,10 @@ const ResponseDisplay = () => {
             </div>
           </div>
 
-          <div className="space-y-4 border border-blue-300 min-h-[420px] max-h-[420px] overflow-auto p-4 rounded-xl">
-            {messages
-              .filter((msg) => msg.sender === "ai")
-              .map((msg, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <FaRobot className="text-blue-500 text-3xl" />
-                  <div className=" rounded-lg  text-sm max-w-[90%] pt-2">
-                    {msg.text}
-                  </div>
-                </div>
-              ))}
+          <div className="space-y-4 border border-blue-300 min-h-[500px] max-h-[500px] overflow-auto p-4 rounded-xl">
+            <div className="flex items-start space-x-3">
+              <div className=" rounded-lg  text-sm max-w-[90%] pt-2">test</div>
+            </div>
           </div>
         </div>
       </div>
