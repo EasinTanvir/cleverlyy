@@ -15,6 +15,7 @@ import { barChartDummyData, meetingsData } from "../../utils";
 import Notifications from "./Notification";
 import Carousel from "./carousel";
 import Skeleton from "../Skeleton";
+import DashBoardChart from "./DashBoardChart";
 
 const SubjectWrapper = async () => {
   const response = await fetch(
@@ -117,7 +118,7 @@ const Dashboard = () => {
               </div>
 
               <div className="w-full h-64">
-                <BarChart dataValues={barChartDummyData} />
+                <DashBoardChart dataValues={barChartDummyData} />
 
                 {/* 
                 <div className="2xl:w-[49%]">

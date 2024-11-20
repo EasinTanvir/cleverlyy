@@ -20,25 +20,32 @@ ChartJS.register(
   Legend
 );
 
-const BarChartComponent = ({ dataValues, labels, thickness = 13 }) => {
+const DashBoardChart = ({ dataValues, thickness = 13 }) => {
   const data = {
-    labels, // Use dynamic labels
+    labels: [
+      "Mathematics",
+      "English",
+      "Physics",
+      "Chemistry",
+      "Biology",
+      "History",
+    ],
     datasets: [
       {
-        label: "Revision Progress",
-        data: dataValues.map((item) => item.revision_progress),
+        label: "Revision Notes",
+        data: dataValues.map((item) => item.revisionNotes),
         backgroundColor: "#cac2ff",
         barThickness: thickness,
       },
       {
-        label: "Chapterwise Progress",
-        data: dataValues.map((item) => item.chapterwise_progress),
+        label: "Chapterwise QP",
+        data: dataValues.map((item) => item.chapterwiseQP),
         backgroundColor: "#8878f9",
         barThickness: thickness,
       },
       {
-        label: "Yearwise Progress",
-        data: dataValues.map((item) => item.yearwise_progress),
+        label: "Yearwise QP",
+        data: dataValues.map((item) => item.yearwiseQP),
         backgroundColor: "#5449be",
         barThickness: thickness,
       },
@@ -77,4 +84,4 @@ const BarChartComponent = ({ dataValues, labels, thickness = 13 }) => {
   return <Bar data={data} options={options} />;
 };
 
-export default BarChartComponent;
+export default DashBoardChart;

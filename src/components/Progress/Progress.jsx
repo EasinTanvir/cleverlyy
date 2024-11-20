@@ -5,7 +5,9 @@ import ProgressBarChart from "./ProgressBarChart";
 import SubjectCard from "./ProgressSubject";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const Progress = () => {
+const Progress = ({ barchartData }) => {
+  const [selectedBoard, setSelectedBoard] = useState("Edexcel");
+
   const { scrollY } = useScroll();
 
   // Set up transforms for the first div (scrolling up and fading out)
@@ -25,13 +27,33 @@ const Progress = () => {
 
   return (
     <div className="min-h-screen">
+      <h1 className="text-[26px] font-bold mb-3">Easin Progress</h1>
+      <div className="flex space-x-4 mb-4">
+        {barchartData.map((board) => (
+          <button
+            key={board.board_id}
+            onClick={() => setSelectedBoard(board.board_name)}
+            className={`px-4 py-2 rounded ${
+              selectedBoard === board.board_name
+                ? "bg-blue-500 text-white"
+                : "bg-gray-300 text-black"
+            }`}
+          >
+            {board.board_name}
+          </button>
+        ))}
+      </div>
+
       <motion.div
         className="min-h-[40vh]"
         style={{ y: yPosition, opacity: opacityTopDiv }}
       >
-        <h1 className="text-[26px] font-bold mb-3">Easin Progress</h1>
         <div className="min-h-[40vh]">
-          <ProgressBarChart />
+          <ProgressBarChart
+            barchartData={barchartData}
+            selectedBoard={selectedBoard}
+            setSelectedBoard={setSelectedBoard}
+          />
         </div>
       </motion.div>
 

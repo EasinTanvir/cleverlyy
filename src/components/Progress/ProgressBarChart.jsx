@@ -1,17 +1,42 @@
 import React from "react";
 import BarChartComponent from "../BarChart";
 
-const dummyData = [
-  { revisionNotes: 12, chapterwiseQP: 8, yearwiseQP: 15 },
-  { revisionNotes: 14, chapterwiseQP: 10, yearwiseQP: 20 },
-  { revisionNotes: 9, chapterwiseQP: 6, yearwiseQP: 11 },
-  { revisionNotes: 16, chapterwiseQP: 12, yearwiseQP: 18 },
-  { revisionNotes: 10, chapterwiseQP: 7, yearwiseQP: 13 },
-  { revisionNotes: 13, chapterwiseQP: 9, yearwiseQP: 17 },
-];
+const ProgressBarChart = ({
+  barchartData,
+  selectedBoard,
+  setSelectedBoard,
+}) => {
+  // Function to filter data based on the selected board
+  const filterDataByBoard = (boardName) => {
+    const filteredBoard = barchartData.find(
+      (board) => board.board_name === boardName
+    );
 
-const ProgressBarChart = () => {
-  return <BarChartComponent dataValues={dummyData} thickness={32} />;
+    const labels = [];
+    const chartData = [];
+
+    if (filteredBoard) {
+      filteredBoard.exams.forEach((exam) => {
+        exam.subjects.forEach((subject) => {
+          labels.push(`${subject.subject_name}`);
+          chartData.push({
+            revision_progress: subject.revision_progress || 0,
+            chapterwise_progress: subject.chapterwise_progress || 0,
+            yearwise_progress: subject.yearwise_progress || 0,
+          });
+        });
+      });
+    }
+
+    return { labels, chartData };
+  };
+
+  // Get the filtered data for the selected board
+  const { labels, chartData } = filterDataByBoard(selectedBoard);
+
+  return (
+    <BarChartComponent dataValues={chartData} labels={labels} thickness={25} />
+  );
 };
 
 export default ProgressBarChart;
