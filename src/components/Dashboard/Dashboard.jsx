@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { HiPencil } from "react-icons/hi2";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
-import Link from "next/link";
 
 import ResourceCart from "./ResourceCart";
 import Subject from "./Subject";
@@ -11,19 +11,10 @@ import BarChart from "../BarChart";
 import { avatar, dashboardImg, study } from "../../constant";
 import Calendar from "./HorizontaCalendar";
 import MeetingItem from "./MeetingCard";
-import { meetingsData } from "../../utils";
+import { barChartDummyData, meetingsData } from "../../utils";
 import Notifications from "./Notification";
 import Carousel from "./carousel";
 import Skeleton from "../Skeleton";
-
-const dummyData = [
-  { revisionNotes: 12, chapterwiseQP: 8, yearwiseQP: 15 },
-  { revisionNotes: 14, chapterwiseQP: 10, yearwiseQP: 20 },
-  { revisionNotes: 9, chapterwiseQP: 6, yearwiseQP: 11 },
-  { revisionNotes: 16, chapterwiseQP: 12, yearwiseQP: 18 },
-  { revisionNotes: 10, chapterwiseQP: 7, yearwiseQP: 13 },
-  { revisionNotes: 13, chapterwiseQP: 9, yearwiseQP: 17 },
-];
 
 const SubjectWrapper = async () => {
   const response = await fetch(
@@ -126,7 +117,7 @@ const Dashboard = () => {
               </div>
 
               <div className="w-full h-64">
-                <BarChart dataValues={dummyData} />
+                <BarChart dataValues={barChartDummyData} />
 
                 {/* 
                 <div className="2xl:w-[49%]">

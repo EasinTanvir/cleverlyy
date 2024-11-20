@@ -136,7 +136,7 @@ const ResourceLayout = ({ subjectLists }) => {
               Syllabus - 5070
             </button>
             <h1 className="text-[22px] font-bold">
-              {selectedSubject?.subject_name} {selectedExam?.exam_name}
+              {selectedSubject?.subject_name} - {selectedExam?.exam_name}
             </h1>
             <div>
               <button className="px-3 py-2 text-sm rounded-lg  bg-examBg max-w-56">
