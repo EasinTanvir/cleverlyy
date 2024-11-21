@@ -2,7 +2,13 @@ import React from "react";
 
 import { CircularProgress } from "@mui/material";
 
-const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
+const ChapterProgressCart = ({
+  chapter_name,
+  chapter_id,
+  chapter_progress,
+  chapterIndex,
+  topics,
+}) => {
   return (
     <div
       style={{
@@ -12,7 +18,7 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
     >
       <div className="border-2 border-borderColor2  p-[18px] rounded-xl ">
         <div className="flex justify-between items-center mb-2 pb-3 border-b-[1px] border-borderColor2">
-          <h2 className="text-lg font-bold ">{name}</h2>
+          <h2 className="text-lg font-bold ">{chapter_name}</h2>
           <div className="relative">
             <CircularProgress
               variant="determinate"
@@ -25,7 +31,7 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
 
             <CircularProgress
               variant="determinate"
-              value={progress}
+              value={chapter_progress}
               size={30}
               thickness={10}
               sx={{ color: "#746cca" }}
@@ -36,9 +42,11 @@ const ChapterProgressCart = ({ name, progress, topics, chapterIndex }) => {
         <div className="space-y-6">
           {topics.map((topic, topicIndex) => (
             <div key={topicIndex} className="py-3">
-              <h3 className="text-md font-semibold pb-3.5">{topic.name}</h3>
+              <h3 className="text-md font-semibold pb-3.5">
+                {topic.topic_name}
+              </h3>
               <div
-                style={{ width: `${topic.progress}%` }}
+                style={{ width: `${topic.topic_progress}%` }}
                 className="h-1 bg-circle"
               ></div>
             </div>

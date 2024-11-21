@@ -5,12 +5,13 @@ import Link from "next/link";
 import { chapters } from "@/utils";
 import ChapterProgressCart from "./ChapterProgressCart";
 import Action from "../ResourceRevision/Action";
+import { NotFound } from "@/components/NotFound";
 
-const ResourceChapterWiseQp = () => {
+const ResourceChapterWiseQp = ({ chapterWiseLists, subject_id }) => {
   return (
     <div className="relative">
       <div className="flex justify-end md:mb-0 mb-4">
-        <Link href="/resources">
+        <Link href="/resources/chapterwise">
           <button className="flex items-center gap-2 px-4 py-1 border border-borderColor2 rounded-lg text-textColor2 ">
             View All{" "}
             <FaArrowRight className="text-gray-500 group-hover:text-blue-600" />
@@ -18,11 +19,21 @@ const ResourceChapterWiseQp = () => {
         </Link>
       </div>
       <Action />
-      <div className="mt-12 flex flex-wrap  gap-9  sm:max-w-[80%]  ">
-        {chapters.map((item, i) => (
-          <ChapterProgressCart key={i} {...item} chapterIndex={i} />
-        ))}
-      </div>
+
+      {chapterWiseLists && chapterWiseLists.length > 0 ? (
+        <div className="mt-12 grid  md:grid-cols-2  gap-5   2xl:w-[82%] md:w-[80%]  ">
+          {chapterWiseLists.map((item, i) => (
+            <ChapterProgressCart key={i} {...item} chapterIndex={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="min-h-32 flex-center">
+          <NotFound
+            title="Chapter wise Data is not Avaiable"
+            desc="Please try with different subject"
+          />
+        </div>
+      )}
     </div>
   );
 };
