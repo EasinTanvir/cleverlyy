@@ -1,5 +1,8 @@
 import React from "react";
-import BarChartComponent from "../BarChart";
+import dynamic from "next/dynamic";
+
+// Dynamically import the BarChartComponent with SSR disabled
+const BarChartComponent = dynamic(() => import("../BarChart"), { ssr: false });
 
 const ProgressBarChart = ({
   barchartData,
@@ -17,7 +20,7 @@ const ProgressBarChart = ({
 
     if (filteredBoard) {
       filteredBoard.exams.forEach((exam) => {
-        exam.subjects.forEach((subject) => {
+        exam.subjects.forEach((subject, i) => {
           labels.push(`${subject.subject_name}`);
           chartData.push({
             revision_progress: subject.revision_progress || 0,

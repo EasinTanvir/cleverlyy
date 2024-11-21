@@ -33,7 +33,7 @@ const Progress = ({ barchartData }) => {
           <button
             key={board.board_id}
             onClick={() => setSelectedBoard(board.board_name)}
-            className={`px-4 py-2 rounded ${
+            className={`px-4 text-sm py-1 rounded ${
               selectedBoard === board.board_name
                 ? "bg-blue-500 text-white"
                 : "bg-gray-300 text-black"
@@ -57,7 +57,7 @@ const Progress = ({ barchartData }) => {
         </div>
       </motion.div>
 
-      <div className="flex-center gap-4 mt-7 mb-5">
+      <div className="flex-center gap-4 mt-14 mb-5">
         <button className="bg-btnColor6 px-3 py-1 rounded-md">
           Scroll to See Individual Subject Progress
         </button>
