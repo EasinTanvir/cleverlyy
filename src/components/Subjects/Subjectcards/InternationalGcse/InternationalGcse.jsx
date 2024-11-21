@@ -11,7 +11,7 @@ const InternationalGcse = ({ board_name, subjectLists }) => {
           <h1>Pearson</h1> | <h1>{board_name}</h1>
         </div>
       </div>
-      <div className="grid bg-white md:p-4 p-0.5 rounded-md 2xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8">
+      <div className=" bg-white md:p-4 p-0.5 rounded-md flex flex-wrap gap-14">
         {subjectLists &&
           mapSubjectDetails(subjectLists.subjects).map((subject, index) => (
             <GcseSubjectCart

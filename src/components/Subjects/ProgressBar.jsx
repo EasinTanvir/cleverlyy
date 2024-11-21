@@ -8,10 +8,10 @@ const ProgressBar = ({ title, value }) => {
         <div className="flex-1 bg-gray-200  rounded-full h-[18px]">
           <div
             className="bg-green-500 h-[18px]  rounded-full relative"
-            style={{ width: value }}
+            style={{ width: value || 0 }}
           >
             <span className="text-white text-xs absolute  right-1 pt-[1px] top-0 bottom-0 my-auto">
-              {Math.round(value)}
+              {Math.round(value || 0)}
             </span>
           </div>
         </div>

@@ -40,7 +40,7 @@ const SubjectWrapper = async () => {
   );
 };
 
-const Subjects = () => {
+const SubjectPage = () => {
   return (
     <div className="bg-dashboardBd md:p-8 p-4">
       <div className="space-y-10 bg-dashboardBd">
@@ -82,4 +82,4 @@ const Subjects = () => {
   );
 };
 
-export default Subjects;
+export default SubjectPage;

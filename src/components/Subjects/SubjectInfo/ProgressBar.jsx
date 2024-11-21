@@ -6,10 +6,10 @@ const ProgressBar = ({ progress }) => {
       <div className="w-full bg-gray-200 rounded-full h-[13px] mt-1">
         <div
           className="bg-purple-500 h-[13px] rounded-full relative"
-          style={{ width: `${progress}%` }}
+          style={{ width: `${progress || 0}%` }}
         >
           <span className="text-white text-[9px] absolute right-2  top-0  ">
-            {progress}%
+            {progress || 0}%
           </span>
         </div>
       </div>

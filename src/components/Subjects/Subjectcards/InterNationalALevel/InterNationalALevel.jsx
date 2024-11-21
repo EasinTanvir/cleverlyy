@@ -7,7 +7,7 @@ import { mapSubjectDetails } from "@/utils/subject";
 const InterNationalALevel = ({ subjectLists, board_name, title }) => {
   return (
     <>
-      <div className="pt-10">
+      <div className="pt-10 bg-white rounded-2xl p-5">
         <div className="flex sm:flex-row flex-col justify-between pb-10">
           <h1 className="text-xl">
             {board_name}: {title}
@@ -48,7 +48,7 @@ const ALevelSubject = ({
 }) => {
   return (
     <>
-      <div className="flex md:flex-row flex-col gap-8 bg-white shadow-md sm:px-6 px-3 py-10 rounded-xl">
+      <div className="flex md:flex-row flex-col gap-8 bg-[#f9fde7] shadow-md sm:px-6 px-3 py-10 rounded-xl">
         <div className="w-80  flex flex-col items-center justify-center">
           <div className="w-[115px] ">
             <Image className="max-w-24" src={image} alt={subject_name} />
