@@ -7,24 +7,20 @@ import { HiOutlineArrowSmRight } from "react-icons/hi";
 
 import ResourceCart from "./ResourceCart";
 import Subject from "./Subject";
-import BarChart from "../BarChart";
 import { avatar, dashboardImg, study } from "../../constant";
 import Calendar from "./HorizontaCalendar";
 import MeetingItem from "./MeetingCard";
-import { barChartDummyData, meetingsData } from "../../utils";
+import { meetingsData } from "../../utils";
 import Notifications from "./Notification";
 import Carousel from "./carousel";
 import Skeleton from "../Skeleton";
 import DashBoardChart from "./DashBoardChart";
 
-const SubjectWrapper = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/all`,
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+const fetchData = async (url) => {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -33,16 +29,57 @@ const SubjectWrapper = async () => {
     );
   }
 
-  const data = await response.json();
-  if (!data) {
-    throw new Error("Failed to fetch available subjects");
+  return response.json();
+};
+
+const SubjectWrapper = async ({ subject }) => {
+  try {
+    // Fetch data concurrently
+    const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
+      fetchData(`${process.env.BACKEND_URL}/subjects/all`),
+      fetchData(`${process.env.BACKEND_URL}/users/7/subjects`),
+    ]);
+
+    const allSubjects = allSubjectsResponse.flatMap((board) =>
+      board.exams.flatMap((exam) => exam.subjects)
+    );
+
+    const filterDataByBoard = () => {
+      const labels = [];
+      const chartData = [];
+
+      if (userSubjectsResponse) {
+        userSubjectsResponse.forEach((board) =>
+          board.exams.forEach((exam) => {
+            exam.subjects.forEach((subject) => {
+              if (labels.length < 5) {
+                labels.push(`${subject.subject_name}`);
+                chartData.push({
+                  revision_progress: subject.revision_progress || 0,
+                  chapterwise_progress: subject.chapterwise_progress || 0,
+                  yearwise_progress: subject.yearwise_progress || 0,
+                });
+              }
+            });
+          })
+        );
+      }
+
+      return { labels, chartData };
+    };
+
+    // Get the filtered data for the selected board
+    const { labels, chartData } = filterDataByBoard();
+
+    return subject ? (
+      <Subject subjectLists={allSubjects} />
+    ) : (
+      <DashBoardChart labels={labels} dataValues={chartData} />
+    );
+  } catch (error) {
+    console.error("Failed to fetch subjects:", error.message);
+    throw new Error("Failed to load subjects. Please try again later.");
   }
-
-  const allSubjects = data.flatMap((board) =>
-    board.exams.flatMap((exam) => exam.subjects)
-  );
-
-  return <Subject subjectLists={allSubjects} />;
 };
 
 const Dashboard = () => {
@@ -103,7 +140,7 @@ const Dashboard = () => {
             <div className="overflow-hidden">
               <h1 className="title">Your Subjects</h1>
               <Suspense fallback={<Skeleton />}>
-                <SubjectWrapper />
+                <SubjectWrapper subject />
               </Suspense>
             </div>
 
@@ -118,30 +155,9 @@ const Dashboard = () => {
               </div>
 
               <div className="w-full h-64">
-                <DashBoardChart dataValues={barChartDummyData} />
-
-                {/* 
-                <div className="2xl:w-[49%]">
-                  <div className="mb-5 flex justify-between items-center mt-6">
-                    <h1 className="title">Physics</h1>
-                    <button className="text-sm text-textColor2 underline">
-                      View All
-                    </button>
-                  </div>
-
-                  <div className="bg-boxColor2 h-32 mt-6 rounded-xl p-4">
-                    <h1 className=" text-sm  font-medium underline">
-                      Suggestions:
-                    </h1>
-                    <ul className="list-disc pl-5 text-xs mt-3">
-                      <li>Should Start studying Revision Notes</li>
-                      <li>
-                        Then solve chapterwise question paper for each of the
-                        studied chapter.
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
+                <Suspense fallback={<Skeleton />}>
+                  <SubjectWrapper />
+                </Suspense>
               </div>
             </div>
 

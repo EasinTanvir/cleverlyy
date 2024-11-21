@@ -10,17 +10,14 @@ const Progress = ({ barchartData }) => {
 
   const { scrollY } = useScroll();
 
-  // Set up transforms for the first div (scrolling up and fading out)
   const yPosition = useTransform(scrollY, [0, 200], [0, -200]);
   const opacityTopDiv = useTransform(scrollY, [0, 200], [1, 0]);
 
-  // Use state to manually control the blur effect, starting with maximum blur
   const [blur, setBlur] = useState(2);
 
   useEffect(() => {
-    // Update blur state as scrollY changes, reducing blur as you scroll
     return scrollY.onChange((latest) => {
-      const blurValue = Math.max(8 - latest / 25, 0); // Start at 8px and reduce to 0
+      const blurValue = Math.max(8 - latest / 25, 0);
       setBlur(blurValue);
     });
   }, [scrollY]);

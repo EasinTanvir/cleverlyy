@@ -20,32 +20,25 @@ ChartJS.register(
   Legend
 );
 
-const DashBoardChart = ({ dataValues, thickness = 13 }) => {
+const DashBoardChart = ({ dataValues, labels, thickness = 13 }) => {
   const data = {
-    labels: [
-      "Mathematics",
-      "English",
-      "Physics",
-      "Chemistry",
-      "Biology",
-      "History",
-    ],
+    labels,
     datasets: [
       {
-        label: "Revision Notes",
-        data: dataValues.map((item) => item.revisionNotes),
+        label: "Revision Progress",
+        data: dataValues.map((item) => item.revision_progress),
         backgroundColor: "#cac2ff",
         barThickness: thickness,
       },
       {
-        label: "Chapterwise QP",
-        data: dataValues.map((item) => item.chapterwiseQP),
+        label: "Chapterwise Progress",
+        data: dataValues.map((item) => item.chapterwise_progress),
         backgroundColor: "#8878f9",
         barThickness: thickness,
       },
       {
-        label: "Yearwise QP",
-        data: dataValues.map((item) => item.yearwiseQP),
+        label: "Yearwise Progress",
+        data: dataValues.map((item) => item.yearwise_progress),
         backgroundColor: "#5449be",
         barThickness: thickness,
       },

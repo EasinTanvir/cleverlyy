@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-
 import Dashboard from "@/components/Dashboard/Dashboard";
 
 const DashboardPage = () => {

@@ -1,8 +1,8 @@
-import React from "react";
-import Progress from "@/components/Progress/Progress";
+export const dynamic = "force-dynamic";
 
-const findBoardSubjects = (data, boardName) =>
-  data.find((item) => item.board_name === boardName);
+import React, { Suspense } from "react";
+import Progress from "@/components/Progress/Progress";
+import Skeleton from "@/components/Skeleton";
 
 const ProgressPageWrapper = async () => {
   const response = await fetch(`${process.env.BACKEND_URL}/users/7/subjects`, {
@@ -27,7 +27,9 @@ const ProgressPageWrapper = async () => {
 const ProgressPage = () => {
   return (
     <div className="p-8">
-      <ProgressPageWrapper />
+      <Suspense fallback={<Skeleton />}>
+        <ProgressPageWrapper />
+      </Suspense>
     </div>
   );
 };
