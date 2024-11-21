@@ -53,6 +53,9 @@ module.exports = {
           color4: "#723DA6", // Blue
         },
       },
+      boxShadow: {
+        custom: "0 0 15px rgba(0, 0, 0, 0.3)",
+      },
       backgroundImage: {
         "custom-gradient": "linear-gradient(180deg, #ffffff, #c7d9ff)",
         premiumbtnbg: "linear-gradient(135deg, #e6b6ff, #ffffff, #ffa7a7)",
