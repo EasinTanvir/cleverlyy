@@ -2,6 +2,7 @@ import React from "react";
 import { FaCrown, FaGem, FaFire } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoTabletLandscapeSharp } from "react-icons/io5";
+import Button from "./Button";
 
 const PricingCard = () => {
   return (
@@ -57,9 +58,13 @@ const PricingCard = () => {
         </ul>
 
         <hr className="border-[1px] my-6" />
-        <button className="w-full px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg border-2 border-borderColor2">
+        <Button
+          path="/"
+          plan="Basic"
+          className="w-full px-4 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg border-2 border-borderColor2"
+        >
           Currently on this plan
-        </button>
+        </Button>
       </div>
 
       {/* Standard Plan */}
@@ -122,9 +127,13 @@ const PricingCard = () => {
         </ul>
 
         <hr className="border-[1px] my-6" />
-        <button className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl ">
+        <Button
+          path="/unknown"
+          plan="Standard"
+          className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl "
+        >
           Get Started
-        </button>
+        </Button>
       </div>
 
       {/* Premium Plan */}
@@ -187,9 +196,13 @@ const PricingCard = () => {
           </ul>
 
           <hr className="border-[1px] my-6" />
-          <button className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl ">
+          <Button
+            path="/unknown"
+            plan="Premium"
+            className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl "
+          >
             Get Started
-          </button>
+          </Button>
         </div>
       </div>
     </div>

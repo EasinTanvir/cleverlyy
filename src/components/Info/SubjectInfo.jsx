@@ -6,14 +6,14 @@ import { motion } from "framer-motion";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 
 export default function SubjectInfo() {
-  const [selectedSubjects, setSelectedSubjects] = useState([]); // Allow multiple selections
-
   const {
     selectedChapters,
     setSelectedChapters,
     selectedPaper,
     setSelectedPaper,
     selectedInfoExam,
+    selectedSubjects,
+    setSelectedSubjects,
   } = useContextProvider();
 
   const allSubjects = selectedInfoExam.flatMap((item) => item.subjects);

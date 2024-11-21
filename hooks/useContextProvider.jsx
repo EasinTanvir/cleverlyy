@@ -12,6 +12,7 @@ export const ContextProvider = ({ children }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedSchool, setSelectedSchool] = useState(null);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
 
   const [selectedInfoExam, setSelectedInfoExam] = useState([]);
   const [selectedInfoBoard, setSelectedInfoBoard] = useState(null);
@@ -86,6 +87,8 @@ export const ContextProvider = ({ children }) => {
     setdropDownSelectedSession,
     infoData,
     setInfoData,
+    selectedSubjects,
+    setSelectedSubjects,
   };
 
   return (

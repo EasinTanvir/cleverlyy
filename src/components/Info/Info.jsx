@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Step, StepLabel, Stepper } from "@mui/material";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -27,6 +27,12 @@ const Info = () => {
     selectedInfoExam,
     selectedInfoBoard,
     selectedPaper,
+    selectedSubjects,
+    setSelectedCountry,
+    setSelectedGrade,
+    setSelectedSchool,
+    setSelectedInfoBoard,
+    setSelectedInfoExam,
   } = useContextProvider();
 
   const [activeStep, setActiveStep] = useState(0);
@@ -42,8 +48,16 @@ const Info = () => {
   const disableNextButton =
     !selectedCountry ||
     (activeStep === 1 && (!selectedGrade || !selectedSchool)) ||
-    (activeStep === 2 && !selectedInfoExam);
-  // (activeStep === 3 && !selectedPaper);
+    (activeStep === 2 && selectedInfoExam.length === 0) ||
+    (activeStep === 3 && selectedSubjects.length === 0);
+
+  useEffect(() => {
+    setSelectedCountry(null);
+    setSelectedGrade(null);
+    setSelectedSchool(null);
+    setSelectedInfoBoard([]);
+    setSelectedInfoExam([]);
+  }, []);
 
   return (
     <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  md:px-10 px-4 relative">
