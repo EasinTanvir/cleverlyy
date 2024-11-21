@@ -6,7 +6,7 @@ import { useContextProvider } from "../../../../hooks/useContextProvider";
 import Skeleton from "@/components/Skeleton";
 import { NotFound } from "@/components/NotFound";
 
-const page = () => {
+const ChapterWisepage = () => {
   const { selectedSubject } = useContextProvider();
   const [chapterWiseLists, setChapterWiseLists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -70,4 +70,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ChapterWisepage;
