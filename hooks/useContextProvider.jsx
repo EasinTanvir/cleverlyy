@@ -13,7 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedSchool, setSelectedSchool] = useState(null);
 
-  const [selectedInfoExam, setSelectedInfoExam] = useState(null);
+  const [selectedInfoExam, setSelectedInfoExam] = useState([]);
   const [selectedInfoBoard, setSelectedInfoBoard] = useState(null);
 
   const [selectedChapters, setSelectedChapters] = useState([]);

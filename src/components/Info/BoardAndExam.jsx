@@ -24,7 +24,6 @@ const BoardAndExam = () => {
       );
 
       const data = await response.json();
-
       setInfoData(data);
     } catch (error) {
       setError(error?.message || "Internal Server Error");
@@ -37,10 +36,10 @@ const BoardAndExam = () => {
     fetchBoardAndExam();
   }, []);
 
-  const cambridgeExam = infoData.find(
+  const cambridgeExam = infoData?.find(
     (item) => item?.board_name === "Cambridge"
   );
-  const edexcelExam = infoData.find((item) => item?.board_name === "Edexcel");
+  const edexcelExam = infoData?.find((item) => item?.board_name === "Edexcel");
 
   if (error) {
     return (
@@ -54,20 +53,26 @@ const BoardAndExam = () => {
   }
 
   const handleSelectExam = (exam) => {
-    setSelectedInfoExam(exam);
+    setSelectedInfoExam((prev) => {
+      if (prev.some((selected) => selected.exam_id === exam.exam_id)) {
+        return prev.filter((selected) => selected.exam_id !== exam.exam_id);
+      } else {
+        return [...prev, exam];
+      }
+    });
   };
 
   return (
-    <div className="p-6 xl:w-[78%] md:w-[88%] w-full  mx-auto">
+    <div className="p-6 xl:w-[78%] md:w-[88%] w-full mx-auto">
       <div>
-        <h2 className="text-black md:text-3xl text-xl  font-bold  uppercase">
+        <h2 className="text-black md:text-3xl text-xl font-bold uppercase">
           SELECT YOUR <span className="text-textColor">Exam & Board : </span>
         </h2>
 
         <hr className="border border-black w-full my-6" />
       </div>
 
-      <div className="flex md:flex-row flex-col justify-around items-start gap-20 lg:w-[80%] w-full mx-auto  pt-6">
+      <div className="flex md:flex-row flex-col justify-around items-start gap-20 lg:w-[80%] w-full mx-auto pt-6">
         <div className="md:w-1/2 w-full">
           <div className="flex items-center md:justify-start justify-center gap-2">
             <FaUniversity size={30} />
@@ -85,9 +90,11 @@ const BoardAndExam = () => {
                   <button
                     key={exam.exam_id}
                     onClick={() => handleSelectExam(exam)}
-                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5  rounded-2xl ${
-                      selectedInfoExam?.exam_id === exam?.exam_id
-                        ? "border-green-600 "
+                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5 rounded-2xl ${
+                      selectedInfoExam?.some(
+                        (selected) => selected.exam_id === exam.exam_id
+                      )
+                        ? "border-green-600"
                         : "border-transparent"
                     }`}
                   >
@@ -95,12 +102,14 @@ const BoardAndExam = () => {
 
                     <span
                       className={`w-6 h-6 rounded-full ${
-                        selectedInfoExam?.exam_id === exam?.exam_id
+                        selectedInfoExam?.some(
+                          (selected) => selected.exam_id === exam.exam_id
+                        )
                           ? "bg-green-600 text-white"
                           : "bg-gray-200 text-white"
-                      }   flex-center`}
+                      } flex-center`}
                     >
-                      <FiCheck className=" p-0.5" size={24} />
+                      <FiCheck className="p-0.5" size={24} />
                     </span>
                   </button>
                 ))}
@@ -122,9 +131,11 @@ const BoardAndExam = () => {
                   <button
                     key={exam.exam_id}
                     onClick={() => handleSelectExam(exam)}
-                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5  rounded-2xl ${
-                      selectedInfoExam?.exam_id === exam?.exam_id
-                        ? "border-green-600 "
+                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5 rounded-2xl ${
+                      selectedInfoExam?.some(
+                        (selected) => selected.exam_id === exam.exam_id
+                      )
+                        ? "border-green-600"
                         : "border-transparent"
                     }`}
                   >
@@ -132,12 +143,14 @@ const BoardAndExam = () => {
 
                     <span
                       className={`w-6 h-6 rounded-full ${
-                        selectedInfoExam?.exam_id === exam?.exam_id
+                        selectedInfoExam?.some(
+                          (selected) => selected.exam_id === exam.exam_id
+                        )
                           ? "bg-green-600 text-white"
                           : "bg-gray-200 text-white"
-                      }   flex-center`}
+                      } flex-center`}
                     >
-                      <FiCheck className=" p-0.5" size={24} />
+                      <FiCheck className="p-0.5" size={24} />
                     </span>
                   </button>
                 ))}
