@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
   const [dropDownSelectedYear, setDropDownSelectedYear] = useState("");
   const [dropDownSelectedSession, setdropDownSelectedSession] = useState("");
 
-  //resource dropdown
+  const [infoData, setInfoData] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -84,6 +84,8 @@ export const ContextProvider = ({ children }) => {
     setDropDownSelectedYear,
     dropDownSelectedSession,
     setdropDownSelectedSession,
+    infoData,
+    setInfoData,
   };
 
   return (

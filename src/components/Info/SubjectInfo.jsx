@@ -35,6 +35,7 @@ export default function SubjectInfo() {
     setSelectedChapters,
     selectedPaper,
     setSelectedPaper,
+    selectedInfoExam,
   } = useContextProvider();
 
   const handleSubjectSelect = (subject) => {
@@ -90,22 +91,24 @@ export default function SubjectInfo() {
 
       {/* Subjects */}
       <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
-        {subjectsData.map((subject) => (
-          <div key={subject.id}>
+        {selectedInfoExam?.subjects.map((subject) => (
+          <div key={subject.subject_id}>
             {/* Subject Card */}
             <div
               className={`flex items-center p-4 border-[3px] py-5 rounded-2xl bg-white cursor-pointer ${
-                selectedSubject?.id === subject.id
+                selectedSubject?.subject_id === subject.subject_id
                   ? "border-green-600"
                   : "border-transparent"
               }`}
               onClick={() => handleSubjectSelect(subject)}
             >
-              <span className="text-xl mr-2">{subject.icon}</span>
-              <span className="flex-grow">{subject.name}</span>
+              <span className="text-xl mr-2">
+                <FaBusinessTime />
+              </span>
+              <span className="flex-grow">{subject.subject_name}</span>
               <span
                 className={`w-6 h-6 rounded-full ${
-                  selectedSubject?.id === subject.id
+                  selectedSubject?.subject_id === subject.subject_id
                     ? "bg-green-600 text-white"
                     : "bg-gray-200 text-white"
                 } flex-center`}
@@ -115,7 +118,7 @@ export default function SubjectInfo() {
             </div>
 
             {/* Papers for Selected Subject */}
-            {selectedSubject?.id === subject.id && (
+            {/* {selectedSubject?.id === subject.id && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -141,7 +144,7 @@ export default function SubjectInfo() {
                   ))}
                 </div>
               </motion.div>
-            )}
+            )} */}
           </div>
         ))}
       </div>

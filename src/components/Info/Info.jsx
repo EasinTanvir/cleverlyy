@@ -42,8 +42,8 @@ const Info = () => {
   const disableNextButton =
     !selectedCountry ||
     (activeStep === 1 && (!selectedGrade || !selectedSchool)) ||
-    (activeStep === 2 && (!selectedInfoExam || !selectedInfoBoard)) ||
-    (activeStep === 3 && !selectedPaper);
+    (activeStep === 2 && !selectedInfoExam);
+  // (activeStep === 3 && !selectedPaper);
 
   return (
     <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  md:px-10 px-4 relative">

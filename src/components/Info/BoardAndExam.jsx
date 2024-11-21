@@ -1,34 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaUniversity } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
-
-export const exams = [
-  { id: 1, name: "O-Levels" },
-  { id: 2, name: "IGCSE" },
-  { id: 3, name: "A-Levels" },
-];
-
-export const boards = [
-  { id: 1, name: "IGCSE" },
-  { id: 2, name: "International A-Levels (IAL)" },
-];
+import { NotFound } from "../NotFound";
+import Skeleton from "../Skeleton";
 
 const BoardAndExam = () => {
-  const {
-    selectedInfoExam,
-    setSelectedInfoExam,
-    selectedInfoBoard,
-    setSelectedInfoBoard,
-  } = useContextProvider();
+  const { selectedInfoExam, setSelectedInfoExam, infoData, setInfoData } =
+    useContextProvider();
 
-  const handleSelectExam = (examId) => {
-    setSelectedInfoExam(examId);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchBoardAndExam = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/all`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const data = await response.json();
+
+      setInfoData(data);
+    } catch (error) {
+      setError(error?.message || "Internal Server Error");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSelectBoard = (boardId) => {
-    setSelectedInfoBoard(boardId);
+  useEffect(() => {
+    fetchBoardAndExam();
+  }, []);
+
+  const cambridgeExam = infoData.find(
+    (item) => item?.board_name === "Cambridge"
+  );
+  const edexcelExam = infoData.find((item) => item?.board_name === "Edexcel");
+
+  if (error) {
+    return (
+      <div>
+        <NotFound
+          title="Internal Server Error"
+          desc={error || "Failed to fetch data for revision notes"}
+        />
+      </div>
+    );
+  }
+
+  const handleSelectExam = (exam) => {
+    setSelectedInfoExam(exam);
   };
 
   return (
@@ -50,62 +76,74 @@ const BoardAndExam = () => {
               <span>International Education</span>
             </div>
           </div>
-          <div className="space-y-4 mt-5">
-            {exams.map((exam) => (
-              <button
-                key={exam.id}
-                onClick={() => handleSelectExam(exam.id)}
-                className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5  rounded-2xl ${
-                  selectedInfoExam === exam?.id
-                    ? "border-green-600 "
-                    : "border-transparent"
-                }`}
-              >
-                {exam.name}
+          {loading ? (
+            <Skeleton />
+          ) : (
+            <>
+              <div className="space-y-4 mt-5">
+                {cambridgeExam?.exams?.map((exam) => (
+                  <button
+                    key={exam.exam_id}
+                    onClick={() => handleSelectExam(exam)}
+                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5  rounded-2xl ${
+                      selectedInfoExam?.exam_id === exam?.exam_id
+                        ? "border-green-600 "
+                        : "border-transparent"
+                    }`}
+                  >
+                    {exam.exam_name}
 
-                <span
-                  className={`w-6 h-6 rounded-full ${
-                    selectedInfoExam === exam?.id
-                      ? "bg-green-600 text-white"
-                      : "bg-gray-200 text-white"
-                  }   flex-center`}
-                >
-                  <FiCheck className=" p-0.5" size={24} />
-                </span>
-              </button>
-            ))}
-          </div>
+                    <span
+                      className={`w-6 h-6 rounded-full ${
+                        selectedInfoExam?.exam_id === exam?.exam_id
+                          ? "bg-green-600 text-white"
+                          : "bg-gray-200 text-white"
+                      }   flex-center`}
+                    >
+                      <FiCheck className=" p-0.5" size={24} />
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="md:w-1/2 w-full">
           <h2 className="font-bold mb-4 text-2xl text-center">
             Pearson | Edexcel
           </h2>
-          <div className="space-y-4 mt-11">
-            {boards.map((board) => (
-              <button
-                key={board.id}
-                onClick={() => handleSelectBoard(board.id)}
-                className={`flex justify-between items-center w-full px-4  border-[3px] py-5  rounded-2xl bg-white ${
-                  selectedInfoBoard === board?.id
-                    ? "border-green-600 "
-                    : "border-transparent"
-                }`}
-              >
-                {board.name}
+          {loading ? (
+            <Skeleton />
+          ) : (
+            <>
+              <div className="space-y-4 mt-11">
+                {edexcelExam?.exams?.map((exam) => (
+                  <button
+                    key={exam.exam_id}
+                    onClick={() => handleSelectExam(exam)}
+                    className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5  rounded-2xl ${
+                      selectedInfoExam?.exam_id === exam?.exam_id
+                        ? "border-green-600 "
+                        : "border-transparent"
+                    }`}
+                  >
+                    {exam.exam_name}
 
-                <span
-                  className={`w-6 h-6 rounded-full ${
-                    selectedInfoBoard === board?.id
-                      ? "bg-green-600 text-white"
-                      : "bg-gray-200 text-white"
-                  }   flex-center`}
-                >
-                  <FiCheck className=" p-0.5" size={24} />
-                </span>
-              </button>
-            ))}
-          </div>
+                    <span
+                      className={`w-6 h-6 rounded-full ${
+                        selectedInfoExam?.exam_id === exam?.exam_id
+                          ? "bg-green-600 text-white"
+                          : "bg-gray-200 text-white"
+                      }   flex-center`}
+                    >
+                      <FiCheck className=" p-0.5" size={24} />
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

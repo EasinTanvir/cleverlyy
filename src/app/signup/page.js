@@ -8,11 +8,13 @@ import { FaApple } from "react-icons/fa";
 import Divider from "@mui/material/Divider";
 import Buttons from "@/components/Buttons";
 import InputField from "@/components/InputField";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  //react hook form initialization
   const {
     register,
     handleSubmit,
@@ -20,37 +22,25 @@ const Signup = () => {
     setError,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
     mode: "onTouched",
   });
 
-  const onSubmitHandler = async (data) => {
-    const { username, email, password } = data;
-
+  const onSubmitHandler = async (formData) => {
     try {
       setLoading(true);
-      const response = await api.post("/auth/public/signup", sendData);
-      toast.success("Reagister Successful");
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/register`,
+        formData
+      );
       reset();
-      if (response.data) {
-        navigate("/login");
-      }
+      toast.success(data?.message || "Reagister Successful");
+      router.push("/info");
     } catch (error) {
-      // Add an error programmatically by using the setError function provided by react-hook-form
-      //setError(keyword,message) => keyword means the name of the field where I want to show the error
-
-      if (
-        error?.response?.data?.message === "Error: Username is already taken!"
-      ) {
-        setError("username", { message: "username is already taken" });
-      } else if (
-        error?.response?.data?.message === "Error: Email is already in use!"
-      ) {
-        setError("email", { message: "Email is already in use" });
+      console.log(error);
+      if (error?.response?.data?.message === "Email is already registered.") {
+        setError("email", { message: error?.response?.data?.message });
+      } else {
+        setError("password", { message: error?.response?.data?.message });
       }
     } finally {
       setLoading(false);
@@ -103,7 +93,7 @@ const Signup = () => {
           <InputField
             label="First Name"
             required
-            id="firstName"
+            id="first_name"
             type="text"
             message="*First Name is required"
             placeholder="type your first name"
@@ -113,7 +103,7 @@ const Signup = () => {
           <InputField
             label="Last Name"
             required
-            id="lastName"
+            id="last_name"
             type="text"
             message="*Last Name is required"
             placeholder="type your last name"
