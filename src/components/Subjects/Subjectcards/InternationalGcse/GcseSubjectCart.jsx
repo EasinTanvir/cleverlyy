@@ -33,7 +33,7 @@ const GcseSubjectCart = ({
       }
       href="/subjects/info"
       style={{ backgroundColor: color }}
-      className={` cursor-pointer md:px-5 px-2.5 pb-5 pt-3 md:min-w-[340px] md:max-w-[340px] w-full rounded-2xl  border-[1px] shadow-md space-y-9`}
+      className={` cursor-pointer md:px-5 px-2.5 pb-5 pt-3 md:min-w-[325px] md:max-w-[325px] w-full rounded-2xl  border-[1px] shadow-md space-y-9`}
     >
       <div className="flex items-center gap-5">
         <div className="w-[115px] ">

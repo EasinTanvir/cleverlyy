@@ -30,7 +30,7 @@ const SubjectUnit = ({
         })
       }
       href="/subjects/info"
-      className={` bg-white cursor-pointer p-5 md:max-w-[340px] md:min-w-[340px] w-full rounded-2xl  border-[1px] shadow-md space-y-12 `}
+      className={` bg-white cursor-pointer p-5 md:max-w-[325px] md:min-w-[325px] w-full rounded-2xl  border-[1px] shadow-md space-y-12 `}
     >
       <div className="flex  gap-5">
         <div className="flex-1">
