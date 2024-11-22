@@ -113,8 +113,7 @@ export default function SubjectInfo() {
             </div>
 
             {/* Papers for Selected Subject */}
-            {selectedSub?.subject_id === subject.subject_id &&
-              subject?.units?.length > 0 &&
+            {subject?.units?.length > 0 &&
               selectedSubjects.some(
                 (s) => s.subject_id === subject.subject_id
               ) && (
