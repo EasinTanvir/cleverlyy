@@ -14,6 +14,10 @@ const AiPageLayout = ({ subjectLists }) => {
     selectedBoard,
     setSelectedBoard,
     setUserSelectedSubject,
+    setAiSelectedYear,
+    setAiSelectedSession,
+    setAiSelectedVariant,
+    setAiSelectedPaper,
   } = useContextProvider();
   // Find the selected board and exams based on `selectedBoard`
   const board = subjectLists.find(
@@ -23,6 +27,11 @@ const AiPageLayout = ({ subjectLists }) => {
   const exams = board ? board.exams : [];
 
   useEffect(() => {
+    setAiSelectedYear("");
+    setAiSelectedSession("");
+    setAiSelectedVariant("");
+    setAiSelectedPaper("");
+
     setSelectedExam(null);
     setSelectedSubject(null);
   }, []);
