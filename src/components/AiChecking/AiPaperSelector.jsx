@@ -9,7 +9,17 @@ import { NotFound } from "../NotFound";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 
 const AiPaperSelector = () => {
-  const { selectedSubject } = useContextProvider();
+  const {
+    selectedSubject,
+    aiSelectedYear,
+    setAiSelectedYear,
+    aiSelectedSession,
+    setAiSelectedSession,
+    aiSelectedVariant,
+    setAiSelectedVariant,
+    aiSelectedPaper,
+    setAiSelectedPaper,
+  } = useContextProvider();
 
   const [yearWiseQpLists, setYearWiseQpLists] = useState({});
   const [message, setMessage] = useState(null);
@@ -17,12 +27,6 @@ const AiPaperSelector = () => {
   const [error, setError] = useState(null);
 
   const [finalPaper, setFinalPaper] = useState(null);
-
-  // Dropdown states
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedSession, setSelectedSession] = useState("");
-  const [selectedVariant, setSelectedVariant] = useState("");
-  const [selectedPaper, setSelectedPaper] = useState("");
 
   const [paperRetrieve, setPaperRetrieve] = useState("");
 
@@ -71,32 +75,35 @@ const AiPaperSelector = () => {
   }, [selectedSubject]);
 
   const getSessionOptions = () => {
-    return selectedYear ? Object.keys(yearWiseQpLists[selectedYear] || {}) : [];
+    return aiSelectedYear
+      ? Object.keys(yearWiseQpLists[aiSelectedYear] || {})
+      : [];
   };
 
   const getVariantOptions = () => {
-    return selectedSession
-      ? Object.keys(yearWiseQpLists[selectedYear]?.[selectedSession] || {})
+    return aiSelectedSession
+      ? Object.keys(yearWiseQpLists[aiSelectedYear]?.[aiSelectedSession] || {})
       : [];
   };
 
   const getPaperOptions = () => {
-    return selectedVariant
-      ? yearWiseQpLists[selectedYear]?.[selectedSession]?.[selectedVariant] ||
-          []
+    return aiSelectedVariant
+      ? yearWiseQpLists[aiSelectedYear]?.[aiSelectedSession]?.[
+          aiSelectedVariant
+        ] || []
       : [];
   };
 
   useEffect(() => {
     if (
-      !selectedYear ||
-      !selectedSession ||
-      !selectedVariant ||
-      !selectedPaper
+      !aiSelectedYear ||
+      !aiSelectedSession ||
+      !aiSelectedVariant ||
+      !aiSelectedPaper
     ) {
       setPaperRetrieve(false);
     }
-  }, [selectedYear, selectedSession, selectedVariant, selectedPaper]);
+  }, [aiSelectedYear, aiSelectedSession, aiSelectedVariant, aiSelectedPaper]);
 
   if (loading) {
     return (
@@ -118,7 +125,7 @@ const AiPaperSelector = () => {
   }
 
   return (
-    <div className="pt-4 pb-10">
+    <div className="pb-10">
       {message ? (
         <NotFound title={message} desc="Please try with another subject" />
       ) : (
@@ -134,12 +141,12 @@ const AiPaperSelector = () => {
                 <div className="relative w-60">
                   <select
                     className="w-full py-2 px-3 text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    value={selectedYear}
+                    value={aiSelectedYear}
                     onChange={(e) => {
-                      setSelectedYear(e.target.value);
-                      setSelectedSession("");
-                      setSelectedVariant("");
-                      setSelectedPaper("");
+                      setAiSelectedYear(e.target.value);
+                      setAiSelectedSession("");
+                      setAiSelectedVariant("");
+                      setAiSelectedPaper("");
                     }}
                   >
                     <option value="">Select Year</option>
@@ -155,13 +162,13 @@ const AiPaperSelector = () => {
                 <div className="relative w-60">
                   <select
                     className="w-full py-2 px-3 text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    value={selectedSession}
+                    value={aiSelectedSession}
                     onChange={(e) => {
-                      setSelectedSession(e.target.value);
-                      setSelectedVariant("");
-                      setSelectedPaper("");
+                      setAiSelectedSession(e.target.value);
+                      setAiSelectedVariant("");
+                      setAiSelectedPaper("");
                     }}
-                    disabled={!selectedYear}
+                    disabled={!aiSelectedYear}
                   >
                     <option value="">Select Session</option>
                     {getSessionOptions().map((session) => (
@@ -176,12 +183,12 @@ const AiPaperSelector = () => {
                 <div className="relative w-60">
                   <select
                     className="w-full py-2 px-3 text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    value={selectedVariant}
+                    value={aiSelectedVariant}
                     onChange={(e) => {
-                      setSelectedVariant(e.target.value);
-                      setSelectedPaper("");
+                      setAiSelectedVariant(e.target.value);
+                      setAiSelectedPaper("");
                     }}
-                    disabled={!selectedSession}
+                    disabled={!aiSelectedSession}
                   >
                     <option value="">Select Variant</option>
                     {getVariantOptions().map((variant) => (
@@ -197,10 +204,10 @@ const AiPaperSelector = () => {
                 <div className="relative w-60">
                   <select
                     className="w-full py-2 px-3 text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    value={selectedPaper}
+                    value={aiSelectedPaper}
                     onChange={(e) => {
                       const selectedPaperName = e.target.value;
-                      setSelectedPaper(selectedPaperName);
+                      setAiSelectedPaper(selectedPaperName);
 
                       // Find the full paper object based on the selected name
                       const fullPaperObject = getPaperOptions().find(
@@ -208,7 +215,7 @@ const AiPaperSelector = () => {
                       );
                       setFinalPaper(fullPaperObject || null); // Store the full object in finalPaper
                     }}
-                    disabled={!selectedVariant}
+                    disabled={!aiSelectedVariant}
                   >
                     <option value="">Select Paper</option>
                     {getPaperOptions().map((paper, index) => (
@@ -222,9 +229,9 @@ const AiPaperSelector = () => {
                 <button
                   onClick={() => setPaperRetrieve(true)}
                   className={`bg-textColor text-white px-4 py-2.5 rounded-md text-sm w-60 ${
-                    selectedPaper ? "opacity-100" : "opacity-45"
+                    aiSelectedPaper ? "opacity-100" : "opacity-45"
                   }`}
-                  disabled={!selectedPaper}
+                  disabled={!aiSelectedPaper}
                 >
                   Paper Retrieved
                 </button>
@@ -238,8 +245,9 @@ const AiPaperSelector = () => {
                     <div className="space-y-5  md:text-lg text-sm">
                       <div className="flex items-center ">
                         <FaFilePdf size={22} className="mr-2 text-textColor" />
-                        {selectedSubject?.subject_name}_{selectedYear}_
-                        {selectedSession}_{selectedVariant}_{selectedPaper}
+                        {selectedSubject?.subject_name}_{aiSelectedYear}_
+                        {aiSelectedSession}_{aiSelectedVariant}_
+                        {aiSelectedPaper}
                       </div>
                     </div>
                     <div className="space-y-3">
@@ -258,39 +266,10 @@ const AiPaperSelector = () => {
                       </div>
                     </div>
                   </div>
-
-                  <div className="flex items-center justify-between my-10">
-                    <hr className="w-full border" />
-                    <span className="px-4">Or</span>
-                    <hr className="w-full border" />
-                  </div>
-                  {/* Information Section */}
-                  <div className="flex md:flex-row flex-col-reverse items-center justify-between md:text-lg text-sm gap-3 space-x-2">
-                    <div className="space-y-2">
-                      <FaInfoCircle size={20} className="" />
-                      <ul className="space-y-1 list-disc ps-5 ">
-                        <li>
-                          Only{" "}
-                          <span className="font-semibold underline">PDF</span>{" "}
-                          is accepted.
-                        </li>
-                        <li>
-                          Make sure the{" "}
-                          <span className="font-semibold underline">
-                            full document
-                          </span>{" "}
-                          is uploaded.
-                        </li>
-                        <li>
-                          Make sure the writings are visible & clear as our AI
-                          relies on OCR technology.
-                        </li>
-                      </ul>
-                    </div>
-
-                    <button className="bg-textColor text-white px-4 py-2.5 rounded-md text-sm w-60">
-                      Upload Solved Paper
-                    </button>
+                  <hr className="border my-11" />
+                  <div className="flex gap-4 items-start">
+                    <FaInfoCircle size={20} />
+                    <p className="text-sm">{/* Insert your message here */}</p>
                   </div>
                 </>
               )}

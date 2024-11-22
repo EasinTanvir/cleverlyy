@@ -23,10 +23,7 @@ const fetchData = async (url) => {
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.message || `HTTP error! status: ${response.status}`
-    );
+    throw new Error(`Failed To Fetch User Subject Data`);
   }
 
   return response.json();
@@ -34,7 +31,6 @@ const fetchData = async (url) => {
 
 const SubjectWrapper = async ({ subject }) => {
   try {
-    // Fetch data concurrently
     const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
       fetchData(`${process.env.BACKEND_URL}/subjects/all`),
       fetchData(`${process.env.BACKEND_URL}/users/7/subjects`),
@@ -68,7 +64,6 @@ const SubjectWrapper = async ({ subject }) => {
       return { labels, chartData };
     };
 
-    // Get the filtered data for the selected board
     const { labels, chartData } = filterDataByBoard();
 
     return subject ? (
@@ -77,7 +72,7 @@ const SubjectWrapper = async ({ subject }) => {
       <DashBoardChart labels={labels} dataValues={chartData} />
     );
   } catch (error) {
-    console.error("Failed to fetch subjects:", error.message);
+    console.error(error.message);
     throw new Error("Failed to load subjects. Please try again later.");
   }
 };

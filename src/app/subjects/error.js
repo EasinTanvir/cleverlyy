@@ -10,9 +10,7 @@ const Errors = ({ error }) => {
         <div>
           <Alert style={{ width: "500px" }} severity="warning">
             <div className="flex-center">
-              <h3 className="text-xl">
-                {error?.message || "SomeThing Went Wrong in subject page"}
-              </h3>
+              <h3 className="text-xl">SomeThing Went Wrong in subject page</h3>
               <Link
                 className="underline ms-1 font-bold text-red-800 text-xl"
                 href="/subjects"

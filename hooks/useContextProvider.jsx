@@ -38,6 +38,12 @@ export const ContextProvider = ({ children }) => {
 
   const [currentExamIndex, setCurrentExamIndex] = useState(0);
 
+  //ai page state
+  const [aiSelectedYear, setAiSelectedYear] = useState("");
+  const [aiSelectedSession, setAiSelectedSession] = useState("");
+  const [aiSelectedVariant, setAiSelectedVariant] = useState("");
+  const [aiSelectedPaper, setAiSelectedPaper] = useState("");
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -98,6 +104,14 @@ export const ContextProvider = ({ children }) => {
     setUserAccessSubject,
     selectedUnits,
     setSelectedUnits,
+    aiSelectedYear,
+    setAiSelectedYear,
+    aiSelectedSession,
+    setAiSelectedSession,
+    aiSelectedVariant,
+    setAiSelectedVariant,
+    aiSelectedPaper,
+    setAiSelectedPaper,
   };
 
   return (

@@ -1,12 +1,12 @@
 import React from "react";
-import ResourceLayout from "../Resources/ResourceLayout";
 import AiPaperSelector from "./AiPaperSelector";
 import AiLayoutWrapper from "./AiLayoutWrapper";
+import AiPageLayout from "./AiPageLayout";
 
 const AiChecking = ({ subjectLists }) => {
   return (
     <div>
-      <ResourceLayout subjectLists={subjectLists} />
+      <AiPageLayout subjectLists={subjectLists} />
       <AiLayoutWrapper>
         <div className="md:p-8 p-4">
           <AiPaperSelector />

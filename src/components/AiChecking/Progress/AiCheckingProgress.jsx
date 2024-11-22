@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Divider } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
@@ -5,14 +6,31 @@ import { FiArrowRight } from "react-icons/fi";
 import { TbAlertTriangle } from "react-icons/tb";
 
 import ResponseDisplay from "./Response";
+import { useContextProvider } from "../../../../hooks/useContextProvider";
+import { FaFilePdf } from "react-icons/fa";
 
 const AiCheckingProgress = () => {
+  const {
+    selectedSubject,
+    aiSelectedYear,
+    setAiSelectedYear,
+    aiSelectedSession,
+    setAiSelectedSession,
+    aiSelectedVariant,
+    setAiSelectedVariant,
+    aiSelectedPaper,
+    setAiSelectedPaper,
+  } = useContextProvider();
   return (
     <div>
       <div>
-        <h1 className="md:text-xl text-[18px]">
-          Cambridge Chemistry O-Level-2015. May/June Variant-1, Paper-1
-        </h1>
+        <div className="space-y-5  md:text-lg text-sm">
+          <div className="flex items-center ">
+            <FaFilePdf size={22} className="mr-2 text-textColor" />
+            {selectedSubject?.subject_name}_{aiSelectedYear}_{aiSelectedSession}
+            _{aiSelectedVariant}_{aiSelectedPaper}
+          </div>
+        </div>
         <div className="mt-5 flex md:flex-row flex-col gap-4 justify-between items-start">
           <div className="flex md:flex-row flex-col items-center gap-3  ps-6">
             <button className="flex items-center px-4 py-2 bg-textColor4 text-white rounded-xl">
