@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { HiOutlineComputerDesktop } from "react-icons/hi2";
+import { motion } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
@@ -18,6 +18,8 @@ const AiPageLayout = ({ subjectLists }) => {
     setAiSelectedSession,
     setAiSelectedVariant,
     setAiSelectedPaper,
+    resourceSelectUnit,
+    setResourceSelectUnit,
   } = useContextProvider();
   // Find the selected board and exams based on `selectedBoard`
   const board = subjectLists.find(
@@ -105,31 +107,63 @@ const AiPageLayout = ({ subjectLists }) => {
 
       {/* Subjects */}
       {selectedExam ? (
-        <div className="flex flex-wrap gap-x-10 gap-y-14 border-b-[3px] border-borderColor2 py-12 ">
-          {selectedExam?.subjects.map((subject) => (
-            <button
-              key={subject.subject_id}
-              className={`py-2 px-4 rounded-lg ${
-                selectedSubject?.subject_id === subject.subject_id
-                  ? "bg-textColor text-white "
-                  : " bg-examBg text-black "
-              }`}
-              onClick={() => {
-                setSelectedSubject({
-                  subject_id: subject.subject_id,
-                  subject_name: subject.subject_name,
-                });
+        <>
+          <div className="flex flex-wrap gap-x-10 gap-y-14 border-b-[3px] border-borderColor2 py-12 ">
+            {selectedExam?.subjects.map((subject) => (
+              <button
+                key={subject.subject_id}
+                className={`py-2 px-4 rounded-lg ${
+                  selectedSubject?.subject_id === subject.subject_id
+                    ? "bg-textColor text-white "
+                    : " bg-examBg text-black "
+                }`}
+                onClick={() => {
+                  setResourceSelectUnit(null);
+                  setSelectedSubject({
+                    subject_id: subject.subject_id,
+                    subject_name: subject.subject_name,
+                    units: subject.units,
+                  });
 
-                setUserSelectedSubject({
-                  subject_name: subject.subject_name,
-                  board_name: selectedBoard.board_name || "Cambridge",
-                });
-              }}
-            >
-              {subject.subject_name}
-            </button>
-          ))}
-        </div>
+                  setUserSelectedSubject({
+                    subject_name: subject.subject_name,
+                    board_name: selectedBoard.board_name || "Cambridge",
+                  });
+                }}
+              >
+                {subject.subject_name}
+              </button>
+            ))}
+          </div>
+
+          <hr />
+          <div>
+            {selectedSubject?.units?.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="mt-6 "
+              >
+                <div className="flex  flex-wrap gap-3 pb-6">
+                  {selectedSubject.units.map((unit, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setResourceSelectUnit(unit)}
+                      className={`px-6  w-fit py-2    rounded-xl ${
+                        resourceSelectUnit?.unit_id === unit?.unit_id
+                          ? "bg-textColor text-white"
+                          : "bg-examBg"
+                      }`}
+                    >
+                      {unit.unit_name}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </>
       ) : selectedBoard ? (
         <div className=" min-h-72 flex-center">Select an exam</div>
       ) : null}

@@ -7,11 +7,14 @@ import { useRouter } from "next/navigation";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { Dropdown } from "./DropDown";
 import Skeleton from "../Skeleton";
+import { NotFound } from "../NotFound";
 
 const Resource = () => {
-  const { selectedExam, selectedSubject } = useContextProvider();
+  const { selectedExam, selectedSubject, resourceSelectUnit } =
+    useContextProvider();
 
   const [subjectInfo, setSubjectInfo] = useState(null);
+  const [error, setError] = useState(null);
   const [loader, setLoader] = useState(false);
 
   const fetchSubjectInfo = async (subject_id) => {
@@ -36,17 +39,27 @@ const Resource = () => {
 
       setSubjectInfo(data);
     } catch (error) {
-      throw new Error("Error fetching subject info:", error);
+      setError(error?.message);
     } finally {
       setLoader(false);
     }
   };
 
   useEffect(() => {
-    if (selectedSubject?.subject_id) {
-      fetchSubjectInfo(selectedSubject?.subject_id);
+    if (selectedSubject && selectedSubject?.units?.length > 0) {
+      if (selectedSubject.subject_id && resourceSelectUnit?.unit_id) {
+        setLoader(true);
+        setError(null);
+        fetchSubjectInfo(selectedSubject.subject_id);
+      }
+    } else {
+      if (selectedSubject && selectedSubject?.subject_id) {
+        setLoader(true);
+        setError(null);
+        fetchSubjectInfo(selectedSubject.subject_id);
+      }
     }
-  }, [selectedSubject]);
+  }, [selectedSubject, resourceSelectUnit]);
 
   if (!selectedExam || !selectedSubject) return;
 
@@ -56,6 +69,17 @@ const Resource = () => {
         <Skeleton />
       </div>
     );
+
+  if (error) {
+    return (
+      <div>
+        <NotFound
+          title="Something Went Wrong"
+          desc={error || "Failed to fetch data for resource"}
+        />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -124,10 +148,10 @@ const ChapterWiseRevisioncard = ({
           <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
             <div
               className="bg-purple-500 h-[14px] rounded-full relative"
-              style={{ width: `${progress}%` }}
+              style={{ width: `${progress || 0}%` }}
             >
               <span className="text-white text-[10px] absolute right-2  top-0  ">
-                {progress}%
+                {progress || 0}%
               </span>
             </div>
           </div>
@@ -164,10 +188,10 @@ const YearWisecard = ({ title, link, yearwise_progress }) => {
         <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
           <div
             className="bg-purple-500 h-[14px] rounded-full relative"
-            style={{ width: `${yearwise_progress}%` }}
+            style={{ width: `${yearwise_progress || 0}%` }}
           >
             <span className="text-white text-[10px] absolute right-2  top-0  ">
-              {yearwise_progress}%
+              {yearwise_progress || 0}%
             </span>
           </div>
         </div>

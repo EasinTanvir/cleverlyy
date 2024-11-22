@@ -17,7 +17,7 @@ const ResourceRevision = ({ revisionNoteLists, subject_id }) => {
           </button>
         </Link>
       </div>
-      <Action />
+      {revisionNoteLists && revisionNoteLists.length > 0 && <Action />}
       {revisionNoteLists && revisionNoteLists.length > 0 ? (
         <div className="mt-12 grid  md:grid-cols-2  gap-5   2xl:w-[82%] md:w-[80%]  ">
           {revisionNoteLists.map((item, i) => (

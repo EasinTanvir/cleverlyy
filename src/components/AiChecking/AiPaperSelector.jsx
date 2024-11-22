@@ -19,11 +19,12 @@ const AiPaperSelector = () => {
     setAiSelectedVariant,
     aiSelectedPaper,
     setAiSelectedPaper,
+    resourceSelectUnit,
   } = useContextProvider();
 
   const [yearWiseQpLists, setYearWiseQpLists] = useState({});
   const [message, setMessage] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const [finalPaper, setFinalPaper] = useState(null);
@@ -65,14 +66,25 @@ const AiPaperSelector = () => {
     }
   };
 
+  console.log("loading", loading);
+
   useEffect(() => {
-    if (selectedSubject.subject_id) {
-      setLoading(true);
-      setError(null);
-      setMessage(null);
-      fetchYearWiseQp(selectedSubject.subject_id);
+    if (selectedSubject && selectedSubject?.units?.length > 0) {
+      if (selectedSubject?.subject_id && resourceSelectUnit?.unit_id) {
+        console.log("i am inside");
+        setLoading(true);
+        setError(null);
+        fetchYearWiseQp(selectedSubject.subject_id);
+      }
+    } else {
+      if (selectedSubject && selectedSubject?.subject_id) {
+        console.log("i am outside");
+        setLoading(true);
+        setError(null);
+        fetchYearWiseQp(selectedSubject.subject_id);
+      }
     }
-  }, [selectedSubject]);
+  }, [selectedSubject, resourceSelectUnit]);
 
   const getSessionOptions = () => {
     return aiSelectedYear

@@ -44,6 +44,8 @@ export const ContextProvider = ({ children }) => {
   const [aiSelectedVariant, setAiSelectedVariant] = useState("");
   const [aiSelectedPaper, setAiSelectedPaper] = useState("");
 
+  const [resourceSelectUnit, setResourceSelectUnit] = useState(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -112,6 +114,8 @@ export const ContextProvider = ({ children }) => {
     setAiSelectedVariant,
     aiSelectedPaper,
     setAiSelectedPaper,
+    resourceSelectUnit,
+    setResourceSelectUnit,
   };
 
   return (

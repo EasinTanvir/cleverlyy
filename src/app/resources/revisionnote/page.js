@@ -7,9 +7,10 @@ import Skeleton from "@/components/Skeleton";
 import { NotFound } from "@/components/NotFound";
 
 const RevisionNotePage = () => {
-  const { selectedSubject } = useContextProvider();
+  const { selectedSubject, resourceSelectUnit } = useContextProvider();
+
   const [revisionNoteLists, setRevisionNoteLists] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchChapterWiseRevisionNotes = async (subjectId) => {
@@ -44,12 +45,20 @@ const RevisionNotePage = () => {
   };
 
   useEffect(() => {
-    if (selectedSubject.subject_id) {
-      setLoading(true);
-      setError(null);
-      fetchChapterWiseRevisionNotes(selectedSubject.subject_id);
+    if (selectedSubject && selectedSubject?.units?.length > 0) {
+      if (selectedSubject.subject_id && resourceSelectUnit?.unit_id) {
+        setLoading(true);
+        setError(null);
+        fetchChapterWiseRevisionNotes(selectedSubject.subject_id);
+      }
+    } else {
+      if (selectedSubject && selectedSubject?.subject_id) {
+        setLoading(true);
+        setError(null);
+        fetchChapterWiseRevisionNotes(selectedSubject.subject_id);
+      }
     }
-  }, [selectedSubject]);
+  }, [selectedSubject, resourceSelectUnit]);
 
   if (loading) {
     return (

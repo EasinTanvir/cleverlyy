@@ -7,9 +7,9 @@ import Skeleton from "@/components/Skeleton";
 import { NotFound } from "@/components/NotFound";
 
 const ChapterWisepage = () => {
-  const { selectedSubject } = useContextProvider();
+  const { selectedSubject, resourceSelectUnit } = useContextProvider();
   const [chapterWiseLists, setChapterWiseLists] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchChapterWiseLists = async (subjectId) => {
@@ -34,12 +34,20 @@ const ChapterWisepage = () => {
   };
 
   useEffect(() => {
-    if (selectedSubject.subject_id) {
-      setLoading(true);
-      setError(null);
-      fetchChapterWiseLists(selectedSubject.subject_id);
+    if (selectedSubject && selectedSubject?.units?.length > 0) {
+      if (selectedSubject?.subject_id && resourceSelectUnit?.unit_id) {
+        setLoading(true);
+        setError(null);
+        fetchChapterWiseLists(selectedSubject.subject_id);
+      }
+    } else {
+      if (selectedSubject && selectedSubject.subject_id) {
+        setLoading(true);
+        setError(null);
+        fetchChapterWiseLists(selectedSubject.subject_id);
+      }
     }
-  }, [selectedSubject]);
+  }, [selectedSubject, resourceSelectUnit]);
 
   if (loading) {
     return (

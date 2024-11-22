@@ -7,10 +7,10 @@ import Skeleton from "@/components/Skeleton";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 const ResourceYearWiseQuestionSolvePage = () => {
-  const { selectedSubject } = useContextProvider();
+  const { selectedSubject, resourceSelectUnit } = useContextProvider();
   const [yearWiseQpLists, setYearWiseQpLists] = useState([]);
   const [message, setMessage] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchYearWiseQp = async (subjectId) => {
@@ -49,13 +49,20 @@ const ResourceYearWiseQuestionSolvePage = () => {
   };
 
   useEffect(() => {
-    if (selectedSubject.subject_id) {
-      setLoading(true);
-      setError(null);
-      setMessage(null);
-      fetchYearWiseQp(selectedSubject.subject_id);
+    if (selectedSubject && selectedSubject?.units?.length > 0) {
+      if (selectedSubject.subject_id && resourceSelectUnit?.unit_id) {
+        setLoading(true);
+        setError(null);
+        fetchYearWiseQp(selectedSubject.subject_id);
+      }
+    } else {
+      if (selectedSubject && selectedSubject?.subject_id) {
+        setLoading(true);
+        setError(null);
+        fetchYearWiseQp(selectedSubject.subject_id);
+      }
     }
-  }, [selectedSubject]);
+  }, [selectedSubject, resourceSelectUnit]);
 
   if (loading) {
     return (
