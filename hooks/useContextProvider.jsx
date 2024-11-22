@@ -13,9 +13,10 @@ export const ContextProvider = ({ children }) => {
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
-
   const [selectedInfoExam, setSelectedInfoExam] = useState([]);
   const [selectedInfoBoard, setSelectedInfoBoard] = useState([]);
+  const [userAccessSubject, setUserAccessSubject] = useState([]);
+  const [selectedUnits, setSelectedUnits] = useState([]);
 
   const [selectedChapters, setSelectedChapters] = useState([]);
   const [selectedPaper, setSelectedPaper] = useState(null);
@@ -93,6 +94,10 @@ export const ContextProvider = ({ children }) => {
     setSelectedSubjects,
     currentExamIndex,
     setCurrentExamIndex,
+    userAccessSubject,
+    setUserAccessSubject,
+    selectedUnits,
+    setSelectedUnits,
   };
 
   return (

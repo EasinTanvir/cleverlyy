@@ -10,8 +10,38 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
   const [loader, setLoader] = useState();
   const router = useRouter();
 
-  const { selectedCountry, selectedGrade, selectedSchool, selectedSubjects } =
-    useContextProvider();
+  const {
+    selectedCountry,
+    selectedGrade,
+    selectedSchool,
+    selectedSubjects,
+    selectedUnits,
+  } = useContextProvider();
+
+  const updateMainArray = (mainArray, selectedUnit) => {
+    // Create a map of subject_id to its units from selectedUnit
+    const selectedUnitsMap = selectedUnit.reduce((acc, unit) => {
+      if (!acc[unit.subject_id]) {
+        acc[unit.subject_id] = [];
+      }
+      acc[unit.subject_id].push(unit);
+      return acc;
+    }, {});
+
+    // Update mainArray
+    return mainArray.map((subject) => {
+      if (selectedUnitsMap[subject.subject_id]) {
+        // Replace units with those from selectedUnit
+        return {
+          ...subject,
+          units: selectedUnitsMap[subject.subject_id],
+        };
+      }
+      return subject; // Leave subject unchanged if not in selectedUnit
+    });
+  };
+
+  const updatedMainArray = updateMainArray(selectedSubjects, selectedUnits);
 
   const handleClose = () => setOpenModal(false);
 
@@ -32,9 +62,9 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
       grade: selectedGrade?.toString() || "",
       school: selectedSchool?.name || "",
       subjects_with_units:
-        selectedSubjects?.map((subject) => ({
+        updatedMainArray?.map((subject) => ({
           subject_id: subject.subject_id,
-          unit_ids: subject.units?.map((unit) => unit.unit_id) || [],
+          unit_id: subject.units?.map((unit) => unit.unit_id) || [],
         })) || [],
     };
     try {
