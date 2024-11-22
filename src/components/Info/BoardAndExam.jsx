@@ -7,8 +7,14 @@ import { NotFound } from "../NotFound";
 import Skeleton from "../Skeleton";
 
 const BoardAndExam = () => {
-  const { selectedInfoExam, setSelectedInfoExam, infoData, setInfoData } =
-    useContextProvider();
+  const {
+    selectedInfoExam,
+    setSelectedInfoExam,
+    infoData,
+    setInfoData,
+    selectedInfoBoard,
+    setSelectedInfoBoard,
+  } = useContextProvider();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -89,7 +95,13 @@ const BoardAndExam = () => {
                 {cambridgeExam?.exams?.map((exam) => (
                   <button
                     key={exam.exam_id}
-                    onClick={() => handleSelectExam(exam)}
+                    onClick={() => {
+                      handleSelectExam(exam);
+                      setSelectedInfoBoard([
+                        ...selectedInfoBoard,
+                        cambridgeExam?.board_name,
+                      ]);
+                    }}
                     className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5 rounded-2xl ${
                       selectedInfoExam?.some(
                         (selected) => selected.exam_id === exam.exam_id
@@ -130,7 +142,13 @@ const BoardAndExam = () => {
                 {edexcelExam?.exams?.map((exam) => (
                   <button
                     key={exam.exam_id}
-                    onClick={() => handleSelectExam(exam)}
+                    onClick={() => {
+                      handleSelectExam(exam);
+                      setSelectedInfoBoard([
+                        ...selectedInfoBoard,
+                        edexcelExam?.board_name,
+                      ]);
+                    }}
                     className={`flex justify-between border-[3px] bg-white items-center w-full px-4 py-5 rounded-2xl ${
                       selectedInfoExam?.some(
                         (selected) => selected.exam_id === exam.exam_id

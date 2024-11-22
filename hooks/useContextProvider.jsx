@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
 
   const [selectedInfoExam, setSelectedInfoExam] = useState([]);
-  const [selectedInfoBoard, setSelectedInfoBoard] = useState(null);
+  const [selectedInfoBoard, setSelectedInfoBoard] = useState([]);
 
   const [selectedChapters, setSelectedChapters] = useState([]);
   const [selectedPaper, setSelectedPaper] = useState(null);
@@ -34,6 +34,8 @@ export const ContextProvider = ({ children }) => {
   const [dropDownSelectedSession, setdropDownSelectedSession] = useState("");
 
   const [infoData, setInfoData] = useState([]);
+
+  const [currentExamIndex, setCurrentExamIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -89,6 +91,8 @@ export const ContextProvider = ({ children }) => {
     setInfoData,
     selectedSubjects,
     setSelectedSubjects,
+    currentExamIndex,
+    setCurrentExamIndex,
   };
 
   return (

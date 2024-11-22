@@ -14,11 +14,19 @@ export default function SubjectInfo() {
     selectedInfoExam,
     selectedSubjects,
     setSelectedSubjects,
+    currentExamIndex,
+    setCurrentExamIndex,
+    selectedInfoBoard,
   } = useContextProvider();
 
-  const allSubjects = selectedInfoExam.flatMap((item) => item.subjects);
+  const currentExam = selectedInfoExam[currentExamIndex];
+  const currentSubjects = currentExam?.subjects || [];
+
+  const [selectedSub, setSelectedSub] = useState(null);
 
   const handleSubjectToggle = (subject) => {
+    setSelectedSub(subject);
+
     if (selectedSubjects.some((s) => s.subject_id === subject.subject_id)) {
       // Deselect subject
       setSelectedSubjects((prev) =>
@@ -60,11 +68,13 @@ export default function SubjectInfo() {
           SELECT YOUR <span className="text-textColor">Subjects</span>
         </h2>
 
-        <div className="relative w-60">
-          <select className="w-full py-2 px-3 text-xl border-t-2 border-black pt-3 text-black bg-transparent appearance-none focus:outline-none">
-            <option>Edexcel O-Levels</option>
-          </select>
-          <FaChevronDown className="absolute right-3 top-7 transform -translate-y-1/2 text-black pointer-events-none" />
+        <div className="relative min-w-60">
+          <div className="w-full flex gap-3 items-center py-2 px-3 text-xl border-t-2 border-black pt-3 text-black bg-transparent appearance-none focus:outline-none">
+            <span>
+              {selectedInfoBoard[currentExamIndex]} - {currentExam?.exam_name}
+            </span>
+            <FaChevronDown className="transform -translate-y-1/2 text-black pointer-events-none mt-5" />
+          </div>
         </div>
       </div>
 
@@ -72,7 +82,7 @@ export default function SubjectInfo() {
 
       {/* Subjects */}
       <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
-        {allSubjects?.map((subject) => (
+        {currentSubjects?.map((subject) => (
           <div key={subject.subject_id}>
             {/* Subject Card */}
             <div
@@ -101,6 +111,31 @@ export default function SubjectInfo() {
                 <FiCheck className="p-0.5" size={24} />
               </span>
             </div>
+
+            {/* Papers for Selected Subject */}
+            {selectedSub?.subject_id === subject.subject_id &&
+              subject?.units?.length > 0 &&
+              selectedSubjects.some(
+                (s) => s.subject_id === subject.subject_id
+              ) && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mt-4  flex  "
+                >
+                  <div className="flex flex-wrap gap-3">
+                    {subject.units.map((unit, index) => (
+                      <button
+                        key={index}
+                        className={`px-6 py-2 border rounded-xl bg-gray-100 text-gray-800`}
+                      >
+                        {unit.unit_name}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
           </div>
         ))}
       </div>

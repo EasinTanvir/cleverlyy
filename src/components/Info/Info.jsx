@@ -33,23 +33,41 @@ const Info = () => {
     setSelectedSchool,
     setSelectedInfoBoard,
     setSelectedInfoExam,
+    currentExamIndex,
+    setCurrentExamIndex,
   } = useContextProvider();
 
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
+    if (activeStep === 3) {
+      if (currentExamIndex < selectedInfoExam.length - 1) {
+        setCurrentExamIndex((prev) => prev + 1);
+      } else {
+        setActiveStep((prevStep) => prevStep + 1);
+      }
+    } else {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
   };
 
   const handleBack = () => {
-    setActiveStep((prevStep) => prevStep - 1);
+    if (activeStep === 3) {
+      if (currentExamIndex > 0) {
+        setCurrentExamIndex((prev) => prev - 1);
+      } else {
+        setActiveStep((prevStep) => prevStep - 1);
+      }
+    } else {
+      setActiveStep((prevStep) => prevStep - 1);
+    }
   };
 
   const disableNextButton =
     !selectedCountry ||
     (activeStep === 1 && (!selectedGrade || !selectedSchool)) ||
     (activeStep === 2 && selectedInfoExam.length === 0) ||
-    (activeStep === 3 && selectedSubjects.length === 0);
+    (activeStep === 3 && currentExamIndex > 0 && selectedSubjects.length === 0);
 
   useEffect(() => {
     setSelectedCountry(null);

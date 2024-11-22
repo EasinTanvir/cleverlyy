@@ -120,7 +120,7 @@ const AiPaperSelector = () => {
   return (
     <div className="pt-4 pb-10">
       {message ? (
-        <h1>{message}</h1>
+        <NotFound title={message} desc="Please try with another subject" />
       ) : (
         <React.Fragment>
           {Object.keys(yearWiseQpLists).length > 0 && (

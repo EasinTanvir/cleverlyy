@@ -5,7 +5,7 @@ import Skeleton from "@/components/Skeleton";
 
 const AiCheckingHelper = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/all`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/7/subjects`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
