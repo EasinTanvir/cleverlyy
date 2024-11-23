@@ -20,6 +20,7 @@ const AiCheckingProgress = () => {
     setAiSelectedVariant,
     aiSelectedPaper,
     setAiSelectedPaper,
+    finalPaper,
   } = useContextProvider();
   return (
     <div>
@@ -28,7 +29,7 @@ const AiCheckingProgress = () => {
           <div className="flex items-center ">
             <FaFilePdf size={22} className="mr-2 text-textColor" />
             {selectedSubject?.subject_name}_{aiSelectedYear}_{aiSelectedSession}
-            _{aiSelectedVariant}_{aiSelectedPaper}
+            _{aiSelectedVariant}_{finalPaper?.paper}
           </div>
         </div>
         <div className="mt-5 flex md:flex-row flex-col gap-4 justify-between items-start">
@@ -73,7 +74,7 @@ const AiCheckingProgress = () => {
         </div>
       </div>
       <div className="">
-        <ResponseDisplay />
+        <ResponseDisplay finalPaper={finalPaper} />
       </div>
 
       <div className="flex justify-between mt-10">

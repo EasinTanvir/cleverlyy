@@ -43,6 +43,7 @@ export const ContextProvider = ({ children }) => {
   const [aiSelectedSession, setAiSelectedSession] = useState("");
   const [aiSelectedVariant, setAiSelectedVariant] = useState("");
   const [aiSelectedPaper, setAiSelectedPaper] = useState("");
+  const [finalPaper, setFinalPaper] = useState(null);
 
   const [resourceSelectUnit, setResourceSelectUnit] = useState(null);
 
@@ -116,6 +117,8 @@ export const ContextProvider = ({ children }) => {
     setAiSelectedPaper,
     resourceSelectUnit,
     setResourceSelectUnit,
+    finalPaper,
+    setFinalPaper,
   };
 
   return (

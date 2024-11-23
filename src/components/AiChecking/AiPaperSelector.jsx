@@ -20,14 +20,14 @@ const AiPaperSelector = () => {
     aiSelectedPaper,
     setAiSelectedPaper,
     resourceSelectUnit,
+    finalPaper,
+    setFinalPaper,
   } = useContextProvider();
 
   const [yearWiseQpLists, setYearWiseQpLists] = useState({});
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const [finalPaper, setFinalPaper] = useState(null);
 
   const [paperRetrieve, setPaperRetrieve] = useState("");
 
@@ -66,19 +66,15 @@ const AiPaperSelector = () => {
     }
   };
 
-  console.log("loading", loading);
-
   useEffect(() => {
     if (selectedSubject && selectedSubject?.units?.length > 0) {
       if (selectedSubject?.subject_id && resourceSelectUnit?.unit_id) {
-        console.log("i am inside");
         setLoading(true);
         setError(null);
         fetchYearWiseQp(selectedSubject.subject_id);
       }
     } else {
       if (selectedSubject && selectedSubject?.subject_id) {
-        console.log("i am outside");
         setLoading(true);
         setError(null);
         fetchYearWiseQp(selectedSubject.subject_id);
@@ -218,12 +214,12 @@ const AiPaperSelector = () => {
                     className="w-full py-2 px-3 text-sm bg-white border border-black text-black rounded-md shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     value={aiSelectedPaper}
                     onChange={(e) => {
-                      const selectedPaperName = e.target.value;
-                      setAiSelectedPaper(selectedPaperName);
+                      const selectedPaperId = e.target.value;
+                      setAiSelectedPaper(selectedPaperId);
 
                       // Find the full paper object based on the selected name
                       const fullPaperObject = getPaperOptions().find(
-                        (paper) => paper.paper === selectedPaperName
+                        (paper) => paper.paper_id == selectedPaperId
                       );
                       setFinalPaper(fullPaperObject || null); // Store the full object in finalPaper
                     }}
@@ -231,7 +227,7 @@ const AiPaperSelector = () => {
                   >
                     <option value="">Select Paper</option>
                     {getPaperOptions().map((paper, index) => (
-                      <option key={index} value={paper.paper}>
+                      <option key={index} value={paper.paper_id}>
                         {paper.paper}
                       </option>
                     ))}
@@ -259,7 +255,7 @@ const AiPaperSelector = () => {
                         <FaFilePdf size={22} className="mr-2 text-textColor" />
                         {selectedSubject?.subject_name}_{aiSelectedYear}_
                         {aiSelectedSession}_{aiSelectedVariant}_
-                        {aiSelectedPaper}
+                        {finalPaper?.paper}
                       </div>
                     </div>
                     <div className="space-y-3">

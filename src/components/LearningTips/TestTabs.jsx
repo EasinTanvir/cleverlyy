@@ -103,10 +103,13 @@ const Tabs = () => {
             </button>
           </div>
         </div>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-10 mt-4">
+        <div className=" flex flex-wrap gap-8 mt-4">
           {filteredSubjects.map((data) =>
             data.subjects.map((subject, i) => (
-              <div key={i} className="bg-white ">
+              <div
+                key={i}
+                className="bg-white w-[410px] py-5 px-6 rounded-2xl "
+              >
                 <p className="text-[11px]">
                   {subject.duration} | {subject.date}
                 </p>

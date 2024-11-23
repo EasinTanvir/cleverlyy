@@ -15,7 +15,7 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
-const ResponseDisplay = () => {
+const ResponseDisplay = ({ finalPaper }) => {
   return (
     <div className="pt-10  flex flex-col items-center ">
       {/* Messages Display */}
@@ -31,7 +31,7 @@ const ResponseDisplay = () => {
 
           <div className="space-y-4 border border-borderColor2  min-h-[500px] max-h-[500px] overflow-auto p-4 rounded-xl">
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-              <Viewer fileUrl="http://localhost:8080/pdf/test.pdf" />
+              <Viewer fileUrl={finalPaper?.file_url} />
             </Worker>
           </div>
         </div>
