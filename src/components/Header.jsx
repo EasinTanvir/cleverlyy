@@ -14,7 +14,7 @@ const Header = ({ sideBarOpen }) => {
         !sideBarOpen
           ? "left-[75px] w-[calc(100%-75px)]"
           : "left-60 w-[calc(100%-240px)]"
-      } top-0   py-6 flex justify-between md:px-5 px-4 z-40 bg-white shadow-md `}
+      } top-0   py-6 flex justify-between md:px-5 px-4 z-40  bg-dashboardBg  border-b-2 border-gray-200`}
     >
       {path === "/aichecking/progress" && (
         <h1 className="text-textColor text-2xl font-bold">AI Checking</h1>

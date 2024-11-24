@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #f7f7f5;
+}
+
 .swiper-horizontal > .swiper-scrollbar {
   display: none !important;
 }

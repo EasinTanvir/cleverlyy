@@ -3,9 +3,9 @@ import Resource from "@/components/Resources/Resource";
 
 const Resources = () => {
   return (
-    <>
+    <div>
       <Resource />
-    </>
+    </div>
   );
 };
 
