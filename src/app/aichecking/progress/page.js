@@ -3,7 +3,7 @@ import AiCheckingProgress from "@/components/AiChecking/Progress/AiCheckingProgr
 
 const page = () => {
   return (
-    <div className="md:p-8 p-4 bg-dashboardBd">
+    <div className="md:p-8 p-4 ">
       <AiCheckingProgress />
     </div>
   );

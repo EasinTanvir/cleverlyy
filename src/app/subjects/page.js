@@ -42,8 +42,8 @@ const SubjectWrapper = async () => {
 
 const SubjectPage = () => {
   return (
-    <div className="bg-dashboardBd md:p-8 p-4">
-      <div className="space-y-10 bg-dashboardBd">
+    <div className=" md:p-8 p-4">
+      <div className="space-y-10 ">
         <div>
           <h1 className="text-bold text-[27px] font-bold">Hi, Easin</h1>
           <h1 className="text-bold text-xl">

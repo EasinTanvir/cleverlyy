@@ -48,7 +48,7 @@ const SideBar = () => {
   return (
     <div className="relative z-50">
       <div
-        className={`bg-sideBarColor py-5 px-4 min-h-screen max-h-screen  fixed top-0 left-0 transition-all duration-75  ${
+        className={`bg-sideBarColor rounded-r-[40px] shadow-lg py-5 px-4 min-h-screen max-h-screen  fixed top-0 left-0 transition-all duration-75  ${
           sideBarOpen ? "w-60" : "w-[75px]"
         } `}
       >

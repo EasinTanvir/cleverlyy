@@ -4,7 +4,7 @@ import { RiCalendarLine, RiTimeLine, RiMore2Fill } from "react-icons/ri";
 
 const NotificationItem = ({ notification }) => {
   return (
-    <div className="bg-dashboardBd rounded-lg p-4 mt-4">
+    <div className=" rounded-lg p-4 mt-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-blacktitle">
           {notification.title}

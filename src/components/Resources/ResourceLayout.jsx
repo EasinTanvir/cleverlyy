@@ -31,7 +31,7 @@ const ResourceLayout = ({ subjectLists }) => {
   }, []);
 
   return (
-    <div className="py-6 md:p-8 p-4  bg-dashboardBd">
+    <div className="py-6 md:p-8 p-4  ">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">
         <div className="flex-1 space-y-6">
           <h1 className="md:text-[28px] text-lg font-bold">

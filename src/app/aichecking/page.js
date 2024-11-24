@@ -46,7 +46,7 @@ const AiCheckingHelper = async () => {
 
 const AiCheckings = () => {
   return (
-    <div className="bg-dashboardBd">
+    <div>
       <Suspense
         fallback={
           <div className="p-10">

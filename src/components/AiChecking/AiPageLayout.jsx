@@ -39,7 +39,7 @@ const AiPageLayout = ({ subjectLists }) => {
   }, []);
 
   return (
-    <div className="py-6 md:p-8 p-4  bg-dashboardBd">
+    <div className="py-6 md:p-8 p-4  ">
       <div className="f space-y-10">
         <h1 className="md:text-3xl text-textColor text-lg font-bold">
           AI Checking
