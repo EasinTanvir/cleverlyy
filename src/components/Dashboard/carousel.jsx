@@ -28,16 +28,20 @@ const Carousel = () => {
       >
         {bannerLists.map((item, i) => (
           <SwiperSlide key={item.id}>
-            <div className={`carousel-item rounded-2xl h-[200px] ${colors[i]}`}>
+            <div
+              className={`carousel-item rounded-2xl px-4 h-[200px] ${colors[i]}`}
+            >
               <div className="flex justify-between h-full">
                 <div className="flex-1 flex-center">
                   <div className="text-center">
-                    <h1 className="title">{item.title}</h1>
+                    <h1 className="lg:text-3xl md:text-2xl font-semibold">
+                      {item.title}
+                    </h1>
                     <p>{item.subtitle}</p>
                   </div>
                 </div>
                 <div className="flex-1 flex-center">
-                  <div className="relative w-16 h-16">
+                  <div className="relative w-20 h-20">
                     <Image
                       className="w-full h-full"
                       src={item.image}

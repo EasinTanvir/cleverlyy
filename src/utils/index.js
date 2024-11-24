@@ -1,4 +1,9 @@
-import { dashboardImg } from "@/constant";
+import {
+  dashboardImg,
+  englishLanguage,
+  furtherMathematics,
+  physics,
+} from "@/constant";
 
 const subjects = [
   "Mathematics",
@@ -63,21 +68,21 @@ export const notificationsData = [
 export const bannerLists = [
   {
     id: 1,
-    image: dashboardImg,
+    image: furtherMathematics,
     title: "Mathematics",
-    subtitle: "Experience the latest in home entertainment",
+    subtitle: "Learn the language of numbers, shapes, and patterns",
   },
   {
     id: 2,
-    image: dashboardImg,
+    image: englishLanguage,
     title: "English",
-    subtitle: "Experience the latest in home entertainment",
+    subtitle: "Develop skills in reading, writing, and communication",
   },
   {
     id: 3,
-    image: dashboardImg,
+    image: physics,
     title: "Physics",
-    subtitle: "Experience the latest in home entertainment",
+    subtitle: "Explore the fundamental principles of nature",
   },
 ];
 
