@@ -11,7 +11,7 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <>
-      {path === "/info" || path === "/signup" ? (
+      {path === "/info" || path === "/signup" || path === "/signin" ? (
         <div>{children}</div>
       ) : (
         <div className="flex">

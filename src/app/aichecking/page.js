@@ -3,15 +3,24 @@ export const dynamic = "force-dynamic";
 import React, { Suspense } from "react";
 import AiChecking from "@/components/AiChecking/AiChecking";
 import Skeleton from "@/components/Skeleton";
-import { NotFound } from "@/components/NotFound";
+import { getServerCredentials } from "../../../session/sersverSession";
 
-const fetchSubjects = async () => {
+const fetchSubjects = async (session) => {
   try {
+    if (!session?.token) {
+      throw new Error("Authentication token is missing.");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    };
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/7/subjects`,
       {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers,
       }
     );
 
@@ -28,23 +37,19 @@ const fetchSubjects = async () => {
   }
 };
 
-const AiCheckingHelper = async () => {
+const AiCheckingHelper = async ({ session }) => {
   try {
-    const data = await fetchSubjects();
+    const data = await fetchSubjects(session);
     return <AiChecking subjectLists={data} />;
   } catch (error) {
-    return (
-      <div className="mt-40">
-        <NotFound
-          title="Something Went Wrong"
-          desc={error.message || "An unexpected error occurred"}
-        />
-      </div>
-    );
+    console.error(error.message);
+    throw new Error(error?.message || "Something Went Wrong");
   }
 };
 
-const AiCheckings = () => {
+const AiCheckingPage = async () => {
+  const session = await getServerCredentials();
+
   return (
     <div>
       <Suspense
@@ -54,10 +59,10 @@ const AiCheckings = () => {
           </div>
         }
       >
-        <AiCheckingHelper />
+        <AiCheckingHelper session={session} />
       </Suspense>
     </div>
   );
 };
 
-export default AiCheckings;
+export default AiCheckingPage;

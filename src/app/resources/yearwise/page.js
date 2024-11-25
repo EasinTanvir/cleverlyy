@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+
 import ResourceYearWiseQp from "@/components/Resources/ResourceYearWiseQp/ResourceYearWiseQp";
 import { NotFound } from "@/components/NotFound";
 import Skeleton from "@/components/Skeleton";
@@ -13,13 +15,19 @@ const ResourceYearWiseQuestionSolvePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { data: session } = useSession();
+
   const fetchYearWiseQp = async (subjectId) => {
+    const headers = {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    };
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/papers/user/?user_id=7&subject_id=${subjectId}`,
         {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers,
         }
       );
 

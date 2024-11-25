@@ -1,5 +1,5 @@
-import InvalidPage from "@/components/InvalidPage";
 import React from "react";
+import InvalidPage from "@/components/InvalidPage";
 
 const NotFound = () => {
   return (

@@ -8,39 +8,60 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import Subject from "@/components/Subjects/Subject";
 import Skeleton from "@/components/Skeleton";
 import Sorting from "@/components/Subjects/Sorting";
+import { getServerCredentials } from "../../../session/sersverSession";
 
 const findBoardSubjects = (data, boardName) =>
   data.find((item) => item.board_name === boardName);
 
-const SubjectWrapper = async () => {
-  const response = await fetch(`${process.env.BACKEND_URL}/users/7/subjects`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
+const SubjectWrapper = async ({ session }) => {
+  try {
+    if (!session?.token) {
+      throw new Error("Authentication token is missing.");
+    }
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.message || `HTTP error! status: ${response.status}`
+    const headers = {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    };
+
+    const response = await fetch(
+      `${process.env.BACKEND_URL}/users/7/subjects`,
+      {
+        method: "GET",
+        headers,
+      }
     );
-  }
-  const data = await response.json();
-  if (!data) {
-    throw new Error("Failed to fetch subject data");
-  }
 
-  const edexcelSubjectLists = findBoardSubjects(data, "Edexcel");
-  const cambridgeSubjectLists = findBoardSubjects(data, "Cambridge");
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData.message || `HTTP error! status: ${response.status}`
+      );
+    }
 
-  return (
-    <Subject
-      edexcelSubjectLists={edexcelSubjectLists}
-      cambridgeSubjectLists={cambridgeSubjectLists}
-    />
-  );
+    const data = await response.json();
+    if (!data) {
+      throw new Error("Failed to fetch subject data");
+    }
+
+    const edexcelSubjectLists = findBoardSubjects(data, "Edexcel");
+    const cambridgeSubjectLists = findBoardSubjects(data, "Cambridge");
+
+    return (
+      <Subject
+        edexcelSubjectLists={edexcelSubjectLists}
+        cambridgeSubjectLists={cambridgeSubjectLists}
+      />
+    );
+  } catch (error) {
+    console.error(error.message);
+    throw new Error(error?.message || "Something Went Wrong");
+  }
 };
 
-const SubjectPage = () => {
+const SubjectPage = async () => {
+  const session = await getServerCredentials();
+
   return (
     <div className=" md:p-8 p-4">
       <div className="space-y-10 ">
@@ -75,7 +96,7 @@ const SubjectPage = () => {
           </div>
         </div>
         <Suspense fallback={<Skeleton />}>
-          <SubjectWrapper />
+          <SubjectWrapper session={session} />
         </Suspense>
       </div>
     </div>

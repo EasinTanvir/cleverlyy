@@ -16,24 +16,33 @@ import Carousel from "./carousel";
 import Skeleton from "../Skeleton";
 import DashBoardChart from "./DashBoardChart";
 
-const fetchData = async (url) => {
+const fetchData = async (url, headers) => {
   const response = await fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers,
   });
 
   if (!response.ok) {
-    throw new Error(`Failed To Fetch User Subject Data`);
+    throw new Error(`Failed to fetch data from ${url}: ${response.statusText}`);
   }
 
   return response.json();
 };
 
-const SubjectWrapper = async ({ subject }) => {
+const SubjectWrapper = async ({ subject, session }) => {
   try {
+    if (!session?.token) {
+      throw new Error("Authentication token is missing.");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    };
+
     const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
-      fetchData(`${process.env.BACKEND_URL}/subjects/all`),
-      fetchData(`${process.env.BACKEND_URL}/users/7/subjects`),
+      fetchData(`${process.env.BACKEND_URL}/subjects/all`, headers),
+      fetchData(`${process.env.BACKEND_URL}/users/7/subjects`, headers),
     ]);
 
     const allSubjects = allSubjectsResponse.flatMap((board) =>
@@ -73,11 +82,11 @@ const SubjectWrapper = async ({ subject }) => {
     );
   } catch (error) {
     console.error(error.message);
-    throw new Error("Failed to load subjects. Please try again later.");
+    throw new Error(error?.message || "Something Went Wrong");
   }
 };
 
-const Dashboard = () => {
+const Dashboard = ({ session }) => {
   return (
     <div className="space-y-6 ">
       <h1 className="text-[28px]">
@@ -135,7 +144,7 @@ const Dashboard = () => {
             <div className="overflow-hidden">
               <h1 className="title">Your Subjects</h1>
               <Suspense fallback={<Skeleton />}>
-                <SubjectWrapper subject />
+                <SubjectWrapper subject session={session} />
               </Suspense>
             </div>
 
@@ -151,7 +160,7 @@ const Dashboard = () => {
 
               <div className="w-full h-64">
                 <Suspense fallback={<Skeleton />}>
-                  <SubjectWrapper />
+                  <SubjectWrapper session={session} />
                 </Suspense>
               </div>
             </div>

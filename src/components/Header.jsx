@@ -4,10 +4,24 @@ import { IoSearch } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaMoon } from "react-icons/fa";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { IoLogOutOutline } from "react-icons/io5";
+import { Tooltip } from "@mui/material";
 
 const Header = ({ sideBarOpen }) => {
+  const router = useRouter();
   const path = usePathname();
+
+  const { status, data } = useSession();
+
+  console.log(data);
+
+  const logoutHandler = async () => {
+    const data = await signOut({ redirect: false, callbackUrl: "/signin" });
+    router.push(data.url);
+  };
+
   return (
     <div
       className={`fixed  ${
@@ -28,6 +42,13 @@ const Header = ({ sideBarOpen }) => {
         <IoSearch size={27} />
         <FaBell size={22} />
         <IoSettingsSharp size={22} />
+        {status === "authenticated" && (
+          <Tooltip title="Logout">
+            <button onClick={logoutHandler} className="">
+              <IoLogOutOutline size={30} />
+            </button>
+          </Tooltip>
+        )}
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+
 import ResourceRevision from "@/components/Resources/ResourceRevision/ResourceRevision";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
 import Skeleton from "@/components/Skeleton";
 import { NotFound } from "@/components/NotFound";
 
 const RevisionNotePage = () => {
+  const { data: session } = useSession();
+
   const { selectedSubject, resourceSelectUnit } = useContextProvider();
 
   const [revisionNoteLists, setRevisionNoteLists] = useState([]);
@@ -14,12 +18,17 @@ const RevisionNotePage = () => {
   const [error, setError] = useState(null);
 
   const fetchChapterWiseRevisionNotes = async (subjectId) => {
+    const headers = {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    };
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/revision-notes/7/${subjectId}`,
         {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers,
         }
       );
 

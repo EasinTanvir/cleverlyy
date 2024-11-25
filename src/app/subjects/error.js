@@ -1,28 +1,20 @@
 "use client";
-import React from "react";
-import { Alert } from "@mui/material";
-import Link from "next/link";
-const Errors = ({ error }) => {
-  console.log(error.message);
-  return (
-    <>
-      <div className="w-full min-h-96 flex justify-center items-center ">
-        <div>
-          <Alert style={{ width: "500px" }} severity="warning">
-            <div className="flex-center">
-              <h3 className="text-xl">SomeThing Went Wrong in subject page</h3>
-              <Link
-                className="underline ms-1 font-bold text-red-800 text-xl"
-                href="/subjects"
-              >
-                Go Back
-              </Link>
-            </div>
-          </Alert>
-        </div>
-      </div>
-    </>
-  );
-};
 
-export default Errors;
+import React from "react";
+
+export default function Error({ error, reset }) {
+  return (
+    <div className="flex flex-col items-center justify-center h-96 ">
+      <h1 className="text-3xl font-bold text-red-500">Internal Server Error</h1>
+      <p className="text-gray-700 mt-4">
+        {error?.message || "Something went wrong in subject page"}
+      </p>
+      <button
+        onClick={() => reset()}
+        className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Try Again
+      </button>
+    </div>
+  );
+}

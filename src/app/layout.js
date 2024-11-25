@@ -3,6 +3,7 @@ import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import ContextWrapper from "@/contextProvider/ContextProvider";
 import { Toaster } from "react-hot-toast";
+import { SessionProviders } from "@/sessionProvider/SessionProvider";
 
 const roboto = Montserrat({
   subsets: ["latin"],
@@ -18,10 +19,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.className}`}>
-        <Toaster position="bottom-center" />
-        <ContextWrapper>
-          <LayoutWrapper>{children}</LayoutWrapper>
-        </ContextWrapper>
+        <SessionProviders>
+          <Toaster position="bottom-center" />
+          <ContextWrapper>
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </ContextWrapper>
+        </SessionProviders>
       </body>
     </html>
   );

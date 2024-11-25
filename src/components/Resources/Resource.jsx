@@ -9,7 +9,7 @@ import { Dropdown } from "./DropDown";
 import Skeleton from "../Skeleton";
 import { NotFound } from "../NotFound";
 
-const Resource = () => {
+const Resource = ({ session }) => {
   const { selectedExam, selectedSubject, resourceSelectUnit } =
     useContextProvider();
 
@@ -19,12 +19,18 @@ const Resource = () => {
 
   const fetchSubjectInfo = async (subject_id) => {
     try {
-      setLoader(true); // Start loader before the fetch
+      setLoader(true);
+
+      const headers = {
+        Authorization: `Bearer ${session.token}`,
+        "Content-Type": "application/json",
+      };
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/7/${subject_id}`,
         {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers,
         }
       );
 

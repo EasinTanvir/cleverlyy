@@ -1,10 +1,13 @@
 export const dynamic = "force-dynamic";
 import Dashboard from "@/components/Dashboard/Dashboard";
+import { getServerCredentials } from "../../../session/sersverSession";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const session = await getServerCredentials();
+
   return (
     <div className="md:p-8 p-3 ">
-      <Dashboard />
+      <Dashboard session={session} />
     </div>
   );
 };
