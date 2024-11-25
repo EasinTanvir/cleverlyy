@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+
 import SubjectUnit from "./SubjectUnit";
 import { mapSubjectDetails } from "@/utils/subject";
 

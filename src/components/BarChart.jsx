@@ -11,8 +11,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Tooltip as MuiTooltip } from "@mui/material"; // MUI Tooltip
-import { FaSearchPlus, FaSearchMinus, FaUndo } from "react-icons/fa"; // React Icons
+import { Tooltip as MuiTooltip } from "@mui/material";
+import { FaSearchPlus, FaSearchMinus, FaUndo } from "react-icons/fa";
 
 ChartJS.register(
   CategoryScale,
@@ -25,7 +25,7 @@ ChartJS.register(
 );
 
 const BarChartComponent = ({ dataValues, labels, thickness = 13 }) => {
-  const chartRef = useRef(null); // Reference to the chart instance
+  const chartRef = useRef(null);
 
   const data = {
     labels,
@@ -64,10 +64,10 @@ const BarChartComponent = ({ dataValues, labels, thickness = 13 }) => {
       zoom: {
         zoom: {
           wheel: {
-            enabled: true, // Enable mouse wheel zoom
+            enabled: true,
           },
           pinch: {
-            enabled: true, // Enable pinch zoom on touch devices
+            enabled: true,
           },
           mode: "x",
         },
@@ -99,23 +99,20 @@ const BarChartComponent = ({ dataValues, labels, thickness = 13 }) => {
     categoryPercentage: 0.8,
   };
 
-  // Zoom in function
   const zoomIn = () => {
     const chart = chartRef.current;
     if (chart) {
-      chart.zoom(1.1); // Zoom in by 10%
+      chart.zoom(1.1);
     }
   };
 
-  // Zoom out function
   const zoomOut = () => {
     const chart = chartRef.current;
     if (chart) {
-      chart.zoom(0.9); // Zoom out by 10%
+      chart.zoom(0.9);
     }
   };
 
-  // Reset zoom function
   const resetZoom = () => {
     const chart = chartRef.current;
     if (chart) {

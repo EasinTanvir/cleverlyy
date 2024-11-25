@@ -16,54 +16,10 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
 
   const data = yearWisePapers[Number(selectedYear)];
 
-  //const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
-
   const handleTabClick = (session) => {
     setSelectedPaper(null);
     setSelectedSession(session);
   };
-
-  // const progressDetailsHandler = async (papersIdLists, subjectId) => {
-  //   try {
-  //     const headers = {
-  //       Authorization: `Bearer ${session.token}`,
-  //       "Content-Type": "application/json",
-  //     };
-
-  //     const response = await fetch(
-  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${subjectId}`,
-  //       // `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${7}`,
-  //       {
-  //         method: "POST",
-  //         headers: headers,
-  //         body: JSON.stringify({ paperIds: papersIdLists }),
-  //         //body: JSON.stringify({ paperIds: [1093, 1095] }), // dummy data
-  //       }
-  //     );
-
-  //     // Handle the response (optional)
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-
-  //     const data = await response.json(); // Parse the JSON response
-  //   } catch (err) {
-  //     console.error(err); // Log the error for debugging
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (
-  //     selectedYear &&
-  //     papersIdLists &&
-  //     papersIdLists.length > 0 &&
-  //     subjectId
-  //   ) {
-  //     progressDetailsHandler(papersIdLists, subjectId);
-  //   }
-
-  //   // eslint-disable-next-line
-  // }, [selectedYear, subjectId]);
 
   if (!data || !selectedYear) return;
 

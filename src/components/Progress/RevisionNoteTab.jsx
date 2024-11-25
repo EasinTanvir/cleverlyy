@@ -8,7 +8,6 @@ const RevisionNoteTab = ({ tabData }) => {
 
   return (
     <div className="p-4">
-      {/* Tab Buttons */}
       <div className="flex justify-between ">
         {tabData.map((tab) => (
           <button
@@ -25,7 +24,6 @@ const RevisionNoteTab = ({ tabData }) => {
         ))}
       </div>
 
-      {/* Tab Content */}
       <div className="mt-6 text-sm">
         <h1 className="">Currently Studying:</h1>
         <ul className="list-disc ps-8 mt-4">

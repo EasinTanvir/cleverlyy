@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { FaHandPointer, FaBrain, FaChartLine } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import Link from "next/link";
 
 import ProgressBar from "./ProgressBar";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 const YearWiseQuestion = () => {
   const router = useRouter();

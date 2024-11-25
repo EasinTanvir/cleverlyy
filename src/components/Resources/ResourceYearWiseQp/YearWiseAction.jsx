@@ -1,5 +1,3 @@
-import { FaBook, FaStickyNote, FaUsers } from "react-icons/fa";
-
 const YearWiseAction = () => {
   return (
     <div className="p-4  bg-blankCircle rounded-lg space-y-5  h-fit ">

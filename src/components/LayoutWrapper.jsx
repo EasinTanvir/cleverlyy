@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
+import { usePathname } from "next/navigation";
+
 import SideBar from "./SideBar";
 import { useContextProvider } from "../../hooks/useContextProvider";
 import Header from "./Header";
-import { usePathname } from "next/navigation";
 
 const LayoutWrapper = ({ children }) => {
   const { sideBarOpen } = useContextProvider();

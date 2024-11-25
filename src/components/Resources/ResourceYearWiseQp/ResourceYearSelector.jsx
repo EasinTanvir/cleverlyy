@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import dayjs from "dayjs";
+import React, { useRef, useEffect } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+
 import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 export const ResourceYearSelector = ({ yearWiseQpLists }) => {
@@ -10,14 +10,12 @@ export const ResourceYearSelector = ({ yearWiseQpLists }) => {
 
   const { selectedYear, setSelectedYear } = useContextProvider();
 
-  // Function to scroll up
   const scrollUp = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ top: -100, behavior: "smooth" });
     }
   };
 
-  // Function to scroll down
   const scrollDown = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ top: 100, behavior: "smooth" });
@@ -26,7 +24,6 @@ export const ResourceYearSelector = ({ yearWiseQpLists }) => {
 
   const years = Object.keys(yearWiseQpLists).map(Number);
 
-  // Automatically scroll to the selected year on initial render
   useEffect(() => {
     const selectedYearElement = document.getElementById(`year-${selectedYear}`);
     if (selectedYearElement) {
@@ -39,7 +36,6 @@ export const ResourceYearSelector = ({ yearWiseQpLists }) => {
 
   return (
     <div className="flex flex-col items-center space-y-2 h-[340px]">
-      {/* Up Arrow Icon */}
       <button onClick={scrollUp}>
         <MdKeyboardArrowUp
           size={26}
@@ -47,7 +43,6 @@ export const ResourceYearSelector = ({ yearWiseQpLists }) => {
         />
       </button>
 
-      {/* Scrollable Container */}
       <div
         ref={scrollRef}
         className="flex flex-col max-h-[340px] overflow-y-hidden space-y-2 p-2 rounded-md"
@@ -66,7 +61,6 @@ export const ResourceYearSelector = ({ yearWiseQpLists }) => {
         ))}
       </div>
 
-      {/* Down Arrow Icon */}
       <button onClick={scrollDown}>
         <MdKeyboardArrowDown
           size={26}
