@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaFileAlt, FaInfoCircle } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 
 import SubjectTitle from "../SubjectInfo/SubjectTitle";
-import { extractPaperIdsByYear } from "@/utils/helper";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
 
 const PaperView = ({ yearWisePapers, subjectId }) => {
@@ -17,48 +16,54 @@ const PaperView = ({ yearWisePapers, subjectId }) => {
 
   const data = yearWisePapers[Number(selectedYear)];
 
-  const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
+  //const papersIdLists = extractPaperIdsByYear(yearWisePapers, selectedYear);
 
   const handleTabClick = (session) => {
     setSelectedPaper(null);
     setSelectedSession(session);
   };
 
-  const progressDetailsHandler = async (papersIdLists, subjectId) => {
-    try {
-      const response = await fetch(
-        //`${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${subjectId}`,
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${7}`,
-        {
-          method: "POST", // Correctly set the method here
-          headers: { "Content-Type": "application/json" }, // Add headers here
-          //body: JSON.stringify({ paperIds: papersIdLists }), // Include body here
-          body: JSON.stringify({ paperIds: [1093, 1095] }), // Include body here
-        }
-      );
+  // const progressDetailsHandler = async (papersIdLists, subjectId) => {
+  //   try {
+  //     const headers = {
+  //       Authorization: `Bearer ${session.token}`,
+  //       "Content-Type": "application/json",
+  //     };
 
-      // Handle the response (optional)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${subjectId}`,
+  //       // `${process.env.NEXT_PUBLIC_BACKEND_URL}/progress/yearwise/${7}`,
+  //       {
+  //         method: "POST",
+  //         headers: headers,
+  //         body: JSON.stringify({ paperIds: papersIdLists }),
+  //         //body: JSON.stringify({ paperIds: [1093, 1095] }), // dummy data
+  //       }
+  //     );
 
-      const data = await response.json(); // Parse the JSON response
-      console.log("my paper data", data);
-    } catch (err) {
-      console.error(err); // Log the error for debugging
-    }
-  };
+  //     // Handle the response (optional)
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
 
-  useEffect(() => {
-    if (
-      selectedYear &&
-      papersIdLists &&
-      papersIdLists.length > 0 &&
-      subjectId
-    ) {
-      progressDetailsHandler(papersIdLists, subjectId);
-    }
-  }, [selectedYear, subjectId]);
+  //     const data = await response.json(); // Parse the JSON response
+  //   } catch (err) {
+  //     console.error(err); // Log the error for debugging
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (
+  //     selectedYear &&
+  //     papersIdLists &&
+  //     papersIdLists.length > 0 &&
+  //     subjectId
+  //   ) {
+  //     progressDetailsHandler(papersIdLists, subjectId);
+  //   }
+
+  //   // eslint-disable-next-line
+  // }, [selectedYear, subjectId]);
 
   if (!data || !selectedYear) return;
 

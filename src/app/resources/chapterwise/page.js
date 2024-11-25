@@ -16,33 +16,33 @@ const ChapterWisepage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchChapterWiseLists = async (subjectId) => {
-    const headers = {
-      Authorization: `Bearer ${session.token}`,
-      "Content-Type": "application/json",
+  useEffect(() => {
+    const fetchChapterWiseLists = async (subjectId) => {
+      const headers = {
+        Authorization: `Bearer ${session.token}`,
+        "Content-Type": "application/json",
+      };
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/revision-notes/7/${subjectId}`,
+          {
+            method: "GET",
+            headers,
+          }
+        );
+
+        const data = await response.json();
+
+        setChapterWiseLists(data);
+      } catch (error) {
+        console.log(error);
+        setError(error.message || "Internal Server Error");
+      } finally {
+        setLoading(false);
+      }
     };
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/revision-notes/7/${subjectId}`,
-        {
-          method: "GET",
-          headers,
-        }
-      );
-
-      const data = await response.json();
-
-      setChapterWiseLists(data);
-    } catch (error) {
-      console.log(error);
-      setError(error.message || "Internal Server Error");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
     if (selectedSubject && selectedSubject?.units?.length > 0) {
       if (selectedSubject?.subject_id && resourceSelectUnit?.unit_id) {
         setLoading(true);
@@ -56,6 +56,7 @@ const ChapterWisepage = () => {
         fetchChapterWiseLists(selectedSubject.subject_id);
       }
     }
+    // eslint-disable-next-line
   }, [selectedSubject, resourceSelectUnit]);
 
   if (loading) {

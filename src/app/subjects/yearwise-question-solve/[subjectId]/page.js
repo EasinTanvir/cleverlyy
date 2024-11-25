@@ -31,7 +31,6 @@ const YearWiseQuestionSolvesWrapper = async ({ subjectId }) => {
     isPapaperExist = false;
 
   if (data && Object.keys(data).length === 1 && data.message) {
-    console.log("Message:", data.message);
     isPapaperExist = false;
     message = data.message;
   } else {

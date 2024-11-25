@@ -75,6 +75,7 @@ const Info = () => {
     setSelectedSchool(null);
     setSelectedInfoBoard([]);
     setSelectedInfoExam([]);
+    // eslint-disable-next-line
   }, []);
 
   return (

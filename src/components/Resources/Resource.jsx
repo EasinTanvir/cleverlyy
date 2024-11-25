@@ -17,41 +17,40 @@ const Resource = ({ session }) => {
   const [error, setError] = useState(null);
   const [loader, setLoader] = useState(false);
 
-  const fetchSubjectInfo = async (subject_id) => {
-    try {
-      setLoader(true);
-
-      const headers = {
-        Authorization: `Bearer ${session.token}`,
-        "Content-Type": "application/json",
-      };
-
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/7/${subject_id}`,
-        {
-          method: "GET",
-          headers,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      if (!data) {
-        throw new Error("Failed to fetch Subject info");
-      }
-
-      setSubjectInfo(data);
-    } catch (error) {
-      setError(error?.message);
-    } finally {
-      setLoader(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchSubjectInfo = async (subject_id) => {
+      try {
+        setLoader(true);
+
+        const headers = {
+          Authorization: `Bearer ${session.token}`,
+          "Content-Type": "application/json",
+        };
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/subjects/7/${subject_id}`,
+          {
+            method: "GET",
+            headers,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (!data) {
+          throw new Error("Failed to fetch Subject info");
+        }
+
+        setSubjectInfo(data);
+      } catch (error) {
+        setError(error?.message);
+      } finally {
+        setLoader(false);
+      }
+    };
     if (selectedSubject && selectedSubject?.units?.length > 0) {
       if (selectedSubject.subject_id && resourceSelectUnit?.unit_id) {
         setLoader(true);
@@ -65,6 +64,8 @@ const Resource = ({ session }) => {
         fetchSubjectInfo(selectedSubject.subject_id);
       }
     }
+
+    // eslint-disable-next-line
   }, [selectedSubject, resourceSelectUnit]);
 
   if (!selectedExam || !selectedSubject) return;

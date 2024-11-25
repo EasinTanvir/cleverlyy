@@ -1,5 +1,4 @@
 import React from "react";
-import { PiBookOpenTextDuotone } from "react-icons/pi";
 
 import { YearSelector } from "./YearSelector";
 import PaperView from "./PaperView";
@@ -21,7 +20,6 @@ const YearWiseQuestionSolve = ({
                 Year <span className="text-iconColor4 text-[20px]">(+/-)</span>
               </h1>
               <h1 className="underline text-iconColor4 italic text-[20px]">
-                {" "}
                 Specimen Papers
               </h1>
             </div>

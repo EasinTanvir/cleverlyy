@@ -28,6 +28,8 @@ const ResourceLayout = ({ subjectLists }) => {
   useEffect(() => {
     setSelectedExam(null);
     setSelectedSubject(null);
+
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -33,9 +33,10 @@ const AiPageLayout = ({ subjectLists }) => {
     setAiSelectedSession("");
     setAiSelectedVariant("");
     setAiSelectedPaper("");
-
     setSelectedExam(null);
     setSelectedSubject(null);
+
+    // eslint-disable-next-line
   }, []);
 
   return (

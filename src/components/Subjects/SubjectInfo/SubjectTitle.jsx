@@ -13,6 +13,7 @@ const SubjectTitle = ({ variant = "inline", extra = false }) => {
     if (!userSelectedSubject) {
       router.push("/subjects");
     }
+    // eslint-disable-next-line
   }, [userSelectedSubject]);
 
   if (variant === "inline") {

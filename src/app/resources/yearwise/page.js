@@ -17,46 +17,46 @@ const ResourceYearWiseQuestionSolvePage = () => {
 
   const { data: session } = useSession();
 
-  const fetchYearWiseQp = async (subjectId) => {
-    const headers = {
-      Authorization: `Bearer ${session.token}`,
-      "Content-Type": "application/json",
-    };
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/papers/user/?user_id=7&subject_id=${subjectId}`,
-        {
-          method: "GET",
-          headers,
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          errorData.message || `HTTP error! status: ${response.status}`
-        );
-      }
-
-      const data = await response.json();
-
-      if (!data) {
-        throw new Error("Failed to fetch revision notes data");
-      }
-
-      if (data && Object.keys(data).length === 1 && data.message) {
-        setMessage(data.message);
-      } else {
-        setYearWiseQpLists(data);
-      }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchYearWiseQp = async (subjectId) => {
+      const headers = {
+        Authorization: `Bearer ${session.token}`,
+        "Content-Type": "application/json",
+      };
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/papers/user/?user_id=7&subject_id=${subjectId}`,
+          {
+            method: "GET",
+            headers,
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            errorData.message || `HTTP error! status: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data) {
+          throw new Error("Failed to fetch revision notes data");
+        }
+
+        if (data && Object.keys(data).length === 1 && data.message) {
+          setMessage(data.message);
+        } else {
+          setYearWiseQpLists(data);
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (selectedSubject && selectedSubject?.units?.length > 0) {
       if (selectedSubject.subject_id && resourceSelectUnit?.unit_id) {
         setLoading(true);
@@ -70,6 +70,7 @@ const ResourceYearWiseQuestionSolvePage = () => {
         fetchYearWiseQp(selectedSubject.subject_id);
       }
     }
+    // eslint-disable-next-line
   }, [selectedSubject, resourceSelectUnit]);
 
   if (loading) {

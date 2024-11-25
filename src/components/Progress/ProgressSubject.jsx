@@ -10,39 +10,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import CircularProgressBar from "./CircularProgressbar";
 
-const tabData = [
-  {
-    name: "Chapters",
-    content: {
-      title: "Currently Studying:",
-      items: [
-        { text: "Calculate Percentage Yield", link: "#" },
-        { text: "Recently studied: The periodic table", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "Topics",
-    content: {
-      title: "List of Topics:",
-      items: [
-        { text: "Atomic Structure", link: "#" },
-        { text: "Chemical Bonding", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "SubTopics",
-    content: {
-      title: "List of Sub-Topics:",
-      items: [
-        { text: "Molecular Geometry", link: "#" },
-        { text: "Hybridization", link: "#" },
-      ],
-    },
-  },
-];
-
 const chartData = { complete: 2, incomplete: 6, notStarted: 2 };
 
 const SubjectCard = ({ subject }) => {

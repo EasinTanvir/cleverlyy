@@ -15,8 +15,6 @@ const Header = ({ sideBarOpen }) => {
 
   const { status, data } = useSession();
 
-  console.log(data);
-
   const logoutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/signin" });
     router.push(data.url);

@@ -17,7 +17,6 @@ const Sorting = () => {
   };
 
   const handleSelect = (option) => {
-    console.log(`Selected: ${option}`);
     handleClose();
   };
 

@@ -9,11 +9,6 @@ const Button = ({ className, children, plan, path }) => {
   const { selectedCountry, selectedGrade, selectedSchool, selectedSubjects } =
     useContextProvider();
 
-  console.log("selectedCountry", selectedCountry);
-  console.log("selectedGrade", selectedGrade);
-  console.log("selectedSchool", selectedSchool);
-  console.log("selectedSubjects", selectedSubjects);
-
   const onPlanHandler = () => {
     setOpenModal(true);
   };

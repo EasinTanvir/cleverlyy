@@ -29,46 +29,44 @@ const BoardAndExam = () => {
     )
   );
 
-  console.log("newArray", newArray);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchBoardAndExam = async () => {
-    setLoading(true); // Assuming setLoading is used to manage loading state
-    try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-      // Making both requests in parallel
-      const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
-        axios.get(`${backendUrl}/subjects/all`, {
-          headers: { "Content-Type": "application/json" },
-        }),
-        axios.get(`${backendUrl}/users/7/subjects`, {
-          headers: { "Content-Type": "application/json" },
-        }),
-      ]);
-
-      // Extracting data from responses
-      const allSubjects = allSubjectsResponse.data;
-      const userSubjects = userSubjectsResponse.data;
-
-      // Updating state with fetched data
-      setInfoData(allSubjects);
-      setUserAccessSubject(userSubjects);
-    } catch (error) {
-      setError(
-        error?.response?.data?.message ||
-          error?.message ||
-          "Internal Server Error"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchBoardAndExam = async () => {
+      setLoading(true); // Assuming setLoading is used to manage loading state
+      try {
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+        // Making both requests in parallel
+        const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
+          axios.get(`${backendUrl}/subjects/all`, {
+            headers: { "Content-Type": "application/json" },
+          }),
+          axios.get(`${backendUrl}/users/7/subjects`, {
+            headers: { "Content-Type": "application/json" },
+          }),
+        ]);
+
+        // Extracting data from responses
+        const allSubjects = allSubjectsResponse.data;
+        const userSubjects = userSubjectsResponse.data;
+
+        // Updating state with fetched data
+        setInfoData(allSubjects);
+        setUserAccessSubject(userSubjects);
+      } catch (error) {
+        setError(
+          error?.response?.data?.message ||
+            error?.message ||
+            "Internal Server Error"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchBoardAndExam();
+    // eslint-disable-next-line
   }, []);
 
   const cambridgeExam = infoData?.find(
