@@ -4,10 +4,10 @@ import { Divider } from "@mui/material";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
 import { TbAlertTriangle } from "react-icons/tb";
+import { FaFilePdf } from "react-icons/fa";
 
 import ResponseDisplay from "./Response";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
-import { FaFilePdf } from "react-icons/fa";
 
 const AiCheckingProgress = () => {
   const {

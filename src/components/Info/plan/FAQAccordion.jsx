@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-import { FaCommentDots } from "react-icons/fa";
 
 const faqData = [
   {
@@ -73,7 +72,6 @@ export default FAQAccordion;
 const FaqIcon = () => {
   return (
     <div className="relative inline-flex items-center">
-      {/* Speech bubble */}
       <div className="relative border-4 border-black rounded-lg p-2">
         <span className="font-bold text-3xl">FAQ</span>
       </div>

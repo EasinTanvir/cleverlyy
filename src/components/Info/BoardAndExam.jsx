@@ -34,11 +34,10 @@ const BoardAndExam = () => {
 
   useEffect(() => {
     const fetchBoardAndExam = async () => {
-      setLoading(true); // Assuming setLoading is used to manage loading state
+      setLoading(true);
       try {
         const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-        // Making both requests in parallel
         const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
           axios.get(`${backendUrl}/subjects/all`, {
             headers: { "Content-Type": "application/json" },
@@ -48,11 +47,9 @@ const BoardAndExam = () => {
           }),
         ]);
 
-        // Extracting data from responses
         const allSubjects = allSubjectsResponse.data;
         const userSubjects = userSubjectsResponse.data;
 
-        // Updating state with fetched data
         setInfoData(allSubjects);
         setUserAccessSubject(userSubjects);
       } catch (error) {

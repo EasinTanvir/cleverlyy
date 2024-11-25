@@ -1,13 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { signIn } from "next-auth/react";
 
 import Buttons from "@/components/Buttons";
 import InputField from "@/components/InputField";
-import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);

@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import React, { Suspense } from "react";
 import Progress from "@/components/Progress/Progress";
 import Skeleton from "@/components/Skeleton";
+
 import { getServerCredentials } from "../../../session/sersverSession";
 
 const ProgressPageWrapper = async () => {

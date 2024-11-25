@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-
 import { RxCross1 } from "react-icons/rx";
 
 const NotificationBar = () => {

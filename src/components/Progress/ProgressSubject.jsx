@@ -3,11 +3,11 @@ import React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { MdSuperscript } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import ProgressBar from "./ProgressBar";
-import ProgressPieChart from "./ProgressPieChart";
-import RevisionNoteTab from "./RevisionNoteTab";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+
+import ProgressBar from "./ProgressBar";
+import ProgressPieChart from "./ProgressPieChart";
 import CircularProgressBar from "./CircularProgressbar";
 
 const chartData = { complete: 2, incomplete: 6, notStarted: 2 };

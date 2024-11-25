@@ -2,25 +2,16 @@
 import React from "react";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlinePencil } from "react-icons/hi";
-
 import { Worker } from "@react-pdf-viewer/core";
-
 import { Viewer } from "@react-pdf-viewer/core";
-
-// Import the styles
 import "@react-pdf-viewer/core/lib/styles/index.css";
-
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-
-// Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 const ResponseDisplay = ({ finalPaper }) => {
   return (
     <div className="pt-10  flex flex-col items-center ">
-      {/* Messages Display */}
       <div className="flex flex-col lg:flex-row gap-10 w-full ">
-        {/* User Response Box */}
         <div className="flex-1 ">
           <div className="flex justify-between items-center mb-5">
             <h2 className="">Your Solved Paper</h2>
@@ -36,7 +27,6 @@ const ResponseDisplay = ({ finalPaper }) => {
           </div>
         </div>
 
-        {/* AI Response Box */}
         <div className="flex-1   ">
           <div className="flex justify-between items-center mb-3">
             <h2 className="">AI Response</h2>

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaBusinessTime, FaChevronDown } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import { motion } from "framer-motion";
-import { useContextProvider } from "../../../hooks/useContextProvider";
+import { toast } from "react-hot-toast";
 
-import { toast } from "react-hot-toast"; // Import react-hot-toast
+import { useContextProvider } from "../../../hooks/useContextProvider";
 
 export default function SubjectInfo() {
   const {
@@ -31,15 +31,13 @@ export default function SubjectInfo() {
     const hasUnits = subject.units?.length > 0;
 
     if (selectedSubjects.some((s) => s.subject_id === subject.subject_id)) {
-      // Deselect subject
       setSelectedSubjects((prev) =>
         prev.filter((s) => s.subject_id !== subject.subject_id)
       );
       setSelectedUnits((prev) =>
         prev.filter((unit) => unit.subject_id !== subject.subject_id)
-      ); // Remove related units
+      );
     } else {
-      // Check if the user needs to select a unit first
       if (
         selectedSubjects.some(
           (s) =>
@@ -54,7 +52,6 @@ export default function SubjectInfo() {
         return;
       }
 
-      // Select subject
       setSelectedSubjects((prev) => [...prev, subject]);
     }
   };
@@ -62,10 +59,8 @@ export default function SubjectInfo() {
   const handleUnitToggle = (unit, subject) => {
     setSelectedUnits((prev) => {
       if (prev.some((u) => u.unit_id === unit.unit_id)) {
-        // Deselect unit
         return prev.filter((u) => u.unit_id !== unit.unit_id);
       } else {
-        // Select unit
         return [...prev, { ...unit, subject_id: subject.subject_id }];
       }
     });
@@ -87,7 +82,6 @@ export default function SubjectInfo() {
 
   return (
     <div className="p-6 xl:w-[78%] md:w-[88%] w-full mx-auto">
-      {/* Selected Chapters */}
       {selectedChapters.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-24">
           {selectedChapters.map((chapter, index) => (
@@ -105,7 +99,6 @@ export default function SubjectInfo() {
         </div>
       )}
 
-      {/* Subject Selector */}
       <div className="flex md:flex-row flex-col justify-between items-center">
         <h2 className="text-black md:text-3xl text-xl font-bold mb-4 uppercase">
           SELECT Your <span className="text-textColor">Subject</span>
@@ -123,11 +116,9 @@ export default function SubjectInfo() {
 
       <hr className="border border-black w-full my-2" />
 
-      {/* Subjects */}
       <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
         {currentSubjects?.map((subject) => (
           <div key={subject.subject_id}>
-            {/* Subject Card */}
             <div
               className={`flex items-center p-4 border-[3px] py-5 rounded-2xl bg-white cursor-pointer ${
                 selectedSubjects.some(
@@ -155,7 +146,7 @@ export default function SubjectInfo() {
                         (u) => u.subject_id === subject.subject_id
                       ) || !subject.units?.length
                       ? "bg-green-600 text-white"
-                      : "bg-red-700 text-white" // Change to red when border is red
+                      : "bg-red-700 text-white"
                     : "bg-gray-200 text-white"
                 } flex-center`}
               >
@@ -163,7 +154,6 @@ export default function SubjectInfo() {
               </span>
             </div>
 
-            {/* Units for Selected Subject */}
             {subject?.units?.length > 0 &&
               selectedSubjects.some(
                 (s) => s.subject_id === subject.subject_id
@@ -209,11 +199,10 @@ const YourSubject = ({ yourSubjectLists }) => {
         </h2>
       </div>
       <hr className="border border-black w-full my-2" />
-      {/* Subjects */}
+
       <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
         {yourSubjectLists?.map((subject, index) => (
           <div key={index}>
-            {/* Subject Card */}
             <div
               className={`flex items-center p-4  py-5 rounded-2xl bg-white `}
             >

@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
-
 import React, { Suspense } from "react";
+
 import AiChecking from "@/components/AiChecking/AiChecking";
 import Skeleton from "@/components/Skeleton";
 import { getServerCredentials } from "../../../session/sersverSession";

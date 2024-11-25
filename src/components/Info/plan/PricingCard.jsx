@@ -2,12 +2,12 @@ import React from "react";
 import { FaCrown, FaGem, FaFire } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoTabletLandscapeSharp } from "react-icons/io5";
+
 import Button from "./Button";
 
 const PricingCard = () => {
   return (
     <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-1  mt-16 max-w-fit mx-auto">
-      {/* Basic Plan */}
       <div className="w-[320px] bg-white rounded-xl shadow-md p-6 h-fit">
         <h3 className="text-lg font-semibold text-textColor bg-custom-pastel-gradient w-fit px-4 py-1 rounded-md mb-5">
           Basic
@@ -67,7 +67,6 @@ const PricingCard = () => {
         </Button>
       </div>
 
-      {/* Standard Plan */}
       <div className="w-[330px] bg-white rounded-xl shadow-md p-6 relative h-fit">
         <div className="absolute -top-3 right-4 flex items-center bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
           <FaFire className="mr-1" /> Most Popular
@@ -135,8 +134,6 @@ const PricingCard = () => {
           Get Started
         </Button>
       </div>
-
-      {/* Premium Plan */}
 
       <div className="w-[365px] p-4 bg-white rounded-xl h-[585px] lg:-mt-20">
         <div className="flex items-start gap-5">

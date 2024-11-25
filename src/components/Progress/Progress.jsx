@@ -1,9 +1,10 @@
 "use client";
-import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import ProgressBarChart from "./ProgressBarChart";
-import SubjectCard from "./ProgressSubject";
+import { useScroll, useTransform, motion } from "framer-motion";
 import { MdKeyboardArrowDown } from "react-icons/md";
+
+import SubjectCard from "./ProgressSubject";
+import ProgressBarChart from "./ProgressBarChart";
 
 const Progress = ({ barchartData }) => {
   const [selectedBoard, setSelectedBoard] = useState("Edexcel");

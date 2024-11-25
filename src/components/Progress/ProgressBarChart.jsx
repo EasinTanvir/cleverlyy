@@ -9,7 +9,6 @@ const ProgressBarChart = ({
   selectedBoard,
   setSelectedBoard,
 }) => {
-  // Function to filter data based on the selected board
   const filterDataByBoard = (boardName) => {
     const filteredBoard = barchartData.find(
       (board) => board.board_name === boardName
@@ -34,7 +33,6 @@ const ProgressBarChart = ({
     return { labels, chartData };
   };
 
-  // Get the filtered data for the selected board
   const { labels, chartData } = filterDataByBoard(selectedBoard);
 
   return (

@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
+import axios from "axios";
 
 import Divider from "@mui/material/Divider";
 import Buttons from "@/components/Buttons";
 import InputField from "@/components/InputField";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);

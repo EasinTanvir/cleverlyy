@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
-import Dashboard from "@/components/Dashboard/Dashboard";
 import { getServerCredentials } from "../../../session/sersverSession";
+import Dashboard from "@/components/Dashboard/Dashboard";
 
 const DashboardPage = async () => {
   const session = await getServerCredentials();

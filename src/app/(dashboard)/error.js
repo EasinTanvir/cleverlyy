@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 export default function Error({ error, reset }) {
   return (
     <div className="flex flex-col items-center justify-center h-96 ">

@@ -35,7 +35,6 @@ const SchoolAndGrade = () => {
         <hr className="border border-black  mt-7 w-[85%] mx-auto " />
       </div>
 
-      {/* Grade Selector */}
       <div className="flex lg:flex-wrap flex-wrap justify-center items-center gap-4 mt-9">
         <h3 className=" text-xl">Class/Grade:</h3>
         <div className="flex flex-wrap justify-center  gap-4 ">
@@ -55,7 +54,6 @@ const SchoolAndGrade = () => {
         </div>
       </div>
 
-      {/* Search Bar */}
       <div className="flex flex-wrap justify-between items-center mt-16 w-full  ">
         <h1 className="text-xl">Dhaka</h1>
         <div className="relative flex items-center gap-3 mb-4 w-96">
@@ -73,8 +71,6 @@ const SchoolAndGrade = () => {
       </div>
 
       <hr className="border border-black w-full my-2" />
-
-      {/* School List */}
 
       <div className="flex flex-wrap gap-5 mt-5 w-full">
         {filteredSchools.length > 0 &&

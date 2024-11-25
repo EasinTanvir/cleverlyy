@@ -47,7 +47,7 @@ const VideoPlayer = ({ url, main = false, size = 35 }) => {
       const time = duration * percentage;
 
       setHoverTime(time);
-      setHoverPosition(offsetX); // Track the exact mouse position
+      setHoverPosition(offsetX);
     }
   };
 
@@ -72,7 +72,6 @@ const VideoPlayer = ({ url, main = false, size = 35 }) => {
         onDuration={(duration) => setDuration(duration)}
       />
 
-      {/* Custom play/pause button */}
       <button
         className={`absolute inset-0 flex items-center justify-center ${
           isHovered || !isPlaying ? "visible" : "invisible"
@@ -98,7 +97,6 @@ const VideoPlayer = ({ url, main = false, size = 35 }) => {
         )}
       </button>
 
-      {/* Custom Progress Bar */}
       <div
         className={`absolute ${
           main ? "bottom-5" : "bottom-2"
@@ -113,14 +111,14 @@ const VideoPlayer = ({ url, main = false, size = 35 }) => {
           onChange={handleSeekChange}
           onMouseUp={handleSeekMouseUp}
           onMouseMove={handleProgressBarHover}
-          onMouseLeave={handleMouseLeave} // Hide tooltip when mouse leaves
+          onMouseLeave={handleMouseLeave}
           ref={progressBarRef}
           className="w-full h-1 appearance-none cursor-pointer"
           style={{
             background: `linear-gradient(to right, #3b82f6 ${progress}%, #e5e7eb ${progress}%)`,
           }}
         />
-        {/* Show hover time tooltip above mouse pointer */}
+
         {hoverTime !== null && (
           <div
             className="text-white text-xs absolute bottom-full mb-1 px-2 py-1 bg-black rounded"

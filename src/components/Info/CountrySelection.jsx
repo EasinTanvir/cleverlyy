@@ -4,7 +4,6 @@ import { FiSearch, FiCheck } from "react-icons/fi";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { NotFound } from "../NotFound";
 
-// Sample list of countries with flags
 const countriesList = [
   { name: "Bangladesh", flag: "🇧🇩", city: "Dhaka" },
   { name: "England", flag: "EN", city: "London" },
@@ -21,7 +20,6 @@ function CountrySelection() {
 
   const { selectedCountry, setSelectedCountry } = useContextProvider();
 
-  // Filtered countries based on the search term
   const filteredCountries = countriesList.filter((country) =>
     country.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -36,7 +34,6 @@ function CountrySelection() {
         SELECT YOUR <span className="text-textColor">COUNTRY & CITY</span>
       </h2>
 
-      {/* Search Box */}
       <div className="relative w-full mb-4">
         <input
           type="text"
@@ -48,7 +45,6 @@ function CountrySelection() {
         <FiSearch className="absolute left-3 top-4 text-black" size={20} />
       </div>
 
-      {/* Country List */}
       <div className="grid md:grid-cols-2 gap-4 w-full  px-8 pt-3">
         {filteredCountries.length > 0 &&
           filteredCountries.map((country, index) => (
