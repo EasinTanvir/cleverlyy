@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import ResourceLayout from "@/components/Resources/ResourceLayout";
 import ResourceLayoutWrapper from "@/components/Resources/ResourceLayoutWrapper";
 import Skeleton from "@/components/Skeleton";
+import { getServerCredentials } from "../../../session/sersverSession";
 
 const ResourceLayoutHelper = async ({ session }) => {
   try {
