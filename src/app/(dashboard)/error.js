@@ -7,7 +7,7 @@ export default function Error({ error, reset }) {
     <div className="flex flex-col items-center justify-center h-96 ">
       <h1 className="text-3xl font-bold text-red-500">Internal Server Error</h1>
       <p className="text-gray-700 mt-4">
-        {error?.message || "Something went wrong in dashboard page"}
+        Something went wrong in dashboard page
       </p>
       <button
         onClick={() => reset()}
