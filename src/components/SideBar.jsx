@@ -25,13 +25,7 @@ const SideBar = () => {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const path = usePathname();
 
-  const {
-    sideBarOpen,
-    setSidebarOpen,
-    setSelectedExam,
-    setSelectedSubject,
-    setResourceSelectUnit,
-  } = useContextProvider();
+  const { sideBarOpen, setSidebarOpen } = useContextProvider();
 
   const toggleResources = () => {
     setIsResourcesOpen((prev) => !prev);
@@ -108,9 +102,6 @@ const SideBar = () => {
 
           <div
             onClick={() => {
-              setSelectedExam(null);
-              setSelectedSubject(null);
-              setResourceSelectUnit(null);
               setSidebarOpen(true);
             }}
           >
@@ -139,11 +130,6 @@ const SideBar = () => {
             <Collapse in={isResourcesOpen} timeout="auto" unmountOnExit>
               <div className="pl-8 space-y-3 pt-3">
                 <Link
-                  onClick={() => {
-                    setSelectedExam(null);
-                    setSelectedSubject(null);
-                    setResourceSelectUnit(null);
-                  }}
                   href="/resources/revisionnote"
                   className={`flex items-center gap-2 border-b-[1px] border-b-white  py-1 px-3   ${
                     path === "/resources/revisionnote"
@@ -154,11 +140,6 @@ const SideBar = () => {
                   <span className={`text-sm`}>Revision Notes</span>
                 </Link>
                 <Link
-                  onClick={() => {
-                    setSelectedExam(null);
-                    setSelectedSubject(null);
-                    setResourceSelectUnit(null);
-                  }}
                   href="/resources/chapterwise"
                   className={`flex items-center gap-2 border-b-[1px] border-b-white  py-1 px-3   ${
                     path === "/resources/chapterwise"
@@ -169,11 +150,6 @@ const SideBar = () => {
                   <span className={`text-sm`}>Chapterwise QP</span>
                 </Link>
                 <Link
-                  onClick={() => {
-                    setSelectedExam(null);
-                    setSelectedSubject(null);
-                    setResourceSelectUnit(null);
-                  }}
                   href="/resources/yearwise"
                   className={`flex items-center gap-2 border-b-[1px] border-b-white  py-1 px-3   ${
                     path === "/resources/yearwise"
@@ -184,11 +160,6 @@ const SideBar = () => {
                   <span className="text-sm">Yearwise QP</span>
                 </Link>
                 <Link
-                  onClick={() => {
-                    setSelectedExam(null);
-                    setSelectedSubject(null);
-                    setResourceSelectUnit(null);
-                  }}
                   href="/resources/otherresource"
                   className={`flex items-center gap-2 border-b-[1px] border-b-white  py-1 px-3   ${
                     path === "/resources/otherresource"

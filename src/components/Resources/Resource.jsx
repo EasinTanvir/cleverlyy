@@ -9,7 +9,7 @@ import { Dropdown } from "./DropDown";
 import Skeleton from "../Skeleton";
 import { NotFound } from "../NotFound";
 
-const Resource = ({ session }) => {
+const Resource = () => {
   const { selectedExam, selectedSubject, resourceSelectUnit } =
     useContextProvider();
 
@@ -23,7 +23,7 @@ const Resource = ({ session }) => {
         setLoader(true);
 
         const headers = {
-          Authorization: `Bearer ${session.token}`,
+          // Authorization: `Bearer ${session.token}`,
           "Content-Type": "application/json",
         };
 
@@ -90,7 +90,7 @@ const Resource = ({ session }) => {
 
   return (
     <div>
-      <div className="mt-8  ">
+      <div className="mt-8">
         <React.Fragment>
           <div>
             <div className="flex-center mt-16">
@@ -99,7 +99,7 @@ const Resource = ({ session }) => {
                   <div className="">
                     <ChapterWiseRevisioncard
                       title="Chapterwise Question Paper"
-                      link="/resources"
+                      link="/subjects/chapterwise-qp"
                       progress={subjectInfo?.chapterwise_progress}
                     />
                   </div>
@@ -108,7 +108,6 @@ const Resource = ({ session }) => {
                       title="Chapterwise Revision Notes"
                       link="/subjects/chapterwise-revision-notes"
                       progress={subjectInfo?.revision_progress}
-                      allowed
                     />
                   </div>
                 </div>
@@ -130,21 +129,14 @@ const Resource = ({ session }) => {
 
 export default Resource;
 
-const ChapterWiseRevisioncard = ({
-  title,
-  link,
-  progress,
-  allowed = false,
-}) => {
+const ChapterWiseRevisioncard = ({ title, link, progress }) => {
   const { selectedSubject } = useContextProvider();
 
   const router = useRouter();
 
   const onNavigateHandler = () => {
-    if (allowed) {
-      const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
-      router.push(redirectUrl);
-    }
+    const redirectUrl = `${link}/${selectedSubject?.subject_id}`;
+    router.push(redirectUrl);
   };
 
   return (
@@ -152,15 +144,21 @@ const ChapterWiseRevisioncard = ({
       <div className="px-6 py-7 border border-borderColor2 rounded-2xl">
         <h1 className="title">{title}</h1>
         <div className="mt-4">
-          <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
-            <div
-              className="bg-purple-500 h-[14px] rounded-full relative"
-              style={{ width: `${progress || 0}%` }}
-            >
-              <span className="text-white text-[10px] absolute right-2  top-0  ">
-                {progress || 0}%
-              </span>
-            </div>
+          <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2 relative">
+            {progress > 0 ? (
+              <div
+                className="bg-purple-500 h-[14px] rounded-full relative"
+                style={{ width: `${progress}%` }}
+              >
+                <span className="text-white text-[10px] absolute right-2 top-0">
+                  {progress}%
+                </span>
+              </div>
+            ) : (
+              <div className="h-[14px] flex items-center justify-center text-gray-500 text-[10px] bg-gray-300 rounded-full">
+                No progress yet
+              </div>
+            )}
           </div>
 
           <div className="flex justify-between text-xs mt-2">
@@ -189,18 +187,24 @@ const YearWisecard = ({ title, link, yearwise_progress }) => {
   };
 
   return (
-    <div className="p-6 border border-borderColor2 rounded-2xl min-h-full max-h-full  relative">
+    <div className="p-6 border border-borderColor2 rounded-2xl min-h-full max-h-full relative">
       <h1 className="title">{title}</h1>
       <div className="mt-4">
         <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
-          <div
-            className="bg-purple-500 h-[14px] rounded-full relative"
-            style={{ width: `${yearwise_progress || 0}%` }}
-          >
-            <span className="text-white text-[10px] absolute right-2  top-0  ">
-              {yearwise_progress || 0}%
-            </span>
-          </div>
+          {yearwise_progress > 0 ? (
+            <div
+              className="bg-purple-500 h-[14px] rounded-full relative"
+              style={{ width: `${yearwise_progress}%` }}
+            >
+              <span className="text-white text-[10px] absolute right-2 top-0">
+                {yearwise_progress}%
+              </span>
+            </div>
+          ) : (
+            <div className="h-[14px] rounded-full relative bg-gray-300 flex items-center justify-center">
+              <span className="text-gray-500 text-[10px]">No progress yet</span>
+            </div>
+          )}
         </div>
 
         <div className="flex justify-between text-xs mt-2">

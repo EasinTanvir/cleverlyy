@@ -2,16 +2,11 @@ import React, { Suspense } from "react";
 import ResourceLayout from "@/components/Resources/ResourceLayout";
 import ResourceLayoutWrapper from "@/components/Resources/ResourceLayoutWrapper";
 import Skeleton from "@/components/Skeleton";
-import { getServerCredentials } from "../../../session/sersverSession";
 
-const ResourceLayoutHelper = async ({ session }) => {
+const ResourceLayoutHelper = async () => {
   try {
-    if (!session?.token) {
-      throw new Error("Authentication token is missing.");
-    }
-
     const headers = {
-      Authorization: `Bearer ${session.token}`,
+      // Authorization: `Bearer ${session.token}`,
       "Content-Type": "application/json",
     };
 
@@ -40,8 +35,6 @@ const ResourceLayoutHelper = async ({ session }) => {
 };
 
 const layout = async ({ children }) => {
-  const session = await getServerCredentials();
-
   return (
     <div>
       <Suspense
@@ -51,7 +44,7 @@ const layout = async ({ children }) => {
           </div>
         }
       >
-        <ResourceLayoutHelper session={session} />
+        <ResourceLayoutHelper />
       </Suspense>
 
       <div className="mt-4">

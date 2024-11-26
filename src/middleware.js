@@ -17,8 +17,7 @@ export async function middleware(request) {
 export const config = {
   matcher: [
     "/",
-    "/subjects",
-    "/resources/:path*",
+    "/subjects/:path*",
     "/progress",
     "/aichecking",
     "/notes",

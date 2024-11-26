@@ -25,13 +25,6 @@ const ResourceLayout = ({ subjectLists }) => {
 
   const exams = board ? board.exams : [];
 
-  useEffect(() => {
-    setSelectedExam(null);
-    setSelectedSubject(null);
-
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div className="py-6 md:p-8 p-4  ">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">

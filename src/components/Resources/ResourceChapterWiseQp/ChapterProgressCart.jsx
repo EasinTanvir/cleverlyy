@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CircularProgress } from "@mui/material";
+import { IoMdCheckmark } from "react-icons/io";
 
 const ChapterProgressCart = ({
   chapter_name,
@@ -8,13 +9,16 @@ const ChapterProgressCart = ({
   chapter_progress,
   chapterIndex,
   topics,
+  isBlur = false,
 }) => {
   return (
     <div
       style={{
-        filter: `blur(${chapterIndex === 0 ? 0.6 : chapterIndex + 0.2}px)`,
+        filter: isBlur
+          ? `blur(${chapterIndex === 0 ? 0.6 : chapterIndex + 0.2}px)`
+          : null,
       }}
-      className="md:p-4  space-y-4 xl:w-[550px] "
+      className="md:p-4  space-y-4 "
     >
       <div className="border-2 border-borderColor2  p-[18px] rounded-xl ">
         <div className="flex justify-between items-center mb-2 pb-3 border-b-[1px] border-borderColor2">
@@ -39,16 +43,25 @@ const ChapterProgressCart = ({
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="">
           {topics.map((topic, topicIndex) => (
-            <div key={topicIndex} className="py-3">
-              <h3 className="text-md font-semibold pb-3.5">
-                {topic.topic_name}
-              </h3>
-              <div
-                style={{ width: `${topic.topic_progress}%` }}
-                className="h-1 bg-circle"
-              ></div>
+            <div key={topicIndex} className="py-5">
+              <React.Fragment>
+                <div className="flex items-center  space-x-2">
+                  <div>
+                    {topic.is_complete ? (
+                      <div className="w-5 h-5 rounded-full flex-center bg-checkColor text-white">
+                        <IoMdCheckmark size={14} className="" />
+                      </div>
+                    ) : (
+                      <div className="w-5 h-5 rounded-full flex-center border border-textColor2 text-textColor2">
+                        <IoMdCheckmark className="text-textColor2" size={14} />
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold">{topic.topic_name}</h3>
+                </div>
+              </React.Fragment>
             </div>
           ))}
         </div>

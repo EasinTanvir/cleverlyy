@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 
 import ResourceYearWiseQp from "@/components/Resources/ResourceYearWiseQp/ResourceYearWiseQp";
 import { NotFound } from "@/components/NotFound";
@@ -15,12 +14,10 @@ const ResourceYearWiseQuestionSolvePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { data: session } = useSession();
-
   useEffect(() => {
     const fetchYearWiseQp = async (subjectId) => {
       const headers = {
-        Authorization: `Bearer ${session.token}`,
+        //Authorization: `Bearer ${session.token}`,
         "Content-Type": "application/json",
       };
       try {

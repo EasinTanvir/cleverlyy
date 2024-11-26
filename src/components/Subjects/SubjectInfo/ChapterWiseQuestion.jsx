@@ -5,9 +5,21 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import ProgressBar from "./ProgressBar";
 import { useContextProvider } from "../../../../hooks/useContextProvider";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const ChapterWiseQuestion = () => {
   const { userSelectedSubject } = useContextProvider();
+  const router = useRouter();
+
+  const onNavigateHandler = () => {
+    if (!userSelectedSubject?.subject_id) {
+      toast.error("SubjectId is require");
+      return router.push(`/subjects`);
+    }
+    router.push(`/subjects/chapterwise-qp/${userSelectedSubject?.subject_id}`);
+  };
+
   return (
     <div className="relative min-w-80 max-w-80 mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
@@ -61,7 +73,10 @@ const ChapterWiseQuestion = () => {
 
       {/* Solve Button */}
       <div className="mt-6 mb-3 text-center ">
-        <button className="w-40 bg-textColor4 font-bold text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor ">
+        <button
+          onClick={onNavigateHandler}
+          className="w-40 bg-textColor4 font-bold text-white text-sm py-2.5 rounded-full hover:bg-texttext-textColor "
+        >
           Study
         </button>
       </div>
