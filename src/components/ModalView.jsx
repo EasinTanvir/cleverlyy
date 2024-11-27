@@ -50,12 +50,7 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
   const handleClose = () => setOpenModal(false);
 
   const handleConfirm = async () => {
-    if (
-      !selectedCountry ||
-      !selectedGrade ||
-      !selectedSchool ||
-      selectedSubjects.length === 0
-    ) {
+    if (!selectedCountry || !selectedGrade || selectedSubjects.length === 0) {
       return toast.error(
         "Minimum data is required. Go back and add all required data"
       );
