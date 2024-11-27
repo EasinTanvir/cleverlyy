@@ -72,7 +72,7 @@ const Signup = () => {
       >
         <div>
           <h1 className=" text-center font-extrabold text-3xl uppercase italic  text-textColor">
-            cleverlly
+            cleverlyy
           </h1>
           <p className="text-slate-600 text-center">
             Enter your credentials to create new account

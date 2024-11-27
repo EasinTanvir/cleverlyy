@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
+import { NotFound } from "../NotFound";
 
 export default function SubjectInfo() {
   const {
@@ -200,28 +201,37 @@ const YourSubject = ({ yourSubjectLists }) => {
       </div>
       <hr className="border border-black w-full my-2" />
 
-      <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
-        {yourSubjectLists?.map((subject, index) => (
-          <div key={index}>
-            <div
-              className={`flex items-center p-4  py-5 rounded-2xl bg-white `}
-            >
-              <span className="text-xl mr-2">
-                <FaBusinessTime />
-              </span>
-              <span className="flex-grow">
-                {subject.board_name} ● {subject.exam_name} ●{" "}
-                {subject.subject_name}
-              </span>
-              <span
-                className={`w-6 h-6 rounded-full bg-green-600 text-white flex-center`}
+      {yourSubjectLists.length > 0 ? (
+        <div className="grid lg:grid-cols-2 gap-4 mt-10 lg:w-[90%] mx-auto">
+          {yourSubjectLists?.map((subject, index) => (
+            <div key={index}>
+              <div
+                className={`flex items-center p-4  py-5 rounded-2xl bg-white `}
               >
-                <FiCheck className="p-0.5" size={24} />
-              </span>
+                <span className="text-xl mr-2">
+                  <FaBusinessTime />
+                </span>
+                <span className="flex-grow">
+                  {subject.board_name} ● {subject.exam_name} ●{" "}
+                  {subject.subject_name}
+                </span>
+                <span
+                  className={`w-6 h-6 rounded-full bg-green-600 text-white flex-center`}
+                >
+                  <FiCheck className="p-0.5" size={24} />
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="pt-12">
+          <NotFound
+            title="No Subjects Registered Yet"
+            desc="Please select and register your subjects"
+          />
+        </div>
+      )}
     </div>
   );
 };
