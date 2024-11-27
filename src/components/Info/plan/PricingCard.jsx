@@ -127,7 +127,7 @@ const PricingCard = () => {
 
         <hr className="border-[1px] my-6" />
         <Button
-          path="/unknown"
+          path="/"
           plan="Standard"
           className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl "
         >
@@ -194,7 +194,7 @@ const PricingCard = () => {
 
           <hr className="border-[1px] my-6" />
           <Button
-            path="/unknown"
+            path="/"
             plan="Premium"
             className="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-xl "
           >

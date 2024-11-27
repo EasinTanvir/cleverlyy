@@ -56,7 +56,7 @@ const ResourceLayout = ({ subjectLists, loading }) => {
             All Subjects
           </button>
           <button
-            onClick={() => setSelectSubjectHandler("users/7/subjects")}
+            onClick={() => setSelectSubjectHandler("users/subjects")}
             className={`w-fit px-3.5 py-1.5  rounded-lg  text-sm ${
               selectSubjectHandler !== "subjects/all"
                 ? "bg-yearBg4 text-white"

@@ -42,7 +42,7 @@ const SubjectWrapper = async ({ subject, session }) => {
 
     const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
       fetchData(`${process.env.BACKEND_URL}/subjects/all`, headers),
-      fetchData(`${process.env.BACKEND_URL}/users/7/subjects`, headers),
+      fetchData(`${process.env.BACKEND_URL}/users/subjects`, headers),
     ]);
 
     const allSubjects = allSubjectsResponse.flatMap((board) =>

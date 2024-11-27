@@ -5,9 +5,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import { useContextProvider } from "../../hooks/useContextProvider";
+import { useSession } from "next-auth/react";
 
 const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
   const [loader, setLoader] = useState();
+
+  const { data: session } = useSession();
+
   const router = useRouter();
 
   const {
@@ -70,8 +74,13 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
     try {
       setLoader(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/setup-profile/36`,
-        sendData
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/setup-profile`,
+        sendData,
+        {
+          headers: {
+            Authorization: `Bearer ${session.token}`,
+          },
+        }
       );
       toast.success(data?.message || "Profile setup completed successfully");
       handleClose();

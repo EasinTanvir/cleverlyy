@@ -10,6 +10,8 @@ import SchoolAndGrade from "./SchoolAndGrade";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import SubjectInfo from "./SubjectInfo";
 import InfoPlan from "./InfoPlan";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const steps = [
   "Country",
@@ -37,6 +39,8 @@ const Info = () => {
     setCurrentExamIndex,
   } = useContextProvider();
 
+  const { status } = useSession();
+  const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -63,9 +67,12 @@ const Info = () => {
     }
   };
 
+  const schoolExist = selectedCountry?.name === "Bangladesh" || false;
+
   const disableNextButton =
     !selectedCountry ||
-    (activeStep === 1 && (!selectedGrade || !selectedSchool)) ||
+    (activeStep === 1 &&
+      (schoolExist ? !selectedGrade || !selectedSchool : !selectedGrade)) ||
     (activeStep === 2 && selectedInfoExam.length === 0) ||
     (activeStep === 3 && currentExamIndex > 0 && selectedSubjects.length === 0);
 
@@ -77,6 +84,13 @@ const Info = () => {
     setSelectedInfoExam([]);
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+    // eslint-disable-next-line
+  }, [status]);
 
   return (
     <div className="w-full min-h-screen  bg-custom-pastel-gradient py-10  md:px-10 px-4 relative">

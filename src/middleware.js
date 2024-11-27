@@ -19,6 +19,7 @@ export const config = {
     "/",
     "/subjects",
     "/subjects/info",
+    "/info/:path*",
     "/progress",
     "/aichecking",
     "/notes",

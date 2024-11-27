@@ -6,8 +6,11 @@ import axios from "axios";
 import { useContextProvider } from "../../../hooks/useContextProvider";
 import { NotFound } from "../NotFound";
 import Skeleton from "../Skeleton";
+import { useSession } from "next-auth/react";
 
 const BoardAndExam = () => {
+  const { data: session } = useSession();
+
   const {
     selectedInfoExam,
     setSelectedInfoExam,
@@ -39,11 +42,11 @@ const BoardAndExam = () => {
         const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
         const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
-          axios.get(`${backendUrl}/subjects/all`, {
-            headers: { "Content-Type": "application/json" },
-          }),
-          axios.get(`${backendUrl}/users/7/subjects`, {
-            headers: { "Content-Type": "application/json" },
+          axios.get(`${backendUrl}/subjects/all`),
+          axios.get(`${backendUrl}/users/subjects`, {
+            headers: {
+              Authorization: `Bearer ${session.token}`,
+            },
           }),
         ]);
 

@@ -17,7 +17,7 @@ const fetchSubjects = async (session) => {
     };
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/7/subjects`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/subjects`,
       {
         method: "GET",
         headers,

@@ -19,13 +19,10 @@ const ProgressPageWrapper = async () => {
       "Content-Type": "application/json",
     };
 
-    const response = await fetch(
-      `${process.env.BACKEND_URL}/users/7/subjects`,
-      {
-        method: "GET",
-        headers,
-      }
-    );
+    const response = await fetch(`${process.env.BACKEND_URL}/users/subjects`, {
+      method: "GET",
+      headers,
+    });
 
     if (!response.ok) {
       const errorData = await response.json();

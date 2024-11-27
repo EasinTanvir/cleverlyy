@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -7,9 +7,11 @@ import { signIn } from "next-auth/react";
 
 import Buttons from "@/components/Buttons";
 import InputField from "@/components/InputField";
+import { useContextProvider } from "../../../hooks/useContextProvider";
 
-const Signup = () => {
+const SignIn = () => {
   const [loading, setLoading] = useState(false);
+  const { setSelectSubjectHandler } = useContextProvider();
   const router = useRouter();
 
   const {
@@ -42,6 +44,10 @@ const Signup = () => {
       }
     });
   };
+
+  useEffect(() => {
+    setSelectSubjectHandler("subjects/all");
+  }, []);
 
   return (
     <div className="min-h-[calc(100vh-80px)]  flex justify-center items-center">
@@ -93,4 +99,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignIn;

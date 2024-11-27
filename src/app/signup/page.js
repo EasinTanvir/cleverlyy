@@ -10,6 +10,7 @@ import Divider from "@mui/material/Divider";
 import Buttons from "@/components/Buttons";
 import InputField from "@/components/InputField";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -32,9 +33,25 @@ const Signup = () => {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/register`,
         formData
       );
-      reset();
-      toast.success(data?.message || "Reagister Successful");
-      router.push("/info");
+
+      signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      }).then((cb) => {
+        if (cb?.ok) {
+          setLoading(false);
+
+          reset();
+          toast.success(data?.message || "Register & LogIn Successful");
+
+          router.push("/info");
+        }
+        if (cb?.error) {
+          setLoading(false);
+          toast.error(cb.error);
+        }
+      });
     } catch (error) {
       console.log(error);
       if (error?.response?.data?.message === "Email is already registered.") {
