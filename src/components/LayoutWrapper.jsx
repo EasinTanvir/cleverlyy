@@ -1,18 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import React from "react";
+import { usePathname } from "next/navigation";
 
 import SideBar from "./SideBar";
 import { useContextProvider } from "../../hooks/useContextProvider";
 import Header from "./Header";
-import { isTokenExpired } from "@/utils/tokenExpire";
 
 const LayoutWrapper = ({ children }) => {
   const { sideBarOpen } = useContextProvider();
-  const session = useSession();
+
   const path = usePathname();
-  const router = useRouter();
 
   return (
     <>

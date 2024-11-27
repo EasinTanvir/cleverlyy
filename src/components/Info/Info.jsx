@@ -67,12 +67,9 @@ const Info = () => {
     }
   };
 
-  const schoolExist = selectedCountry?.name === "Bangladesh" || false;
-
   const disableNextButton =
     !selectedCountry ||
-    (activeStep === 1 &&
-      (schoolExist ? !selectedGrade || !selectedSchool : !selectedGrade)) ||
+    (activeStep === 1 && !selectedGrade) ||
     (activeStep === 2 && selectedInfoExam.length === 0) ||
     (activeStep === 3 && currentExamIndex > 0 && selectedSubjects.length === 0);
 

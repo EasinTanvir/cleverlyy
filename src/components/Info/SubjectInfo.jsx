@@ -81,6 +81,8 @@ export default function SubjectInfo() {
     )
   );
 
+  const combinedSubjects = [...exisitngSubject, ...selectedSubjects];
+
   return (
     <div className="p-6 xl:w-[78%] md:w-[88%] w-full mx-auto">
       {selectedChapters.length > 0 && (
@@ -186,7 +188,7 @@ export default function SubjectInfo() {
         ))}
       </div>
 
-      <YourSubject yourSubjectLists={exisitngSubject} />
+      <YourSubject yourSubjectLists={combinedSubjects} />
     </div>
   );
 }
