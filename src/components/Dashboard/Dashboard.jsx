@@ -90,8 +90,9 @@ const Dashboard = ({ session }) => {
   return (
     <div className="space-y-6 ">
       <h1 className="text-[28px]">
-        Welcome, <span className="text-textColor font-bold">Nahian,</span> Let’s
-        Get started today
+        Welcome,{" "}
+        <span className="text-textColor font-bold">{session?.first_name},</span>{" "}
+        Let’s Get started today
       </h1>
 
       <div className="flex lg:flex-row flex-col xl:gap-10 lg:gap-8 gap-20">

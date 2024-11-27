@@ -6,12 +6,10 @@ import { useContextProvider } from "../../../hooks/useContextProvider";
 import { NotFound } from "../NotFound";
 import ResourceLayout from "./ResourceLayout";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const LayoutDataFetch = () => {
   const { selectSubjectHandler } = useContextProvider();
   const { data: session, status } = useSession();
-  const router = useRouter();
 
   const [subjectLists, setSubjectLists] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -65,16 +63,6 @@ const LayoutDataFetch = () => {
 
     // eslint-disable-next-line
   }, [selectSubjectHandler]);
-
-  useEffect(() => {
-    if (
-      status === "unauthenticated" &&
-      selectSubjectHandler === "users/subjects"
-    ) {
-      router.push("/signin");
-    }
-    // eslint-disable-next-line
-  }, [status, selectSubjectHandler]);
 
   if (error) {
     return (

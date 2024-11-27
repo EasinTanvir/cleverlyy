@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { motion } from "framer-motion";
 
@@ -21,12 +23,24 @@ const ResourceLayout = ({ subjectLists, loading }) => {
     setSelectSubjectHandler,
   } = useContextProvider();
 
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   // Find the selected board and exams based on `selectedBoard`
   const board = subjectLists.find(
     (board) => board.board_id === selectedBoard?.board_id
   );
 
   const exams = board ? board.exams : [];
+
+  const userSubjectHandler = (value) => {
+    // Use the value directly for immediate logic
+    if (status === "unauthenticated" && value === "users/subjects") {
+      router.push("/signin");
+    } else {
+      setSelectSubjectHandler(value);
+    }
+  };
 
   return (
     <div className="py-6 md:p-8 p-4  ">
@@ -56,14 +70,14 @@ const ResourceLayout = ({ subjectLists, loading }) => {
             All Subjects
           </button>
           <button
-            onClick={() => setSelectSubjectHandler("users/subjects")}
+            onClick={() => userSubjectHandler("users/subjects")}
             className={`w-fit px-3.5 py-1.5  rounded-lg  text-sm ${
               selectSubjectHandler !== "subjects/all"
                 ? "bg-yearBg4 text-white"
                 : ""
             }`}
           >
-            Your Subject
+            Your Subjects
           </button>
         </div>
       </div>
