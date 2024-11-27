@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
+import { isTokenExpired } from "./utils/tokenExpire";
 
 export async function middleware(request) {
   const token = await getToken({
@@ -8,6 +9,11 @@ export async function middleware(request) {
   });
 
   if (!token) {
+    return NextResponse.redirect(new URL("/signin", request.url));
+  }
+
+  //if the token got expired user should redirect to login page
+  if (isTokenExpired(token.token)) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 

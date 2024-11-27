@@ -48,7 +48,7 @@ module.exports = {
 
         banner: {
           color1: "#FDC200", // Yellow
-          color2: "#FF2C2C", // Red
+          color2: "#A78BFA", // Red
           color3: "#21AD61", // Green
           color4: "#723DA6", // Blue
         },

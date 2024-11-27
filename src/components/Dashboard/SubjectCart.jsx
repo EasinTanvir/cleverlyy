@@ -3,9 +3,13 @@ import { dashboardImg } from "@/constant";
 import Image from "next/image";
 import Link from "next/link";
 
-const SubjectCart = ({ title }) => {
+const SubjectCart = ({ title, subject_id }) => {
   return (
-    <Link className="cursor-pointer" href="/subjects">
+    <Link
+      legacyBehavior
+      className="cursor-pointer"
+      href={`/subjects/${subject_id}`}
+    >
       <div className="w-40 bg-white rounded-2xl py-3 px-1">
         <div className="w-20 mx-auto relative">
           <Image className="max-w-full" alt="physics" src={dashboardImg} />

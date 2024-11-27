@@ -63,7 +63,9 @@ const SubjectPage = async () => {
     <div className=" md:p-8 p-4">
       <div className="space-y-10 ">
         <div>
-          <h1 className="text-bold text-[27px] font-bold">Hi, Easin</h1>
+          <h1 className="text-bold text-[27px] font-bold">
+            Hi, {session?.first_name}
+          </h1>
           <h1 className="text-bold text-xl">
             Start exploring your subjects for smarter, stress-free exam prep
           </h1>

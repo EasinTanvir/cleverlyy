@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import SubjectCard from "./ProgressSubject";
 import ProgressBarChart from "./ProgressBarChart";
 
-const Progress = ({ barchartData }) => {
+const Progress = ({ barchartData, session }) => {
   const [selectedBoard, setSelectedBoard] = useState("Edexcel");
 
   const { scrollY } = useScroll();
@@ -25,7 +25,9 @@ const Progress = ({ barchartData }) => {
 
   return (
     <div className="min-h-screen">
-      <h1 className="text-[26px] font-bold mb-3">Easin Progress</h1>
+      <h1 className="text-[26px] font-bold mb-3">
+        {session?.first_name}, Progress
+      </h1>
       <div className="flex space-x-4 mb-4">
         {barchartData.map((board) => (
           <button

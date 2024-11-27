@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 
-import subjects from "@/utils";
 import SubjectCart from "./SubjectCart";
 import SwipperButton from "./SwipperButton";
 
@@ -15,6 +14,7 @@ const Subject = ({ subjectLists }) => {
   return (
     <div className="mt-4 rounded-md relative ">
       <Swiper
+        simulateTouch={true}
         breakpoints={{
           300: {
             width: 600,
@@ -47,7 +47,10 @@ const Subject = ({ subjectLists }) => {
       >
         {subjectLists.map((item, i) => (
           <SwiperSlide key={i}>
-            <SubjectCart title={item.subject_name} />
+            <SubjectCart
+              title={item.subject_name}
+              subject_id={item.subject_id}
+            />
           </SwiperSlide>
         ))}
         <SwipperButton />

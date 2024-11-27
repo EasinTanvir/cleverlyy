@@ -6,10 +6,8 @@ import Skeleton from "@/components/Skeleton";
 
 import { getServerCredentials } from "../../../session/sersverSession";
 
-const ProgressPageWrapper = async () => {
+const ProgressPageWrapper = async ({ session }) => {
   try {
-    const session = await getServerCredentials();
-
     if (!session?.token) {
       throw new Error("Authentication token is missing.");
     }
@@ -36,7 +34,7 @@ const ProgressPageWrapper = async () => {
       throw new Error("Failed to fetch subject data");
     }
 
-    return <Progress barchartData={data} />;
+    return <Progress barchartData={data} session={session} />;
   } catch (error) {
     throw new Error(
       error?.message || "Something went wrong in the progress page."
@@ -44,11 +42,12 @@ const ProgressPageWrapper = async () => {
   }
 };
 
-const ProgressPage = () => {
+const ProgressPage = async () => {
+  const session = await getServerCredentials();
   return (
     <div className="p-8">
       <Suspense fallback={<Skeleton />}>
-        <ProgressPageWrapper />
+        <ProgressPageWrapper session={session} />
       </Suspense>
     </div>
   );
