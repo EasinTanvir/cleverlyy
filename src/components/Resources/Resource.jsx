@@ -140,10 +140,12 @@ const ChapterWiseRevisioncard = ({ title, link, progress }) => {
   };
 
   return (
-    <div className="cursor-pointer" onClick={onNavigateHandler}>
-      <div className="px-6 py-7 border border-borderColor2 rounded-2xl">
-        <h1 className="title">{title}</h1>
-        <div className="mt-4">
+    <div
+      className="cursor-pointer h-32 flex-center  border border-borderColor2 rounded-2xl"
+      onClick={onNavigateHandler}
+    >
+      <h1 className="title">{title}</h1>
+      {/* <div className="mt-4">
           <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2 relative">
             {progress > 0 ? (
               <div
@@ -165,8 +167,7 @@ const ChapterWiseRevisioncard = ({ title, link, progress }) => {
             <span>Start Now</span>
             <span>0/84</span>
           </div>
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 };
@@ -189,7 +190,7 @@ const YearWisecard = ({ title, link, yearwise_progress }) => {
   return (
     <div className="p-6 border border-borderColor2 rounded-2xl min-h-full max-h-full relative">
       <h1 className="title">{title}</h1>
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div className="w-full bg-gray-200 rounded-full h-[14px] mt-2">
           {yearwise_progress > 0 ? (
             <div
@@ -211,7 +212,7 @@ const YearWisecard = ({ title, link, yearwise_progress }) => {
           <span>Start Now</span>
           <span>0/84</span>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-8 flex items-center gap-3">
         <MdFace />

@@ -47,6 +47,11 @@ export const ContextProvider = ({ children }) => {
 
   const [resourceSelectUnit, setResourceSelectUnit] = useState(null);
 
+  //user selected Subject
+
+  const [selectSubjectHandler, setSelectSubjectHandler] =
+    useState("subjects/all");
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
@@ -119,6 +124,8 @@ export const ContextProvider = ({ children }) => {
     setResourceSelectUnit,
     finalPaper,
     setFinalPaper,
+    selectSubjectHandler,
+    setSelectSubjectHandler,
   };
 
   return (

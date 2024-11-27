@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { motion } from "framer-motion";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
-import { useRouter, useSearchParams } from "next/navigation";
+import Skeleton from "../Skeleton";
 
-const ResourceLayout = ({ subjectLists }) => {
+const ResourceLayout = ({ subjectLists, loading }) => {
   const {
     selectedExam,
     setSelectedExam,
@@ -17,6 +17,8 @@ const ResourceLayout = ({ subjectLists }) => {
     setUserSelectedSubject,
     resourceSelectUnit,
     setResourceSelectUnit,
+    selectSubjectHandler,
+    setSelectSubjectHandler,
   } = useContextProvider();
 
   // Find the selected board and exams based on `selectedBoard`
@@ -25,20 +27,6 @@ const ResourceLayout = ({ subjectLists }) => {
   );
 
   const exams = board ? board.exams : [];
-
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const yourSubjectHandler = (value) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("subject", value);
-    router.push(`?${params.toString()}`);
-  };
-  const allSubjectHandler = (value) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("subject", value);
-    router.push(`?${params.toString()}`);
-  };
 
   return (
     <div className="py-6 md:p-8 p-4  ">
@@ -58,14 +46,22 @@ const ResourceLayout = ({ subjectLists }) => {
         </div>
         <div className="flex-1  flex items-center justify-end  gap-2">
           <button
-            onClick={() => allSubjectHandler("all")}
-            className="bg-yearBg4 rounded-lg px-3.5 text-sm py-1.5 text-white w-fit"
+            onClick={() => setSelectSubjectHandler("subjects/all")}
+            className={` rounded-lg px-3.5 text-sm py-1.5  w-fit ${
+              selectSubjectHandler === "subjects/all"
+                ? "bg-yearBg4 text-white"
+                : ""
+            }`}
           >
             All Subjects
           </button>
           <button
-            onClick={() => yourSubjectHandler("userr")}
-            className="w-fit px-3.5 py-1.5  text-sm"
+            onClick={() => setSelectSubjectHandler("users/7/subjects")}
+            className={`w-fit px-3.5 py-1.5  rounded-lg  text-sm ${
+              selectSubjectHandler !== "subjects/all"
+                ? "bg-yearBg4 text-white"
+                : ""
+            }`}
           >
             Your Subject
           </button>
@@ -73,26 +69,29 @@ const ResourceLayout = ({ subjectLists }) => {
       </div>
 
       <hr className="border-black mb-14 mt-7" />
-
-      <div className="flex justify-around ">
-        {subjectLists?.map((board, index) => (
-          <button
-            key={index}
-            className={`py-2 px-4 ${
-              selectedBoard?.board_id === board.board_id
-                ? "border-b-2 border-indigo-600 font-semibold"
-                : "text-gray-500"
-            }`}
-            onClick={() => {
-              setSelectedBoard(board);
-              setSelectedExam(null);
-              setSelectedSubject(null);
-            }}
-          >
-            {board.board_name}
-          </button>
-        ))}
-      </div>
+      {!loading ? (
+        <div className="flex justify-around ">
+          {subjectLists?.map((board, index) => (
+            <button
+              key={index}
+              className={`py-2 px-4 ${
+                selectedBoard?.board_id === board.board_id
+                  ? "border-b-2 border-indigo-600 font-semibold"
+                  : "text-gray-500"
+              }`}
+              onClick={() => {
+                setSelectedBoard(board);
+                setSelectedExam(null);
+                setSelectedSubject(null);
+              }}
+            >
+              {board.board_name}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <Skeleton />
+      )}
 
       {/* Exam Tabs */}
       <div className="mt-8">
