@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
 import { IoSearch } from "react-icons/io5";
-import { FaBell } from "react-icons/fa";
+import { FaBell, FaSignInAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaMoon } from "react-icons/fa";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { IoLogOutOutline } from "react-icons/io5";
 import { Tooltip } from "@mui/material";
+import Link from "next/link";
 
 const Header = ({ sideBarOpen }) => {
   const router = useRouter();
@@ -32,20 +33,31 @@ const Header = ({ sideBarOpen }) => {
         <h1 className="text-textColor text-2xl font-bold">AI Checking</h1>
       )}
       <div></div>
+
       <div className="flex items-center gap-7">
         {/* <button className="text-sm font-semibold">Submit Problem</button> */}
         <button className="bg-moonColor w-10 h-10 rounded-full flex-center fixed bottom-2 right-2 ">
           <FaMoon size={22} className="text-white" />
         </button>
-        <IoSearch size={27} />
-        <FaBell size={22} />
-        <IoSettingsSharp size={22} />
-        {status === "authenticated" && (
-          <Tooltip title="Logout">
-            <button onClick={logoutHandler} className="">
-              <IoLogOutOutline size={30} />
+        {status === "authenticated" ? (
+          <>
+            {" "}
+            <IoSearch size={27} />
+            <FaBell size={22} />
+            <IoSettingsSharp size={22} />
+            <Tooltip title="Logout">
+              <button onClick={logoutHandler} className="">
+                <IoLogOutOutline size={30} />
+              </button>
+            </Tooltip>
+          </>
+        ) : (
+          <Link href="/signin">
+            <button className="flex items-center justify-center px-6  py-2 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-lg shadow-lg  transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-4 focus:ring-purple-300">
+              <FaSignInAlt className="mr-3 text-xl animate-bounce" />
+              <span className="font-semibold text-sm">Login</span>
             </button>
-          </Tooltip>
+          </Link>
         )}
       </div>
     </div>

@@ -4,6 +4,7 @@ import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { motion } from "framer-motion";
 
 import { useContextProvider } from "../../../hooks/useContextProvider";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const ResourceLayout = ({ subjectLists }) => {
   const {
@@ -25,6 +26,20 @@ const ResourceLayout = ({ subjectLists }) => {
 
   const exams = board ? board.exams : [];
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const yourSubjectHandler = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("subject", value);
+    router.push(`?${params.toString()}`);
+  };
+  const allSubjectHandler = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("subject", value);
+    router.push(`?${params.toString()}`);
+  };
+
   return (
     <div className="py-6 md:p-8 p-4  ">
       <div className="flex md:flex-row flex-col md:gap-0 gap-8 md:justify-between md:items-end">
@@ -42,10 +57,18 @@ const ResourceLayout = ({ subjectLists }) => {
           </div>
         </div>
         <div className="flex-1  flex items-center justify-end  gap-2">
-          <button className="bg-yearBg4 rounded-lg px-3.5 text-sm py-1.5 text-white w-fit">
+          <button
+            onClick={() => allSubjectHandler("all")}
+            className="bg-yearBg4 rounded-lg px-3.5 text-sm py-1.5 text-white w-fit"
+          >
             All Subjects
           </button>
-          <button className="w-fit px-3.5 py-1.5  text-sm">Your Subject</button>
+          <button
+            onClick={() => yourSubjectHandler("userr")}
+            className="w-fit px-3.5 py-1.5  text-sm"
+          >
+            Your Subject
+          </button>
         </div>
       </div>
 

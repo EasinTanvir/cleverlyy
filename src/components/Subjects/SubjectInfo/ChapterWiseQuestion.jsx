@@ -36,11 +36,11 @@ const ChapterWiseQuestion = () => {
       </h1>
 
       {/* Progress Bar */}
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <ProgressBar progress={userSelectedSubject?.chapterwise_progress} />
-      </div>
+      </div> */}
 
-      <div className="mt-6 space-y-7 text-sm text-black font-medium">
+      <div className="mt-12 space-y-7 text-sm text-black font-medium">
         <div className="flex items-start space-x-4">
           <p className="text-right">
             <span className="text-textColor font-bold  ">Focused Practice</span>{" "}

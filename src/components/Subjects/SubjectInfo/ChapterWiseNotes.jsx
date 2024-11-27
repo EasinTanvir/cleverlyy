@@ -37,11 +37,11 @@ const ChapterWiseNotes = () => {
       </h1>
 
       {/* Progress Bar */}
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <ProgressBar progress={userSelectedSubject?.chapterwise_progress} />
-      </div>
+      </div> */}
 
-      <div className="mt-6 space-y-7 text-sm text-black font-medium">
+      <div className="mt-12 space-y-7 text-sm text-black font-medium">
         <div className="flex items-start space-x-5">
           <FaHandPointer className="text-black mt-1" size={40} />
           <p>
