@@ -45,7 +45,7 @@ const SubjectWrapper = async ({ subject, session }) => {
       fetchData(`${process.env.BACKEND_URL}/users/subjects`, headers),
     ]);
 
-    const allSubjects = allSubjectsResponse.flatMap((board) =>
+    const allSubjects = userSubjectsResponse.flatMap((board) =>
       board.exams.flatMap((exam) => exam.subjects)
     );
 
