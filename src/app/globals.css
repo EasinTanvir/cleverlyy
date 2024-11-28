@@ -118,6 +118,15 @@ select:disabled {
   cursor: not-allowed; /* Change cursor to indicate disabled */
 }
 
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
 /* Keyframes for animated background */
 @keyframes wave {
   0% {

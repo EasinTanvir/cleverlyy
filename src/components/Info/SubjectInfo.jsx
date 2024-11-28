@@ -47,8 +47,11 @@ export default function SubjectInfo() {
         )
       ) {
         toast.error(
-          "Please select at least one unit for the selected subject.",
+          "Select at least one unit, otherwise, this subject will be removed.",
           { position: "top-center" }
+        );
+        setSelectedSubjects((prev) =>
+          prev.filter((s) => s.subject_id !== subject.subject_id)
         );
         return;
       }

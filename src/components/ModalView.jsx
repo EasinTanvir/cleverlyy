@@ -22,32 +22,33 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
     selectedUnits,
   } = useContextProvider();
 
-  const updateMainArray = (mainArray, selectedUnit) => {
-    // Create a map of subject_id to its units from selectedUnit
-    const selectedUnitsMap = selectedUnit.reduce((acc, unit) => {
-      if (!acc[unit.subject_id]) {
-        acc[unit.subject_id] = [];
-      }
-      acc[unit.subject_id].push(unit);
-      return acc;
-    }, {});
+  const finalArray = selectedSubjects
+    .map((subject) => {
+      // Find the selected units for this subject
+      const subjectSelectedUnits = selectedUnits.filter(
+        (unit) => unit.subject_id === subject.subject_id
+      );
 
-    // Update mainArray
-    return mainArray.map((subject) => {
-      if (selectedUnitsMap[subject.subject_id]) {
-        // Replace units with those from selectedUnit
+      if (subject.units.length > 0) {
+        // If subject has units but no selected units, drop the subject
+        if (subjectSelectedUnits.length === 0) {
+          return null;
+        }
+        // Replace units with the selected units for the subject
         return {
           ...subject,
-          units: selectedUnitsMap[subject.subject_id],
+          units: subjectSelectedUnits,
         };
       }
-      return subject; // Leave subject unchanged if not in selectedUnit
-    });
-  };
 
-  const updatedMainArray = updateMainArray(selectedSubjects, selectedUnits);
+      // If subject units array is empty, keep the subject as is
+      return subject;
+    })
+    .filter((subject) => subject !== null);
 
   const handleClose = () => setOpenModal(false);
+
+  //console.log("finalArray", finalArray);
 
   const handleConfirm = async () => {
     if (!selectedCountry || !selectedGrade || selectedSubjects.length === 0) {
@@ -61,32 +62,38 @@ const ModalView = ({ openModal, setOpenModal, plan, path = "/" }) => {
       grade: selectedGrade?.toString() || "",
       school: selectedSchool?.name || "",
       subjects_with_units:
-        updatedMainArray?.map((subject) => ({
+        finalArray?.map((subject) => ({
           subject_id: subject.subject_id,
           unit_id: subject.units?.map((unit) => unit.unit_id) || [],
         })) || [],
     };
-    try {
-      setLoader(true);
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/setup-profile`,
-        sendData,
-        {
-          headers: {
-            Authorization: `Bearer ${session.token}`,
-          },
-        }
-      );
-      toast.success(data?.message || "Profile setup completed successfully");
-      handleClose();
 
-      router.push(path);
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.response?.data?.error || "Profile update failed");
-    } finally {
-      setLoader(false);
-    }
+    console.log("sendData", sendData);
+    console.log("finalArray", finalArray);
+    console.log("selectedSubjects", selectedSubjects);
+    console.log("selectedUnits", selectedUnits);
+
+    // try {
+    //   setLoader(true);
+    //   const { data } = await axios.post(
+    //     `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/setup-profile`,
+    //     sendData,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${session.token}`,
+    //       },
+    //     }
+    //   );
+    //   toast.success(data?.message || "Profile setup completed successfully");
+    //   handleClose();
+
+    //   router.push(path);
+    // } catch (err) {
+    //   console.log(err);
+    //   toast.error(err?.response?.data?.error || "Profile update failed");
+    // } finally {
+    //   setLoader(false);
+    // }
   };
 
   return (

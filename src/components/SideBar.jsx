@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdDashboard } from "react-icons/md";
 import { Collapse, Divider } from "@mui/material";
 import { logoImage } from "@/constant";
@@ -42,7 +42,7 @@ const SideBar = () => {
   return (
     <div className="relative z-50">
       <div
-        className={`bg-sideBarColor rounded-r-[40px]  py-5 px-4 min-h-screen max-h-screen  fixed top-0 left-0 transition-all duration-75  ${
+        className={`bg-sideBarColor rounded-r-[40px] scrollbar-none  pt-5 pb-8 px-4 min-h-screen max-h-screen overflow-y-auto  fixed top-0 left-0 transition-all duration-75  ${
           sideBarOpen ? "w-56" : "w-[75px]"
         } `}
       >
@@ -258,7 +258,7 @@ const SideBar = () => {
         </div> */}
 
         {isResourcesOpen && (
-          <div className="absolute bottom-0 left-0 w-60 h-[400px] bg-gradient-to-t z-10 from-[rgba(0.4,0,0,0.6)] to-transparent backdrop-blur-xs pointer-events-none"></div>
+          <div className="fixed bottom-0 rounded-br-[40px]  left-0 w-56 h-[400px] bg-gradient-to-t z-10 from-[rgba(0.4,0,0,0.6)] to-transparent backdrop-blur-xs pointer-events-none"></div>
         )}
       </div>
     </div>
