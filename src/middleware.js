@@ -12,9 +12,10 @@ export async function middleware(request) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  //if the token got expired user should redirect to login page
-  if (isTokenExpired(token.token)) {
-    return NextResponse.redirect(new URL("/signin", request.url));
+  if (token) {
+    if (isTokenExpired(token.token)) {
+      return NextResponse.redirect(new URL("/signin", request.url));
+    }
   }
 
   return NextResponse.next();
