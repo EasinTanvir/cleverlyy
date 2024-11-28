@@ -1,5 +1,8 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import "../../src/styles/premiumbutton.css";
+import "../../src/styles/aibutton.css";
+import "../../src/styles/custom.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import ContextWrapper from "@/contextProvider/ContextProvider";
 import { Toaster } from "react-hot-toast";

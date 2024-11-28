@@ -1,0 +1,40 @@
+body {
+  background-color: #f7f7f5;
+}
+
+.swiper-horizontal > .swiper-scrollbar {
+  display: none !important;
+}
+.smooth-scrollbar {
+  scroll-behavior: smooth;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbc2ff;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+select:disabled {
+  border-color: #d1d5db; /* Light gray color for disabled state */
+  background-color: #f9fafb; /* Optional: lighter background for disabled state */
+  color: #9ca3af; /* Optional: dimmed text color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate disabled */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}

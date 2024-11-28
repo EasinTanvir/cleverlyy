@@ -1,0 +1,91 @@
+/* Button styling */
+.ai-button {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: linear-gradient(135deg, #450086, #5e00ab);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s;
+  text-align: left;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* Hover effect */
+.ai-button:hover {
+  transform: scale(1.05);
+}
+
+/* Animated background */
+.ai-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, #54009c, #360075, #450086);
+  z-index: -1; /* Place background behind content */
+  transition: opacity 0.5s;
+  animation: wave 5s infinite linear;
+}
+
+/* Inner content */
+.ai-button-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.ai-button-content h2 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.ai-button-content ul {
+  list-style-type: disc; /* Adds bullets */
+  padding-left: 20px; /* Indent bullets */
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.ai-button-content ul li {
+  margin-bottom: 5px;
+}
+
+/* "Solve" link */
+.ai-solve {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: -20px; /* Adjust this to align with the third bullet */
+}
+
+.ai-solve span {
+  margin-left: 5px;
+  font-size: 1.5em;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
