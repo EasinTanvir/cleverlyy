@@ -81,6 +81,11 @@ export const subjectLists = [
     image: business,
   },
   {
+    title: "Business Studies",
+    color: "#e8fbff",
+    image: business,
+  },
+  {
     title: "Human Biology",
     color: "#ebffec",
     image: humanBiology,

@@ -23,6 +23,7 @@ const InterNationalALevel = ({ subjectLists, board_name, title }) => {
               key={subject.subject_id}
               {...subject}
               board_name={board_name}
+              color={subject.color}
             />
           ))}
         </div>
@@ -48,7 +49,10 @@ const ALevelSubject = ({
 }) => {
   return (
     <>
-      <div className="flex md:flex-row flex-col gap-8 bg-[#f9fde7] shadow-md p-8 rounded-3xl">
+      <div
+        style={{ backgroundColor: color }}
+        className="flex md:flex-row flex-col gap-8 bg-[#f9fde7] shadow-md p-8 rounded-3xl"
+      >
         <div className="w-64 xl:w-72  flex flex-col items-center justify-center">
           <div className="w-[115px] ">
             <Image className="max-w-24" src={image} alt={subject_name} />
