@@ -32,7 +32,7 @@ const Header = ({ sideBarOpen }) => {
         <button className="bg-moonColor w-10 h-10 rounded-full flex-center fixed bottom-2 right-2 ">
           <FaMoon size={22} className="text-white" />
         </button>
-        {status === "authenticated" ? (
+        {status === "authenticated" && status !== "loading" ? (
           <>
             {" "}
             <IoSearch size={27} />
