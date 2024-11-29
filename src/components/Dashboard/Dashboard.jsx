@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HiPencil } from "react-icons/hi2";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
+import { Alert } from "@mui/material";
 
 import ResourceCart from "./ResourceCart";
 import Subject from "./Subject";
@@ -40,10 +41,10 @@ const SubjectWrapper = async ({ subject, session }) => {
       "Content-Type": "application/json",
     };
 
-    const [allSubjectsResponse, userSubjectsResponse] = await Promise.all([
-      fetchData(`${process.env.BACKEND_URL}/subjects/all`, headers),
-      fetchData(`${process.env.BACKEND_URL}/users/subjects`, headers),
-    ]);
+    const userSubjectsResponse = await fetchData(
+      `${process.env.BACKEND_URL}/users/subjects`,
+      headers
+    );
 
     const allSubjects = userSubjectsResponse.flatMap((board) =>
       board.exams.flatMap((exam) => exam.subjects)
@@ -76,7 +77,17 @@ const SubjectWrapper = async ({ subject, session }) => {
     const { labels, chartData } = filterDataByBoard();
 
     return subject ? (
-      <Subject subjectLists={allSubjects} />
+      <>
+        {allSubjects?.length > 0 ? (
+          <Subject subjectLists={allSubjects} />
+        ) : (
+          <div className="py-6 flex-center bg-white rounded-xl h-40 mt-3">
+            <div className="w-fit">
+              <Alert severity="warning">No Subjects Registered Yet</Alert>
+            </div>
+          </div>
+        )}
+      </>
     ) : (
       <DashBoardChart labels={labels} dataValues={chartData} />
     );
