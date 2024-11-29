@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const GoPremiumButton = ({ isHidden, sideBarOpen }) => {
   return (
@@ -13,7 +14,10 @@ const GoPremiumButton = ({ isHidden, sideBarOpen }) => {
         <div className={`icon `}>⇪</div>
       </div>
 
-      <img
+      <Image
+        width="0"
+        height="0"
+        sizes="100vw"
         src="https://res.cloudinary.com/dmrbqkzbu/image/upload/v1731255730/boy_kimh1f.png"
         alt="Student"
         className={`absolute   h-auto ${

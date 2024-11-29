@@ -45,6 +45,8 @@ const SignIn = () => {
 
   useEffect(() => {
     setSelectSubjectHandler("subjects/all");
+
+    // eslint-disable-next-line
   }, []);
 
   return (
