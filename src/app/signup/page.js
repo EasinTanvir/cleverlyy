@@ -40,10 +40,10 @@ const Signup = () => {
         redirect: false,
       }).then((cb) => {
         if (cb?.ok) {
-          setLoading(false);
           router.push("/info");
-          reset();
           toast.success(data?.message || "Register & LogIn Successful");
+          reset();
+          setLoading(false);
         }
         if (cb?.error) {
           setLoading(false);
