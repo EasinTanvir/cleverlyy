@@ -32,9 +32,9 @@ const SignIn = () => {
       redirect: false,
     }).then((cb) => {
       if (cb?.ok) {
-        setLoading(false);
         router.push("/");
         toast.success("Login Success");
+        setLoading(false);
       }
       if (cb?.error) {
         setLoading(false);
