@@ -88,7 +88,7 @@ const SignIn = () => {
           disabled={loading}
           onClickhandler={() => {}}
           className="bg-rose-700 rounded-md font-semibold flex justify-center text-white w-full py-2 hover:text-slate-400 transition-colors duration-100  my-3"
-          type="text"
+          type="submit"
         >
           {loading ? <span>Loading...</span> : "LogIn"}
         </Buttons>
