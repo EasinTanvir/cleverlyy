@@ -100,7 +100,7 @@ const SubjectWrapper = async ({ subject, session }) => {
 const Dashboard = ({ session }) => {
   return (
     <div className="space-y-6 ">
-      <h1 className="text-[28px]">
+      <h1 className="md:text-[28px] text-lg">
         Welcome,{" "}
         <span className="text-textColor font-bold">{session?.first_name},</span>{" "}
         Let’s Get started today

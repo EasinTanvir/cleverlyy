@@ -19,7 +19,7 @@ const SubjectInfo = () => {
       <div className="flex  lg:flex-row flex-col items-center">
         <div className="flex-1  space-y-5">
           <SubjectTitle variant="heading" />
-          <p className="">
+          <p className="md:text-lg text-sm">
             From concise and detailed
             <span className=" text-textColor font-bold">
               {" "}

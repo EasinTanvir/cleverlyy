@@ -60,10 +60,10 @@ const SubjectPage = async () => {
   const session = await getServerCredentials();
 
   return (
-    <div className=" md:p-8 p-4">
+    <div className="md:p-8 p-4">
       <div className="space-y-10 ">
         <div>
-          <h1 className="text-bold text-[27px] font-bold">
+          <h1 className="text-bold md:text-[27px] text-lg font-bold">
             Hi, {session?.first_name}
           </h1>
           <h1 className="text-bold text-xl">

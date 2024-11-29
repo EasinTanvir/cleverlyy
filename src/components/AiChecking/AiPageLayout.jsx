@@ -58,7 +58,7 @@ const AiPageLayout = ({ subjectLists }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-around mt-20 ">
+      <div className="flex md:flex-row flex-col items-center justify-around mt-20 md:gap-0 gap-5 ">
         <div className="flex flex-wrap    gap-4  w-full">
           {exams.length > 0 ? (
             exams.map((exam, index) => (
@@ -85,7 +85,7 @@ const AiPageLayout = ({ subjectLists }) => {
         <h3 className="w-full flex-center  font-semibold text-lg">
           Your Subjects
         </h3>
-        <div className="w-full flex  gap-2 justify-end">
+        <div className="w-full flex  gap-2 md:justify-end">
           {subjectLists?.map((board, index) => (
             <button
               key={index}

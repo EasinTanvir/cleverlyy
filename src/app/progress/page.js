@@ -45,7 +45,7 @@ const ProgressPageWrapper = async ({ session }) => {
 const ProgressPage = async () => {
   const session = await getServerCredentials();
   return (
-    <div className="p-8">
+    <div className="md:p-8 p-4">
       <Suspense fallback={<Skeleton />}>
         <ProgressPageWrapper session={session} />
       </Suspense>

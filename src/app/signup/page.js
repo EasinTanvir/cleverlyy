@@ -57,7 +57,7 @@ const Signup = () => {
       } else {
         setError("password", { message: error?.response?.data?.message });
       }
-    } finally {
+
       setLoading(false);
     }
   };

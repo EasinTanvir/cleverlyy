@@ -21,7 +21,7 @@ const ChapterWiseQuestion = () => {
   };
 
   return (
-    <div className="relative min-w-80 max-w-80 mx-auto  p-6 border border-black rounded-3xl">
+    <div className="relative md:min-w-80 md:max-w-80 min-w-[282px] max-w-[282px] mx-auto  p-6 border border-black rounded-3xl">
       {/* <div className="absolute -top-20 -left-10   w-40">
         <Image
           src={chemistry}
@@ -31,7 +31,7 @@ const ChapterWiseQuestion = () => {
       </div> */}
 
       {/* Title */}
-      <h1 className="text-center text-2xl font-bold mt-6">
+      <h1 className="text-center lg:text-2xl text-xl font-bold mt-6">
         Chapterwise Question Paper
       </h1>
 

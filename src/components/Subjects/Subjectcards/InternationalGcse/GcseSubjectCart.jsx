@@ -40,7 +40,7 @@ const GcseSubjectCart = ({
           <Image className="max-w-24" src={image} alt={subject_name} />
         </div>
         <div className="flex-1 text-end">
-          <h1 className="md:text-[25px] text-lg font-bold">{subject_name}</h1>
+          <h1 className="md:text-[25px] text-md font-bold">{subject_name}</h1>
           <p className="text-[8px]">4CH1 | Science (Double Award) 4SD0 </p>
         </div>
       </div>

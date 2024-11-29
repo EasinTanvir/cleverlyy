@@ -25,7 +25,7 @@ const Progress = ({ barchartData, session }) => {
 
   return (
     <div className="min-h-screen">
-      <h1 className="text-[26px] font-bold mb-3">
+      <h1 className="md:text-[27px] text-lg font-bold mb-3">
         {session?.first_name}, Progress
       </h1>
       <div className="flex space-x-4 mb-4">
