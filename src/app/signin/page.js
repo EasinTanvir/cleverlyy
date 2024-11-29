@@ -34,8 +34,6 @@ const SignIn = () => {
       if (cb?.ok) {
         setLoading(false);
         router.push("/");
-
-        router.refresh();
         toast.success("Login Success");
       }
       if (cb?.error) {
@@ -70,7 +68,7 @@ const SignIn = () => {
             required
             id="email"
             type="email"
-            message="*Email is required"
+            message="Email is required"
             placeholder="type your email"
             register={register}
             errors={errors}
@@ -80,7 +78,7 @@ const SignIn = () => {
             required
             id="password"
             type="password"
-            message="*Password is required"
+            message="Password is required"
             placeholder="type your password"
             register={register}
             errors={errors}

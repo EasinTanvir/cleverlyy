@@ -41,11 +41,9 @@ const Signup = () => {
       }).then((cb) => {
         if (cb?.ok) {
           setLoading(false);
-
+          router.push("/info");
           reset();
           toast.success(data?.message || "Register & LogIn Successful");
-
-          router.push("/info");
         }
         if (cb?.error) {
           setLoading(false);
@@ -112,7 +110,7 @@ const Signup = () => {
             required
             id="first_name"
             type="text"
-            message="*First Name is required"
+            message="First Name is required"
             placeholder="type your first name"
             register={register}
             errors={errors}
@@ -122,7 +120,7 @@ const Signup = () => {
             required
             id="last_name"
             type="text"
-            message="*Last Name is required"
+            message="Last Name is required"
             placeholder="type your last name"
             register={register}
             errors={errors}
@@ -132,7 +130,7 @@ const Signup = () => {
             required
             id="email"
             type="email"
-            message="*Email is required"
+            message="Email is required"
             placeholder="type your email"
             register={register}
             errors={errors}
@@ -142,7 +140,7 @@ const Signup = () => {
             required
             id="password"
             type="password"
-            message="*Password is required"
+            message="Password is required"
             placeholder="type your password"
             register={register}
             errors={errors}

@@ -24,7 +24,7 @@ const LayoutWrapper = ({ children }) => {
             }`}
           >
             <Header sideBarOpen={sideBarOpen} />
-            <div className="pt-20  ">{children}</div>
+            <div className="pt-20">{children}</div>
           </div>
         </div>
       )}
