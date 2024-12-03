@@ -48,7 +48,7 @@ To run the project in development mode with hot-reloading enabled, use one of th
 
 `bun dev`
 
-### 3. Running the Development Server
+### 3. Running the Production Server
 
 # Build for production
 
