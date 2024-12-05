@@ -2,11 +2,6 @@
 import React from "react";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlinePencil } from "react-icons/hi";
-import { Worker } from "@react-pdf-viewer/core";
-import { Viewer } from "@react-pdf-viewer/core";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 const ResponseDisplay = ({ finalPaper }) => {
   return (
@@ -21,9 +16,9 @@ const ResponseDisplay = ({ finalPaper }) => {
           </div>
 
           <div className="space-y-4 border border-borderColor2  min-h-[500px] max-h-[500px] overflow-auto p-4 rounded-xl">
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-              <Viewer fileUrl={finalPaper?.file_url} />
-            </Worker>
+            <div className="flex items-start space-x-3">
+              <div className=" rounded-lg  text-sm max-w-[90%] pt-2"></div>
+            </div>
           </div>
         </div>
 
@@ -41,7 +36,7 @@ const ResponseDisplay = ({ finalPaper }) => {
 
           <div className="space-y-4 border border-blue-300 min-h-[500px] max-h-[500px] overflow-auto p-4 rounded-xl">
             <div className="flex items-start space-x-3">
-              <div className=" rounded-lg  text-sm max-w-[90%] pt-2">test</div>
+              <div className=" rounded-lg  text-sm max-w-[90%] pt-2"></div>
             </div>
           </div>
         </div>
