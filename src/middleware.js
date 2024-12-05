@@ -21,6 +21,7 @@ export async function middleware(request) {
   return NextResponse.next();
 }
 
+//protect routes path
 export const config = {
   matcher: [
     "/",
